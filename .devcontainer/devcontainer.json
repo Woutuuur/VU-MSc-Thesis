@@ -17,6 +17,7 @@
             ]
         }
     },
+	"securityOpt": [ "seccomp=unconfined", "label=disable" ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
