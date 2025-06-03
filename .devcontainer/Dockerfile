@@ -44,5 +44,8 @@ COPY native-image-run /data/dacapobench/native-image-run
 # Cleanup
 RUN rm -rf /tmp/*
 
+# Allow full access to dacapo benchmarks
+RUN chmod -R 777 /data/dacapobench
+
 ENV BASH_ENV="/usr/local/sdkman/bin/sdkman-init.sh"
 ENTRYPOINT ["/bin/bash", "-c"]
