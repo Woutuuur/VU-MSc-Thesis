@@ -1,0 +1,7 @@
+[submodule "microbenchmarks"]
+	path = microbenchmarks
+	url = https://github.com/Woutuuur/graal-native-image-ic-benchmarks.git
+[submodule "graal"]
+	path = graal
+	url = https://github.com/Woutuuur/graal.git
+	branch = 24.2-inline-invoke-caching
