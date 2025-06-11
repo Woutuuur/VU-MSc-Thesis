@@ -19,9 +19,13 @@
     },
 	"securityOpt": [ "seccomp=unconfined", "label=disable" ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+	"runArgs": [
+		"-v", "/tmp/.X11-unix:/tmp/.X11-unix"
+	],
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
-			"version": "24-graal"
+			"version": "24-graal",
+			"additionalVersions": "21.0.7-graal"
 		}
 	},
 	"onCreateCommand": "bash /workspace/.devcontainer/onCreateCommand.sh"
