@@ -1,0 +1,13 @@
+benchmark,optimization_level,result,binary_size,compiler
+micronaut-hello-world,--pgo,119025.46,49350984,CLOSED
+micronaut-hello-world,--pgo,119287.24,49350984,CLOSED
+micronaut-hello-world,-Os,63843.87,55642440,OPEN
+micronaut-hello-world,-Os,64229.24,55642440,OPEN
+micronaut-hello-world,-O3,79018.96,66849096,OPEN
+micronaut-hello-world,-O3,77398.04,66849096,OPEN
+micronaut-similarity,--pgo,13.36,50465096,CLOSED
+micronaut-similarity,--pgo,13.38,50465096,CLOSED
+micronaut-similarity,-Os,7.46,55773512,OPEN
+micronaut-similarity,-Os,7.39,55773512,OPEN
+micronaut-similarity,-O3,8.73,66980168,OPEN
+micronaut-similarity,-O3,7.93,66980168,OPEN

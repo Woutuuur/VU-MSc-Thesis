@@ -25,7 +25,7 @@
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "24-graal",
-			"additionalVersions": "21.0.7-graal"
+			"additionalVersions": "21.0.7-graal, 24-graalce"
 		}
 	},
 	"onCreateCommand": "bash /workspace/.devcontainer/onCreateCommand.sh"
