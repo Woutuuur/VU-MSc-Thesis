@@ -1,20 +1,16 @@
 from collections import defaultdict
 from dataclasses import dataclass
-from enum import Enum
 from pathlib import Path
-import os
 from benchmarks.baristabench import BaristaBenchmark
 from benchmarks.benchmark import Benchmark, BenchmarkResult, BenchmarkUnit
 from benchmarks.dacapobench import DacapoBenchmark
+from color import Color
+from compiler import Compiler
+from config import JAVA_BIN, OUTPUT_DIR, SKIP_AGENT, check_environment
 from optimization_level import OptimizationLevel
 import csv
-
-OUTPUT_DIR = Path(".").absolute()
-GRAALVM_HOME = Path(os.environ.get("GRAALVM_HOME", "None"))
-GRAALVM_OPEN_HOME = Path(os.environ.get("GRAALVM_OPEN_HOME", "None"))
-JAVA_HOME = Path(os.environ.get("JAVA_HOME", ""))
-JAVA_BIN = JAVA_HOME / "bin" / "java"
-N_RUNS = 5
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 LU_RUNNER_ARGS = [
     "-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false",
@@ -22,57 +18,26 @@ LU_RUNNER_ARGS = [
 ]
 
 BENCHMARKS = [
-    # DacapoBenchmark("avrora",   benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("batik",    benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("biojava",  benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("graphchi", benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("h2",       benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("sunflow",  benchmark_args = ["-t", "1"]),
-    # DacapoBenchmark("lusearch", benchmark_runner_args = LU_RUNNER_ARGS),
-    # DacapoBenchmark("luindex",  benchmark_runner_args = LU_RUNNER_ARGS),
-    # DacapoBenchmark("pmd",      benchmark_runner_args = ["--no-validation"]),
-    # DacapoBenchmark("xalan",    native_image_args = [
-    #     "--initialize-at-build-time=org.apache.crimson.parser.Parser2,"
-    #     "org.apache.crimson.parser.Parser2\\$Catalog,"
-    #     "org.apache.crimson.parser.Parser2\\$NullHandler,"
-    #     "org.apache.xml.utils.res.CharArrayWrapper"
-    # ]),
+    DacapoBenchmark("avrora",   benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("batik",    benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("biojava",  benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("graphchi", benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("h2",       benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("sunflow",  benchmark_args = ["-t", "1"]),
+    DacapoBenchmark("lusearch", benchmark_runner_args = LU_RUNNER_ARGS),
+    DacapoBenchmark("luindex",  benchmark_runner_args = LU_RUNNER_ARGS),
+    DacapoBenchmark("pmd",      benchmark_runner_args = ["--no-validation"]),
+    DacapoBenchmark("xalan",    native_image_args = [
+        "--initialize-at-build-time=org.apache.crimson.parser.Parser2,"
+        "org.apache.crimson.parser.Parser2\\$Catalog,"
+        "org.apache.crimson.parser.Parser2\\$NullHandler,"
+        "org.apache.xml.utils.res.CharArrayWrapper"
+    ]),
 
-    # BaristaBenchmark("helidon-hello-world"),
-    # BaristaBenchmark("ktor-hello-world"),
-    BaristaBenchmark("micronaut-hello-world"),
     BaristaBenchmark("micronaut-shopcart"),
+    BaristaBenchmark("micronaut-hello-world"),
     BaristaBenchmark("micronaut-similarity"),
-    # BaristaBenchmark("play-scala-hello-world"),
-    BaristaBenchmark("quarkus-hello-world"),
-    BaristaBenchmark("quarkus-tika"),
-    BaristaBenchmark("spring-hello-world"),
-    BaristaBenchmark("spring-petclinic"),
-    BaristaBenchmark("vanilla-hello-world"),
-    BaristaBenchmark("vertx-hello-world")
 ]
-
-SKIP_AGENT = True
-
-def check_environment():
-    if not GRAALVM_HOME.exists():
-        raise EnvironmentError(f"GRAALVM_HOME does not exist: {GRAALVM_HOME}")
-    if not GRAALVM_HOME.is_dir():
-        raise EnvironmentError(f"GRAALVM_HOME is not a directory: {GRAALVM_HOME}")
-    if not GRAALVM_OPEN_HOME.exists():
-        raise EnvironmentError(f"GRAALVM_OPEN_HOME does not exist: {GRAALVM_OPEN_HOME}")
-    if not GRAALVM_OPEN_HOME.is_dir():
-        raise EnvironmentError(f"GRAALVM_OPEN_HOME is not a directory: {GRAALVM_OPEN_HOME}")
-    if not JAVA_HOME.exists():
-        raise EnvironmentError(f"JAVA_HOME does not exist: {JAVA_HOME}")
-    if not JAVA_HOME.is_dir():
-        raise EnvironmentError(f"JAVA_HOME is not a directory: {JAVA_HOME}")
-
-
-class Compiler(Enum):
-    # OPEN   = "mx -p /workspace/graal/substratevm native-image"
-    OPEN   = (GRAALVM_OPEN_HOME / "bin" / "native-image").absolute().as_posix()
-    CLOSED = (GRAALVM_HOME      / "bin" / "native-image").absolute().as_posix()
 
 @dataclass
 class BenchmarkJob:
@@ -83,7 +48,12 @@ class BenchmarkJob:
 CLOSED_SOURCE_JOBS = {
     benchmark.name: tuple(
         BenchmarkJob(benchmark, optimization_level, Compiler.CLOSED)
-        for optimization_level in [ OptimizationLevel.PGO]
+        for optimization_level in [
+            OptimizationLevel.SIZE,
+            OptimizationLevel.O0,
+            OptimizationLevel.O3,
+            OptimizationLevel.PGO
+        ]
     )
     for benchmark in BENCHMARKS
 }
@@ -91,13 +61,33 @@ CLOSED_SOURCE_JOBS = {
 OPEN_SOURCE_JOBS = {
     benchmark.name: tuple(
         BenchmarkJob(benchmark, optimization_level, Compiler.OPEN)
-        for optimization_level in [OptimizationLevel.SIZE, OptimizationLevel.O3]
+        for optimization_level in [
+            OptimizationLevel.SIZE,
+            OptimizationLevel.O0,
+            OptimizationLevel.O3
+        ]
+    )
+    for benchmark in BENCHMARKS
+}
+
+CUSTOM_OPEN_SOURCE_JOBS = {
+    benchmark.name: tuple(
+        BenchmarkJob(benchmark, optimization_level, Compiler.CUSTOM_OPEN)
+        for optimization_level in [
+            OptimizationLevel.SIZE,
+            OptimizationLevel.O0,
+            OptimizationLevel.O3,
+            OptimizationLevel.CUSTOM_PGO,
+            OptimizationLevel.CUSTOM_PGO_O3,
+            OptimizationLevel.CUSTOM_PGO_FULL,
+            OptimizationLevel.CUSTOM_PGO_FULL_O3
+        ]
     )
     for benchmark in BENCHMARKS
 }
 
 ALL_JOBS = {
-    benchmark.name: CLOSED_SOURCE_JOBS[benchmark.name] 
+    benchmark.name: CUSTOM_OPEN_SOURCE_JOBS[benchmark.name] + CLOSED_SOURCE_JOBS[benchmark.name] + OPEN_SOURCE_JOBS[benchmark.name]
     for benchmark in BENCHMARKS
 }
 
@@ -110,20 +100,25 @@ def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
 
     return runs
 
-def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, native_image_binary: str) -> None:
+def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler) -> None:
     match optimization_level:
         case OptimizationLevel.PGO:
-            benchmark.build_pgo_optimized_binary(native_image_binary = native_image_binary)
+            benchmark.build_pgo_optimized_binary(compiler) # Closed source PGO determines optimization level itself
+        case OptimizationLevel.CUSTOM_PGO:
+            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O0"])
+        case OptimizationLevel.CUSTOM_PGO_O3:
+            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O3"])
+        case OptimizationLevel.CUSTOM_PGO_FULL:
+            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O0"])
+        case OptimizationLevel.CUSTOM_PGO_FULL_O3:
+            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3"])
         case _:
-            benchmark.build_native_image(
-                native_image_binary = native_image_binary,
-                optimization_level = optimization_level
-            )
+            benchmark.build_native_image(compiler, optimization_level, additional_build_args=["-J-DdisableVirtualInvokeProfilingPhase=true"])
 
 ResultsDict = dict[str, dict[tuple[OptimizationLevel, Compiler], list[BenchmarkResult]]]
 
 def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
-    with open(OUTPUT_DIR / "results.csv", "w", newline='') as csvfile:
+    with open(output_file, "w", newline='') as csvfile:
         fieldnames = ["benchmark", "optimization_level", "result", "binary_size", "compiler"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -138,35 +133,50 @@ def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
                         "compiler": compiler.name
                     })
 
+def cur_time() -> str:
+    return datetime.now(tz=ZoneInfo("Europe/Amsterdam")).strftime("%H:%M:%S")
+
 def main():
     check_environment()
 
     results: ResultsDict = defaultdict(lambda: defaultdict(list))
 
     for i, (name, jobs) in enumerate(ALL_JOBS.items()):
-        print("=" * 20 + f" {name} ({i + 1}/{len(ALL_JOBS)}) " + "=" * 20)
+        print(Color.BOLD + "=" * 20 + f" {name} ({i + 1}/{len(ALL_JOBS)}) " + "=" * 20 + Color.ENDC)
 
         if not jobs:
             continue
 
+        def line_prefix(i) -> str:
+            return f"{Color.BOLD}[{i}/{len(jobs)}] [{cur_time()}]{Color.ENDC}"
+
         if not SKIP_AGENT:
-            print(f"Running agent for {name}...")
+            print(f"{line_prefix(0)} Running agent for {name}...")
             jobs[0].benchmark.run_agent(vm_binary = JAVA_BIN.as_posix())
 
-        for i, job in enumerate(jobs):
-            print(f"[{i + 1}/{len(jobs)}] Building using {job.compiler.name.lower()} source native image with optimization level {job.optimization_level.value}...")
-            build_native_image(job.benchmark, job.optimization_level, job.compiler.value)
+        start_time = datetime.now()
 
-            print(f"[{i + 1}/{len(jobs)}] Running benchmark {name} {job.benchmark.n_runs} time(s)", end='', flush=True)
-            runs = run_benchmark(job.benchmark)
-            results[name][(job.optimization_level, job.compiler)].extend(runs)
+        for i, job in enumerate(jobs):
+            try:
+                print(f"{line_prefix(i + 1)} Building using {Color.BOLD}{job.compiler.name.lower().replace('_', ' ')}{Color.ENDC} native image with optimization level {Color.BOLD}{job.optimization_level.value}{Color.ENDC}...")
+                build_native_image(job.benchmark, job.optimization_level, job.compiler)
+
+                print(f"{Color.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{Color.ENDC}")
+                print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)", end='', flush=True)
+                runs = run_benchmark(job.benchmark)
+                results[name][(job.optimization_level, job.compiler)].extend(runs)
+            except Exception as e:
+                print(f"{Color.FAIL}\nError while processing {name} with {job.compiler.name} at optimization level {job.optimization_level.value}: {e}{Color.ENDC}")
+
+        duration = (datetime.now() - start_time).seconds
+        print(f"{Color.OKBLUE}Finished processing {name} in {duration // 60}m {duration % 60}s{Color.ENDC}")
 
     for name, result in results.items():
-        print(f"Results for {name}:")
+        print(f"Results for {Color.BOLD}{name}{Color.BOLD}:")
         for (optimization_level, compiler), benchmark_results in result.items():
             average_result = sum(r.result for r in benchmark_results) / len(benchmark_results)
             stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
-            print(f"  {compiler.name.capitalize():<6} {optimization_level.value:>6}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5}, size: {benchmark_results[0].binary_size:>10} bytes")
+            print(f"  {compiler.name.replace('_', ' ').capitalize():<12} {optimization_level.value:>28}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
     write_results_to_csv(results, OUTPUT_DIR / "results.csv")
 
