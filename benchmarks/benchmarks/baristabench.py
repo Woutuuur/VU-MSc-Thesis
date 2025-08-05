@@ -4,8 +4,8 @@ from pathlib import Path
 import re
 import subprocess
 
-from benchmarks.benchmark import Benchmark, BenchmarkResult, BenchmarkUnit
-from color import Color
+from benchmarks.benchmark import Benchmark, BenchmarkUnit
+from color import ANSIColorCode as C
 from compiler import Compiler
 from optimization_level import OptimizationLevel
 
@@ -71,7 +71,7 @@ class BaristaBenchmark(Benchmark):
             f"--bundle-apply={self.nib_file_path.as_posix()}",
             "-o", self.name,
         ]
-        print(f"{Color.GRAY}Building native image with command: {' '.join(command)}{Color.ENDC}")
+        print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
 
         try:
             output = subprocess.check_output(

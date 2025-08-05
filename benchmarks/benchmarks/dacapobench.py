@@ -2,8 +2,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 import re
 import subprocess
-from benchmarks.benchmark import Benchmark, BenchmarkResult, BenchmarkUnit
-from color import Color
+from benchmarks.benchmark import Benchmark, BenchmarkUnit
+from color import ANSIColorCode as C
 from compiler import Compiler
 from optimization_level import OptimizationLevel
 
@@ -54,7 +54,7 @@ class DacapoBenchmark(Benchmark):
             "-march=native",
             "-o", self.binary_path.as_posix()
         ]
-        print(f"{Color.GRAY}Building native image with command: {' '.join(command)}{Color.ENDC}")
+        print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
 
         return subprocess.call([
             *compiler.value.split(),
