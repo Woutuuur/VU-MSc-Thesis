@@ -1,5 +1,15 @@
 {
     "benchmarks": [
+        "avrora",
+        "batik",
+        "biojava",
+        "graphchi",
+        "h2",
+        "sunflow",
+        "lusearch",
+        "luindex",
+        "pmd",
+        "xalan",
         "micronaut-shopcart",
         "micronaut-hello-world",
         "micronaut-similarity"
