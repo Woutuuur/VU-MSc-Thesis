@@ -129,12 +129,13 @@ def main():
     for name, result in results.items():
         print(f"Results for {C.BOLD}{name}{C.BOLD}:")
         for job, benchmark_results in result.items():
+            if not benchmark_results:
+                continue
             average_result = sum(r.result for r in benchmark_results) / len(benchmark_results)
             stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
             print(f"  {job.compiler.name.replace('_', ' ').capitalize():<12} {job.optimization_level.value:>28}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
-    write_results_to_csv(results, config.options.output_dir / "results.csv")
-
+    write_results_to_csv(results, config.options.results_output_dir_path / "results.csv")
 
 if __name__ == "__main__":
     main()

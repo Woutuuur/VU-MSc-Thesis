@@ -11,7 +11,6 @@ class ConfigOptions:
     graalvm_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_HOME", "None")))
     graalvm_open_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_OPEN_HOME", "None")))
     java_home: Path = field(default_factory=lambda: Path(os.environ.get("JAVA_HOME", "None")))
-    output_dir: Path = field(default=Path(".").absolute())
     benchmarks_file_path: Path = field(default=Path("benchmarks.json"))
     results_output_dir_base_path: Path = field(default=Path("results"))
 
