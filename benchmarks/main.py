@@ -115,7 +115,7 @@ def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLev
         case _:
             benchmark.build_native_image(compiler, optimization_level, additional_build_args=["-J-DdisableVirtualInvokeProfilingPhase=true"])
 
-ResultsDict = dict[str, dict[tuple[OptimizationLevel, Compiler], list[BenchmarkResult]]]
+ResultsDict = dict[str, dict[BenchmarkJob, list[BenchmarkResult]]]
 
 def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
     with open(output_file, "w", newline='') as csvfile:
@@ -123,14 +123,14 @@ def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for name, result in results.items():
-            for (optimization_level, compiler), benchmark_results in result.items():
+            for job, benchmark_results in result.items():
                 for r in benchmark_results:
                     writer.writerow({
                         "benchmark": name,
-                        "optimization_level": optimization_level.value,
+                        "optimization_level": job.optimization_level.value,
                         "result": r.result,
                         "binary_size": r.binary_size,
-                        "compiler": compiler.name
+                        "compiler": job.compiler.name
                     })
 
 def cur_time() -> str:
@@ -164,7 +164,7 @@ def main():
                 print(f"{Color.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{Color.ENDC}")
                 print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)", end='', flush=True)
                 runs = run_benchmark(job.benchmark)
-                results[name][(job.optimization_level, job.compiler)].extend(runs)
+                results[name][job].extend(runs)
             except Exception as e:
                 print(f"{Color.FAIL}\nError while processing {name} with {job.compiler.name} at optimization level {job.optimization_level.value}: {e}{Color.ENDC}")
 
@@ -173,10 +173,10 @@ def main():
 
     for name, result in results.items():
         print(f"Results for {Color.BOLD}{name}{Color.BOLD}:")
-        for (optimization_level, compiler), benchmark_results in result.items():
+        for job, benchmark_results in result.items():
             average_result = sum(r.result for r in benchmark_results) / len(benchmark_results)
             stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
-            print(f"  {compiler.name.replace('_', ' ').capitalize():<12} {optimization_level.value:>28}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
+            print(f"  {job.compiler.name.replace('_', ' ').capitalize():<12} {job.optimization_level.value:>28}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
     write_results_to_csv(results, OUTPUT_DIR / "results.csv")
 
