@@ -1,0 +1,195 @@
+Results for avrora:
+  Custom open                           -Os:    2284.40 ±   51.61 ms      size:   21694752 bytes
+  Custom open                           -O0:    2433.40 ±   40.80 ms      size:   25954592 bytes
+  Custom open                           -O3:    2202.20 ±    9.41 ms      size:   25299232 bytes
+  Custom open              --custom-pgo -O0:    2336.40 ±   65.58 ms      size:   25954592 bytes
+  Custom open              --custom-pgo -O3:    2240.20 ±   11.86 ms      size:   23398688 bytes
+  Custom open   --custom-pgo -O0 (combined):    2379.60 ±   80.65 ms      size:   25954592 bytes
+  Custom open   --custom-pgo -O3 (combined):    2079.00 ±   29.85 ms      size:   25495840 bytes
+  Closed                                -Os:    1975.60 ±   35.10 ms      size:   17959240 bytes
+  Closed                                -O0:    2124.80 ±   23.47 ms      size:   21498184 bytes
+  Closed                                -O3:    1784.40 ±    8.52 ms      size:   37685576 bytes
+  Closed                              --pgo:    1790.20 ±   27.01 ms      size:   19663176 bytes
+  Open                                  -Os:    2190.80 ±   22.65 ms      size:   21825864 bytes
+  Open                                  -O0:    2342.40 ±   14.50 ms      size:   25954632 bytes
+  Open                                  -O3:    2232.80 ±    8.08 ms      size:   25495880 bytes
+Results for batik:
+  Custom open                           -Os:    1483.40 ±   13.09 ms      size:   39651616 bytes
+  Custom open                           -O0:    1927.80 ±   44.13 ms      size:   48957728 bytes
+  Custom open                           -O3:    1329.40 ±   22.68 ms      size:   47909152 bytes
+  Custom open              --custom-pgo -O0:    1900.20 ±   35.99 ms      size:   49219872 bytes
+  Custom open              --custom-pgo -O3:    1782.80 ±   23.11 ms      size:   44173600 bytes
+  Custom open   --custom-pgo -O0 (combined):    1889.60 ±   49.17 ms      size:   49219872 bytes
+  Custom open   --custom-pgo -O3 (combined):    1282.60 ±   42.35 ms      size:   48367904 bytes
+  Closed                                -Os:    1392.20 ±   32.58 ms      size:   33229128 bytes
+  Closed                                -O0:    1658.20 ±   15.54 ms      size:   41552200 bytes
+  Closed                                -O3:    1110.60 ±   11.53 ms      size:   76155208 bytes
+  Closed                              --pgo:    1051.20 ±   23.46 ms      size:   36440392 bytes
+  Open                                  -Os:    1423.20 ±   20.05 ms      size:   39848264 bytes
+  Open                                  -O0:    1948.20 ±   16.73 ms      size:   48433480 bytes
+  Open                                  -O3:    1297.80 ±   64.02 ms      size:   48367944 bytes
+Results for biojava:
+  Custom open                           -Os:   16015.00 ±   88.46 ms      size:   36702496 bytes
+  Custom open                           -O0:   14040.00 ±  105.60 ms      size:   44042528 bytes
+  Custom open                           -O3:    7832.80 ±   82.65 ms      size:   43780384 bytes
+  Custom open              --custom-pgo -O0:   10981.40 ±   49.93 ms      size:   44370208 bytes
+  Custom open              --custom-pgo -O3:   10313.80 ±   87.15 ms      size:   40306976 bytes
+  Custom open   --custom-pgo -O0 (combined):   11050.80 ±   61.43 ms      size:   44370208 bytes
+  Custom open   --custom-pgo -O3 (combined):    6820.80 ±   69.65 ms      size:   45484320 bytes
+  Closed                                -Os:   13885.20 ±  159.57 ms      size:   29559112 bytes
+  Closed                                -O0:    9568.40 ±   75.04 ms      size:   36309320 bytes
+  Closed                                -O3:    4118.20 ±   53.48 ms      size:   65866056 bytes
+  Closed                              --pgo:    3141.80 ±   42.39 ms      size:   33098056 bytes
+  Open                                  -Os:   18364.80 ±   87.68 ms      size:   36833608 bytes
+  Open                                  -O0:   14049.40 ±   79.08 ms      size:   44042568 bytes
+  Open                                  -O3:    8048.00 ±   63.36 ms      size:   43583816 bytes
+Results for graphchi:
+  Custom open                           -Os:    8575.20 ±   66.27 ms      size:   21891360 bytes
+  Custom open                           -O0:    9692.80 ±   55.54 ms      size:   25495840 bytes
+  Custom open                           -O3:    6234.00 ±   68.94 ms      size:   25364768 bytes
+  Custom open              --custom-pgo -O0:    4469.40 ±  188.55 ms      size:   25561376 bytes
+  Custom open              --custom-pgo -O3:    3848.80 ±   14.22 ms      size:   23660832 bytes
+  Custom open   --custom-pgo -O0 (combined):    4536.00 ±   30.67 ms      size:   25561376 bytes
+  Custom open   --custom-pgo -O3 (combined):    3331.60 ±    8.36 ms      size:   25561376 bytes
+  Closed                                -Os:    8535.80 ±  224.70 ms      size:   18155848 bytes
+  Closed                                -O0:    9348.60 ±   42.11 ms      size:   21563720 bytes
+  Closed                                -O3:    2652.20 ±   32.95 ms      size:   36768072 bytes
+  Closed                              --pgo:    2600.80 ±   40.51 ms      size:   20056392 bytes
+  Open                                  -Os:    8450.80 ±   42.35 ms      size:   21956936 bytes
+  Open                                  -O0:    9751.00 ±  155.43 ms      size:   25495880 bytes
+  Open                                  -O3:    6158.80 ±   35.28 ms      size:   25495880 bytes
+Results for h2:
+  Custom open                           -Os:   34664.20 ± 1328.37 ms      size:   48892192 bytes
+  Custom open                           -O0:   36255.20 ±  501.91 ms      size:   59246880 bytes
+  Custom open                           -O3:   28715.60 ± 2044.09 ms      size:   58853664 bytes
+  Custom open              --custom-pgo -O0:   36454.80 ± 4117.65 ms      size:   59509024 bytes
+  Custom open              --custom-pgo -O3:   31890.20 ± 2844.85 ms      size:   53545248 bytes
+  Custom open   --custom-pgo -O0 (combined):   33359.80 ±  265.78 ms      size:   59509024 bytes
+  Custom open   --custom-pgo -O3 (combined):   23681.20 ±  539.56 ms      size:   59115808 bytes
+  Closed                                -Os:   26667.40 ±  946.42 ms      size:   39913800 bytes
+  Closed                                -O0:   29243.60 ±  916.90 ms      size:   48826696 bytes
+  Closed                                -O3:   16456.20 ±  353.00 ms      size:   92735816 bytes
+  Closed                              --pgo:   13875.20 ±  544.78 ms      size:   43059528 bytes
+  Open                                  -Os:   31363.40 ± 1228.28 ms      size:   49088840 bytes
+  Open                                  -O0:   41326.60 ± 4260.17 ms      size:   58722632 bytes
+  Open                                  -O3:   25186.60 ±  728.36 ms      size:   59443528 bytes
+Results for sunflow:
+  Custom open                           -Os:   22813.20 ±   33.61 ms      size:   40175904 bytes
+  Custom open                           -O0:   23825.60 ±   50.03 ms      size:   48695584 bytes
+  Custom open                           -O3:   18621.00 ±   23.05 ms      size:   47778080 bytes
+  Custom open              --custom-pgo -O0:   19231.00 ±   60.16 ms      size:   48695584 bytes
+  Custom open              --custom-pgo -O3:   17430.20 ±   30.92 ms      size:   44042528 bytes
+  Custom open   --custom-pgo -O0 (combined):   19199.20 ±   33.68 ms      size:   48695584 bytes
+  Custom open   --custom-pgo -O3 (combined):   16933.40 ±   20.94 ms      size:   47843616 bytes
+  Closed                                -Os:   23109.00 ±   81.97 ms      size:   33360200 bytes
+  Closed                                -O0:   24492.20 ±   27.04 ms      size:   41290056 bytes
+  Closed                                -O3:   16983.20 ±   16.93 ms      size:   74713416 bytes
+  Closed                              --pgo:   13723.20 ±   28.59 ms      size:   34539848 bytes
+  Open                                  -Os:   22155.80 ±   72.73 ms      size:   40307016 bytes
+  Open                                  -O0:   23850.20 ±   52.94 ms      size:   48695624 bytes
+  Open                                  -O3:   18546.00 ±   30.69 ms      size:   48105800 bytes
+Results for lusearch:
+  Custom open                           -Os:    4291.80 ±   23.86 ms      size:   24774944 bytes
+  Custom open                           -O0:    5698.80 ±   70.56 ms      size:   30083360 bytes
+  Custom open                           -O3:    3508.60 ±   24.81 ms      size:   29231392 bytes
+  Custom open              --custom-pgo -O0:    4478.20 ±   29.63 ms      size:   30148896 bytes
+  Custom open              --custom-pgo -O3:    3711.40 ±   68.42 ms      size:   27003168 bytes
+  Custom open   --custom-pgo -O0 (combined):    4515.40 ±   28.20 ms      size:   30148896 bytes
+  Custom open   --custom-pgo -O3 (combined):    2885.00 ±   14.51 ms      size:   29296928 bytes
+  Closed                                -Os:    3759.00 ±   51.38 ms      size:   19859784 bytes
+  Closed                                -O0:    5262.20 ±  161.04 ms      size:   24643912 bytes
+  Closed                                -O3:    2455.60 ±   47.98 ms      size:   43059528 bytes
+  Closed                              --pgo:    1909.40 ±  118.52 ms      size:   22415688 bytes
+  Open                                  -Os:    4171.80 ±   16.83 ms      size:   24840520 bytes
+  Open                                  -O0:    5716.40 ±  128.43 ms      size:   29559112 bytes
+  Open                                  -O3:    3488.40 ±   59.42 ms      size:   29362504 bytes
+Results for luindex:
+  Custom open                           -Os:    3547.20 ±   25.51 ms      size:   26544416 bytes
+  Custom open                           -O0:    4686.00 ±    8.60 ms      size:   32114976 bytes
+  Custom open                           -O3:    3238.00 ±   12.38 ms      size:   31328544 bytes
+  Custom open              --custom-pgo -O0:    3189.20 ±   13.78 ms      size:   32180512 bytes
+  Custom open              --custom-pgo -O3:    2910.20 ±   31.40 ms      size:   29165856 bytes
+  Custom open   --custom-pgo -O0 (combined):    3229.00 ±   29.64 ms      size:   32180512 bytes
+  Custom open   --custom-pgo -O3 (combined):    2540.20 ±   34.09 ms      size:   31525152 bytes
+  Closed                                -Os:    3289.20 ±   35.63 ms      size:   21629256 bytes
+  Closed                                -O0:    4063.60 ±   33.68 ms      size:   26413384 bytes
+  Closed                                -O3:    2185.60 ±   24.65 ms      size:   47515976 bytes
+  Closed                              --pgo:    1853.60 ±   16.16 ms      size:   24906056 bytes
+  Open                                  -Os:    3394.60 ±   20.31 ms      size:   26085704 bytes
+  Open                                  -O0:    4723.20 ±  109.03 ms      size:   32115016 bytes
+  Open                                  -O3:    3215.20 ±   32.54 ms      size:   31590728 bytes
+Results for pmd:
+  Custom open                           -Os:    3220.00 ±   47.51 ms      size:   48761120 bytes
+  Custom open                           -O0:    4022.80 ±   73.33 ms      size:   57674016 bytes
+  Custom open                           -O3:    2425.40 ±   26.51 ms      size:   57805088 bytes
+  Custom open              --custom-pgo -O0:    3767.40 ±   36.48 ms      size:   58001696 bytes
+  Custom open              --custom-pgo -O3:    3506.20 ±   21.50 ms      size:   53610784 bytes
+  Custom open   --custom-pgo -O0 (combined):    3752.40 ±   72.05 ms      size:   58001696 bytes
+  Custom open   --custom-pgo -O3 (combined):    2325.80 ±   44.44 ms      size:   59443488 bytes
+  Closed                                -Os:    2199.40 ±   11.74 ms      size:   40765768 bytes
+  Closed                                -O0:    2994.80 ±   27.73 ms      size:   48171336 bytes
+  Closed                                -O3:    1552.60 ±   12.97 ms      size:   84150600 bytes
+  Closed                              --pgo:    1382.20 ±   15.69 ms      size:   50923848 bytes
+  Open                                  -Os:    3097.80 ±   73.62 ms      size:   49154376 bytes
+  Open                                  -O0:    4030.00 ±   20.28 ms      size:   57674056 bytes
+  Open                                  -O3:    2323.20 ±   43.15 ms      size:   58198344 bytes
+Results for xalan:
+  Custom open                           -Os:    1128.20 ±   20.86 ms      size:   33163552 bytes
+  Custom open                           -O0:    1589.40 ±   87.11 ms      size:   39979296 bytes
+  Custom open                           -O3:     947.60 ±    7.12 ms      size:   39192864 bytes
+  Custom open              --custom-pgo -O0:    1564.00 ±   82.55 ms      size:   40110368 bytes
+  Custom open              --custom-pgo -O3:    1375.60 ±   56.16 ms      size:   36440352 bytes
+  Custom open   --custom-pgo -O0 (combined):    1457.20 ±   41.85 ms      size:   40110368 bytes
+  Custom open   --custom-pgo -O3 (combined):     950.00 ±   60.58 ms      size:   39455008 bytes
+  Closed                                -Os:     869.80 ±   23.04 ms      size:   27461960 bytes
+  Closed                                -O0:     977.20 ±   20.72 ms      size:   32704840 bytes
+  Closed                                -O3:     611.40 ±    7.86 ms      size:   61802824 bytes
+  Closed                              --pgo:     597.20 ±   16.94 ms      size:   30017864 bytes
+  Open                                  -Os:    1084.80 ±   23.19 ms      size:   32704840 bytes
+  Open                                  -O0:    1576.80 ±   74.03 ms      size:   39979336 bytes
+  Open                                  -O3:     963.20 ±   50.22 ms      size:   39455048 bytes
+Results for micronaut-shopcart:
+  Custom open                           -Os:   95012.11 ± 9494.69 ops/sec size:   61147424 bytes
+  Custom open                           -O0:   79873.76 ± 1673.11 ops/sec size:   71633184 bytes
+  Custom open                           -O3:  106606.55 ±  616.81 ops/sec size:   73009440 bytes
+  Custom open              --custom-pgo -O0:   91160.51 ±  882.78 ops/sec size:   71764256 bytes
+  Custom open              --custom-pgo -O3:  105002.32 ± 3437.97 ops/sec size:   65341728 bytes
+  Custom open   --custom-pgo -O0 (combined):   85862.90 ± 2352.15 ops/sec size:   71764256 bytes
+  Custom open   --custom-pgo -O3 (combined):  118722.16 ± 1600.89 ops/sec size:   75172128 bytes
+  Closed                                -Os:  105412.46 ± 1190.88 ops/sec size:   49154376 bytes
+  Closed                                -O0:   96484.90 ± 4002.89 ops/sec size:   58460488 bytes
+  Closed                                -O3:  190688.39 ±  309.59 ops/sec size:  118557000 bytes
+  Closed                              --pgo:  227171.45 ± 5676.46 ops/sec size:   55118152 bytes
+  Open                                  -Os:   90677.85 ± 5115.96 ops/sec size:   60819784 bytes
+  Open                                  -O0:   79112.21 ±  419.24 ops/sec size:   71633224 bytes
+  Open                                  -O3:  101868.95 ±  948.53 ops/sec size:   73009480 bytes
+Results for micronaut-hello-world:
+  Custom open                           -Os:   70661.99 ±   26.61 ops/sec size:   55511328 bytes
+  Custom open                           -O0:   61936.63 ±  380.24 ops/sec size:   65538336 bytes
+  Custom open                           -O3:   86549.35 ± 1747.66 ops/sec size:   66455840 bytes
+  Custom open              --custom-pgo -O0:   71207.35 ±   95.88 ops/sec size:   65669408 bytes
+  Custom open              --custom-pgo -O3:   79731.32 ±  306.19 ops/sec size:   59705632 bytes
+  Custom open   --custom-pgo -O0 (combined):   70652.90 ±  113.49 ops/sec size:   65669408 bytes
+  Custom open   --custom-pgo -O3 (combined):   98616.47 ±   39.35 ops/sec size:   66980128 bytes
+  Closed                                -Os:   77457.29 ±    3.93 ops/sec size:   44763464 bytes
+  Closed                                -O0:   65905.74 ±  222.48 ops/sec size:   53283144 bytes
+  Closed                                -O3:  115426.48 ±   96.50 ops/sec size:  108136776 bytes
+  Closed                              --pgo:  129259.55 ±   17.91 ops/sec size:   49416520 bytes
+  Open                                  -Os:   72710.71 ±  809.79 ops/sec size:   55642440 bytes
+  Open                                  -O0:   60602.10 ±  195.27 ops/sec size:   65538376 bytes
+  Open                                  -O3:   89918.03 ±  107.84 ops/sec size:   66849096 bytes
+Results for micronaut-similarity:
+  Custom open                           -Os:       7.50 ±    0.01 ops/sec size:   55511328 bytes
+  Custom open                           -O0:       7.58 ±    0.00 ops/sec size:   65603872 bytes
+  Custom open                           -O3:       8.67 ±    0.01 ops/sec size:   66521376 bytes
+  Custom open              --custom-pgo -O0:       8.08 ±    0.00 ops/sec size:   65800480 bytes
+  Custom open              --custom-pgo -O3:       8.16 ±    0.00 ops/sec size:   59771168 bytes
+  Custom open   --custom-pgo -O0 (combined):       8.03 ±    0.00 ops/sec size:   65800480 bytes
+  Custom open   --custom-pgo -O3 (combined):       9.17 ±    0.01 ops/sec size:   67045664 bytes
+  Closed                                -Os:       8.24 ±    0.01 ops/sec size:   44763464 bytes
+  Closed                                -O0:       8.26 ±    0.00 ops/sec size:   53283144 bytes
+  Closed                                -O3:      10.82 ±    0.01 ops/sec size:  108136776 bytes
+  Closed                              --pgo:      13.76 ±    0.00 ops/sec size:   50334024 bytes
+  Open                                  -Os:       7.72 ±    0.02 ops/sec size:   55773512 bytes
+  Open                                  -O0:       7.65 ±    0.01 ops/sec size:   65603912 bytes
+  Open                                  -O3:       8.96 ±    0.02 ops/sec size:   66980168 bytes
