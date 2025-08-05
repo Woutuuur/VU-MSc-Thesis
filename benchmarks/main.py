@@ -107,8 +107,13 @@ def main():
         print(f"Usage: {sys.argv[0]} <config_file_path.json>")
         sys.exit(1)
 
+    config_file_path = Path(sys.argv[1])
+    if not config_file_path.exists() or not config_file_path.is_file():
+        print(f"Error: Config file '{config_file_path}' does not exist or is not a file.")
+        sys.exit(1)
+
     benchmarks = read_benchmarks_from_file(BENCHMARKS_FILE_PATH)
-    jobs_by_compiler = read_jobs_from_config_file(Path(sys.argv[1]), benchmarks)
+    jobs_by_compiler = read_jobs_from_config_file(config_file_path, benchmarks)
 
     check_environment(set(job.compiler for jobs in jobs_by_compiler.values() for job in jobs))
 
