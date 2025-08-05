@@ -3,9 +3,9 @@ from pathlib import Path
 import re
 import subprocess
 from benchmarks.benchmark import Benchmark, BenchmarkUnit
-from color import ANSIColorCode as C
-from compiler import Compiler
-from optimization_level import OptimizationLevel
+from util.color import ANSIColorCode as C
+from benchmarks.compiler import Compiler
+from benchmarks.optimization_level import OptimizationLevel
 
 
 @dataclass
@@ -44,7 +44,7 @@ class DacapoBenchmark(Benchmark):
 
     def build_native_image(self, compiler: Compiler, optimization_level = OptimizationLevel.O3, additional_build_args = []) -> int:
         command = [
-            *compiler.value.split(),
+            *compiler.get_command(self.options).split(),
             optimization_level.value,
             "-H:+PlatformInterfaceCompatibilityMode",
             f"-H:ConfigurationFileDirectories=./{self.config_dir.relative_to(self.context_path).as_posix()}",
@@ -52,20 +52,9 @@ class DacapoBenchmark(Benchmark):
             *additional_build_args,
             "-jar", self.jar_path.as_posix(),
             "-march=native",
-            "-o", self.binary_path.as_posix()
         ]
         print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
-
-        return subprocess.call([
-            *compiler.value.split(),
-            optimization_level.value,
-            "-H:+PlatformInterfaceCompatibilityMode",
-            f"-H:ConfigurationFileDirectories=./{self.config_dir.relative_to(self.context_path).as_posix()}",
-            *self.native_image_args,
-            *additional_build_args,
-            "-jar", self.jar_path.as_posix(),
-            "-march=native",
-        ], stderr = subprocess.STDOUT, stdout = subprocess.DEVNULL, cwd = self.context_path.as_posix())
+        return subprocess.call(command, stderr = subprocess.STDOUT, stdout = subprocess.DEVNULL, cwd = self.context_path.as_posix())
 
     def _get_run_command(self, additional_args: list[str] = []) -> list[str]:
         return [

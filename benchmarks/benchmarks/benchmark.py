@@ -4,9 +4,11 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
 from pathlib import Path
-from color import ANSIColorCode as C
-from compiler import Compiler
-from optimization_level import OptimizationLevel
+from util.color import ANSIColorCode as C
+from benchmarks.compiler import Compiler
+from config.options import ConfigOptions
+from benchmarks.optimization_level import OptimizationLevel
+import shutil
 
 
 class BenchmarkUnit(Enum):
@@ -35,12 +37,10 @@ class Benchmark(ABC):
     native_image_args: list[str] = field(default_factory=list)
     benchmark_runner_args: list[str] = field(default_factory=list)
     benchmark_args: list[str] = field(default_factory=list)
+    options: ConfigOptions = field(default_factory=ConfigOptions)
 
     @classmethod
-    def from_config(cls, config: dict) -> "Benchmark":
-        from benchmarks.baristabench import BaristaBenchmark
-        from benchmarks.dacapobench import DacapoBenchmark
-
+    def from_config(cls, config: dict, options: ConfigOptions) -> "Benchmark":
         benchmark_type = config.get("type")
         if benchmark_type is None:
             raise ValueError("Benchmark type must be specified in the config.")
@@ -53,12 +53,14 @@ class Benchmark(ABC):
                 raise ValueError(f"Missing required field '{field}' in benchmark config.")
 
         config = {k: v for k, v in config.items() if k != "type"}
+        from benchmarks.dacapobench import DacapoBenchmark
+        from benchmarks.baristabench import BaristaBenchmark
 
         match benchmark_type:
             case "dacapo":
-                return DacapoBenchmark(**config)
+                return DacapoBenchmark(options=options, **config)
             case "barista":
-                return BaristaBenchmark(**config)
+                return BaristaBenchmark(options=options, **config)
             case _:
                 raise ValueError(f"Unknown benchmark type: {config['type']}")
 
@@ -95,6 +97,13 @@ class Benchmark(ABC):
         run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
         self.run(log=False, additional_args=run_args)
 
+        if self.options.dump_profiling_data:
+            prof_file_path = Path(prof_file_path)
+            if not prof_file_path.exists():
+                raise FileNotFoundError(f"Profiling data file does not exist: {prof_file_path}")
+            logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
+            shutil.copy(prof_file_path, logged_prof_file_path)
+
         # 3. Build the optimized binary using the collected profiling data
         optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
         self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
@@ -124,13 +133,13 @@ class Benchmark(ABC):
         return result
 
 
-def read_benchmarks_from_file(file_path: Path) -> dict[str, Benchmark]:
+def read_benchmarks_from_file(file_path: Path, options: ConfigOptions) -> dict[str, Benchmark]:
     with open(file_path, "r") as f:
         benchmarks_data = json.load(f) or []
 
     benchmarks = {}
     for benchmark_config in benchmarks_data:
-        benchmark = Benchmark.from_config(benchmark_config)
+        benchmark = Benchmark.from_config(benchmark_config, options)
         if benchmark.name in benchmarks:
             raise ValueError(f"Duplicate benchmark name found: {benchmark.name}")
         benchmarks[benchmark.name] = benchmark

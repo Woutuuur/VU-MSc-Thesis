@@ -1,13 +1,13 @@
 from dataclasses import dataclass, field
-from functools import cache, cached_property
+from functools import cached_property
 from pathlib import Path
 import re
 import subprocess
 
 from benchmarks.benchmark import Benchmark, BenchmarkUnit
-from color import ANSIColorCode as C
-from compiler import Compiler
-from optimization_level import OptimizationLevel
+from util.color import ANSIColorCode as C
+from benchmarks.compiler import Compiler
+from benchmarks.optimization_level import OptimizationLevel
 
 
 @dataclass
@@ -62,7 +62,7 @@ class BaristaBenchmark(Benchmark):
 
     def build_native_image(self, compiler: Compiler, optimization_level = OptimizationLevel.O3, additional_build_args: list[str] = []) -> int:
         command = [
-            *compiler.value.split(),
+            *compiler.get_command(self.options).split(),
             optimization_level.value,
             "-H:+PlatformInterfaceCompatibilityMode",
             *self.native_image_args,

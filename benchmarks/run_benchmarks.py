@@ -2,42 +2,14 @@ import csv
 import sys
 from pathlib import Path
 from datetime import datetime
-from pprint import pprint
 from zoneinfo import ZoneInfo
 from collections import defaultdict
+from benchmarks.compiler import Compiler
 from benchmarks.job import BenchmarkJob, read_jobs_from_config_file
-from color import ANSIColorCode as C
-from compiler import Compiler, check_environment
-from optimization_level import OptimizationLevel
+from benchmarks.optimization_level import OptimizationLevel
+from util.color import ANSIColorCode as C
 from benchmarks.benchmark import Benchmark, BenchmarkResult, read_benchmarks_from_file
-from config import BENCHMARKS_FILE_PATH, JAVA_BIN_PATH, OUTPUT_DIR, SKIP_AGENT
-
-
-# LU_RUNNER_ARGS = [
-#     "-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false",
-#     "--no-validation",
-# ]
-
-# BENCHMARKS = [
-#     DacapoBenchmark("avrora", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("batik", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("biojava", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("graphchi", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("h2", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("sunflow", benchmark_args=["-t", "1"]),
-#     DacapoBenchmark("lusearch", benchmark_runner_args=LU_RUNNER_ARGS),
-#     DacapoBenchmark("luindex", benchmark_runner_args=LU_RUNNER_ARGS),
-#     DacapoBenchmark("pmd", benchmark_runner_args=["--no-validation"]),
-#     DacapoBenchmark("xalan", native_image_args=[
-#         "--initialize-at-build-time=org.apache.crimson.parser.Parser2,"
-#         "org.apache.crimson.parser.Parser2\\$Catalog,"
-#         "org.apache.crimson.parser.Parser2\\$NullHandler,"
-#         "org.apache.xml.utils.res.CharArrayWrapper"
-#     ]),
-#     BaristaBenchmark("micronaut-shopcart"),
-#     BaristaBenchmark("micronaut-hello-world"),
-#     BaristaBenchmark("micronaut-similarity"),
-# ]
+from config.config import Config, ConfigOptions
 
 
 def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
@@ -50,7 +22,7 @@ def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
     return runs
 
 
-def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler) -> None:
+def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler, config_options: ConfigOptions) -> None:
     match optimization_level:
         case OptimizationLevel.PGO:
             benchmark.build_pgo_optimized_binary(compiler)  # Closed source PGO determines optimization level itself
@@ -112,10 +84,15 @@ def main():
         print(f"Error: Config file '{config_file_path}' does not exist or is not a file.")
         sys.exit(1)
 
-    benchmarks = read_benchmarks_from_file(BENCHMARKS_FILE_PATH)
+    config = Config.from_file(config_file_path)
+
+    if config.options.dump_profiling_data:
+        config.options.profiling_data_output_dir_path.mkdir(parents=True, exist_ok=True)
+
+    benchmarks = read_benchmarks_from_file(config.options.benchmarks_file_path, config.options)
     jobs_by_compiler = read_jobs_from_config_file(config_file_path, benchmarks)
 
-    check_environment(set(job.compiler for jobs in jobs_by_compiler.values() for job in jobs))
+    config.check_installations()
 
     results: ResultsDict = defaultdict(lambda: defaultdict(list))
 
@@ -128,16 +105,16 @@ def main():
         def line_prefix(idx) -> str:
             return f"{C.BOLD}[{idx}/{len(jobs)}] [{cur_time()}]{C.ENDC}"
 
-        if not SKIP_AGENT:
+        if not config.options.skip_agent:
             print(f"{line_prefix(0)} Running agent for {name}...")
-            jobs[0].benchmark.run_agent(vm_binary=JAVA_BIN_PATH.as_posix())
+            jobs[0].benchmark.run_agent(vm_binary=config.options.java_bin_path.as_posix())
 
         start_time = datetime.now()
 
         for i, job in enumerate(jobs):
             try:
                 print(f"{line_prefix(i + 1)} Building using {C.BOLD}{job.compiler.name.lower().replace('_', ' ')}{C.ENDC} native image with optimization level {C.BOLD}{job.optimization_level.value}{C.ENDC}...")
-                build_native_image(job.benchmark, job.optimization_level, job.compiler)
+                build_native_image(job.benchmark, job.optimization_level, job.compiler, config.options)
 
                 print(f"{C.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{C.ENDC}")
                 print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)...", end="", flush=True)
@@ -156,7 +133,7 @@ def main():
             stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
             print(f"  {job.compiler.name.replace('_', ' ').capitalize():<12} {job.optimization_level.value:>28}: {average_result:>10.2f} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
-    write_results_to_csv(results, OUTPUT_DIR / "results.csv")
+    write_results_to_csv(results, config.options.output_dir / "results.csv")
 
 
 if __name__ == "__main__":

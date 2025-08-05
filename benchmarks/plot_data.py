@@ -106,8 +106,8 @@ def create_plot(execution_data: pd.DataFrame, throughput_data: pd.DataFrame, com
 
     plt.tight_layout(rect=(0, 0.1, 1, 1))
 
-    Path("plots").mkdir(exist_ok=True)
-    plt.savefig(f"plots/{plot_type}_{compiler.lower()}.png", dpi=300, bbox_inches="tight")
+    (Path("results") / "plots").mkdir(exist_ok=True, parents=True)
+    plt.savefig(f"results/plots/{plot_type}_{compiler.lower()}.png", dpi=300, bbox_inches="tight")
     plt.close()
 
 
