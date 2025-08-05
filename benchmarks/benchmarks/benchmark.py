@@ -56,6 +56,9 @@ class Benchmark(ABC):
         from benchmarks.dacapobench import DacapoBenchmark
         from benchmarks.baristabench import BaristaBenchmark
 
+        if options.skip_run:
+            config["n_runs"] = 0
+
         match benchmark_type:
             case "dacapo":
                 return DacapoBenchmark(options=options, **config)
@@ -103,6 +106,9 @@ class Benchmark(ABC):
                 raise FileNotFoundError(f"Profiling data file does not exist: {prof_file_path}")
             logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
             shutil.copy(prof_file_path, logged_prof_file_path)
+
+        if self.options.skip_run:
+            return
 
         # 3. Build the optimized binary using the collected profiling data
         optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]

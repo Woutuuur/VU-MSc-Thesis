@@ -117,7 +117,7 @@ def main():
                 build_native_image(job.benchmark, job.optimization_level, job.compiler, config.options)
 
                 print(f"{C.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{C.ENDC}")
-                print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)...", end="", flush=True)
+                print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)", end="", flush=True)
                 runs = run_benchmark(job.benchmark)
                 results[name][job].extend(runs)
             except Exception as e:

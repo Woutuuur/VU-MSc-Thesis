@@ -24,6 +24,12 @@ def read_jobs_from_config_file(config_file_path: Path, benchmarks: dict[str, Ben
     for benchmark_name in config.get("benchmarks", []):
         for compiler, optimization_levels in config.get("optimization_levels_by_compiler", {}).items():
             for optimization_level in optimization_levels:
-                jobs[benchmark_name].append(BenchmarkJob(benchmark=benchmarks[benchmark_name], optimization_level=OptimizationLevel[optimization_level], compiler=Compiler[compiler]))
+                jobs[benchmark_name].append(
+                    BenchmarkJob(
+                        benchmark=benchmarks[benchmark_name],
+                        optimization_level=OptimizationLevel[optimization_level],
+                        compiler=Compiler[compiler]
+                    )
+                )
 
     return jobs
