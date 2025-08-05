@@ -1,0 +1,64 @@
+[
+  {
+    "targetMethod": "AtomicLong.compareAndSet",
+    "totalCount": 300001,
+    "uniqueCallsites": 1,
+    "source": "Random.java:438",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.util.concurrent.atomic.AtomicLong": 300001
+    }
+  },
+  {
+    "targetMethod": "Random.next",
+    "totalCount": 300000,
+    "uniqueCallsites": 1,
+    "source": "Random.java:552",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.util.Random": 300000
+    }
+  },
+  {
+    "targetMethod": "Random.nextInt",
+    "totalCount": 100000,
+    "uniqueCallsites": 1,
+    "source": "Main.java:12",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.util.Random": 100000
+    }
+  },
+  {
+    "targetMethod": "Random.nextInt",
+    "totalCount": 100000,
+    "uniqueCallsites": 1,
+    "source": "Main.java:13",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.util.Random": 100000
+    }
+  },
+  {
+    "targetMethod": "Random.nextInt",
+    "totalCount": 100000,
+    "uniqueCallsites": 1,
+    "source": "Main.java:14",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.util.Random": 100000
+    }
+  },
+  {
+    "targetMethod": "Demo.foo",
+    "totalCount": 100000,
+    "uniqueCallsites": 3,
+    "source": "Main.java:16",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "nl.vu.wouter.DemoC": 60007,
+      "nl.vu.wouter.DemoB": 20055,
+      "nl.vu.wouter.DemoA": 19938
+    }
+  }
+]
