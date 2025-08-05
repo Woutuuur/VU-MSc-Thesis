@@ -8,3 +8,4 @@ JAVA_HOME = Path(os.environ.get("JAVA_HOME", ""))
 JAVA_BIN_PATH = GRAALVM_HOME / "bin" / "java"
 N_RUNS = 5
 SKIP_AGENT = False
+BENCHMARKS_FILE_PATH = Path("benchmarks.json")

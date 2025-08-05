@@ -1,3 +1,4 @@
+import json
 import subprocess
 from abc import ABC, abstractmethod
 from enum import Enum
@@ -34,6 +35,32 @@ class Benchmark(ABC):
     native_image_args: list[str] = field(default_factory=list)
     benchmark_runner_args: list[str] = field(default_factory=list)
     benchmark_args: list[str] = field(default_factory=list)
+
+    @classmethod
+    def from_config(cls, config: dict) -> "Benchmark":
+        from benchmarks.baristabench import BaristaBenchmark
+        from benchmarks.dacapobench import DacapoBenchmark
+
+        benchmark_type = config.get("type")
+        if benchmark_type is None:
+            raise ValueError("Benchmark type must be specified in the config.")
+        if benchmark_type not in ("dacapo", "barista"):
+            raise ValueError(f"Unknown benchmark type: {benchmark_type}. Supported types are 'dacapo' and 'barista'.")
+
+        required_fields = ["name"]
+        for field in required_fields:
+            if field not in config:
+                raise ValueError(f"Missing required field '{field}' in benchmark config.")
+
+        config = {k: v for k, v in config.items() if k != "type"}
+
+        match benchmark_type:
+            case "dacapo":
+                return DacapoBenchmark(**config)
+            case "barista":
+                return BaristaBenchmark(**config)
+            case _:
+                raise ValueError(f"Unknown benchmark type: {config['type']}")
 
     @property
     def binary_path(self) -> Path:
@@ -95,3 +122,17 @@ class Benchmark(ABC):
                 log_file.write(result.output)
 
         return result
+
+
+def read_benchmarks_from_file(file_path: Path) -> dict[str, Benchmark]:
+    with open(file_path, "r") as f:
+        benchmarks_data = json.load(f) or []
+
+    benchmarks = {}
+    for benchmark_config in benchmarks_data:
+        benchmark = Benchmark.from_config(benchmark_config)
+        if benchmark.name in benchmarks:
+            raise ValueError(f"Duplicate benchmark name found: {benchmark.name}")
+        benchmarks[benchmark.name] = benchmark
+
+    return benchmarks

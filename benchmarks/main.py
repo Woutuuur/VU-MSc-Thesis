@@ -1,62 +1,43 @@
 import csv
+import sys
 from pathlib import Path
 from datetime import datetime
+from pprint import pprint
 from zoneinfo import ZoneInfo
 from collections import defaultdict
-from dataclasses import dataclass
+from benchmarks.job import BenchmarkJob, read_jobs_from_config_file
 from color import ANSIColorCode as C
 from compiler import Compiler, check_environment
 from optimization_level import OptimizationLevel
-from benchmarks.dacapobench import DacapoBenchmark
-from benchmarks.baristabench import BaristaBenchmark
-from benchmarks.benchmark import Benchmark, BenchmarkResult
-from config import JAVA_BIN_PATH, OUTPUT_DIR, SKIP_AGENT
+from benchmarks.benchmark import Benchmark, BenchmarkResult, read_benchmarks_from_file
+from config import BENCHMARKS_FILE_PATH, JAVA_BIN_PATH, OUTPUT_DIR, SKIP_AGENT
 
 
-LU_RUNNER_ARGS = [
-    "-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false",
-    "--no-validation",
-]
+# LU_RUNNER_ARGS = [
+#     "-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false",
+#     "--no-validation",
+# ]
 
-BENCHMARKS = [
-    DacapoBenchmark("avrora", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("batik", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("biojava", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("graphchi", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("h2", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("sunflow", benchmark_args=["-t", "1"]),
-    DacapoBenchmark("lusearch", benchmark_runner_args=LU_RUNNER_ARGS),
-    DacapoBenchmark("luindex", benchmark_runner_args=LU_RUNNER_ARGS),
-    DacapoBenchmark("pmd", benchmark_runner_args=["--no-validation"]),
-    DacapoBenchmark("xalan", native_image_args=[
-        "--initialize-at-build-time=org.apache.crimson.parser.Parser2,"
-        "org.apache.crimson.parser.Parser2\\$Catalog,"
-        "org.apache.crimson.parser.Parser2\\$NullHandler,"
-        "org.apache.xml.utils.res.CharArrayWrapper"
-    ]),
-    BaristaBenchmark("micronaut-shopcart"),
-    BaristaBenchmark("micronaut-hello-world"),
-    BaristaBenchmark("micronaut-similarity"),
-]
-
-
-@dataclass
-class BenchmarkJob:
-    benchmark: Benchmark
-    optimization_level: OptimizationLevel
-    compiler: Compiler
-
-
-JOBS = {
-    benchmark.name: tuple(
-        BenchmarkJob(benchmark, optimization_level, Compiler.CUSTOM_OPEN)
-        for optimization_level in [
-            OptimizationLevel.CUSTOM_PGO_O3,
-            OptimizationLevel.CUSTOM_PGO_FULL_O3,
-        ]
-    )
-    for benchmark in BENCHMARKS
-}
+# BENCHMARKS = [
+#     DacapoBenchmark("avrora", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("batik", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("biojava", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("graphchi", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("h2", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("sunflow", benchmark_args=["-t", "1"]),
+#     DacapoBenchmark("lusearch", benchmark_runner_args=LU_RUNNER_ARGS),
+#     DacapoBenchmark("luindex", benchmark_runner_args=LU_RUNNER_ARGS),
+#     DacapoBenchmark("pmd", benchmark_runner_args=["--no-validation"]),
+#     DacapoBenchmark("xalan", native_image_args=[
+#         "--initialize-at-build-time=org.apache.crimson.parser.Parser2,"
+#         "org.apache.crimson.parser.Parser2\\$Catalog,"
+#         "org.apache.crimson.parser.Parser2\\$NullHandler,"
+#         "org.apache.xml.utils.res.CharArrayWrapper"
+#     ]),
+#     BaristaBenchmark("micronaut-shopcart"),
+#     BaristaBenchmark("micronaut-hello-world"),
+#     BaristaBenchmark("micronaut-similarity"),
+# ]
 
 
 def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
@@ -122,12 +103,19 @@ def cur_time() -> str:
 
 
 def main():
-    check_environment(set(job.compiler for jobs in JOBS.values() for job in jobs))
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <config_file_path.json>")
+        sys.exit(1)
+
+    benchmarks = read_benchmarks_from_file(BENCHMARKS_FILE_PATH)
+    jobs_by_compiler = read_jobs_from_config_file(Path(sys.argv[1]), benchmarks)
+
+    check_environment(set(job.compiler for jobs in jobs_by_compiler.values() for job in jobs))
 
     results: ResultsDict = defaultdict(lambda: defaultdict(list))
 
-    for i, (name, jobs) in enumerate(JOBS.items()):
-        print(C.BOLD + "=" * 20 + f" {name} ({i + 1}/{len(JOBS)}) " + "=" * 20 + C.ENDC)
+    for i, (name, jobs) in enumerate(jobs_by_compiler.items()):
+        print(C.BOLD + "=" * 20 + f" {name} ({i + 1}/{len(jobs_by_compiler)}) " + "=" * 20 + C.ENDC)
 
         if not jobs:
             continue

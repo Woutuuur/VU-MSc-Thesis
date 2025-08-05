@@ -1,0 +1,66 @@
+[
+    {
+        "name": "avrora",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "batik",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "biojava",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "graphchi",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "h2",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "sunflow",
+        "type": "dacapo",
+        "benchmark_args": ["-t", "1"]
+    },
+    {
+        "name": "lusearch",
+        "type": "dacapo",
+        "benchmark_runner_args": ["-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false", "--no-validation"]
+    },
+    {
+        "name": "luindex",
+        "type": "dacapo",
+        "benchmark_runner_args": ["-Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false", "--no-validation"]
+    },
+    {
+        "name": "pmd",
+        "type": "dacapo",
+        "benchmark_runner_args": ["--no-validation"]
+    },
+    {
+        "name": "xalan",
+        "type": "dacapo",
+        "native_image_args": [
+            "--initialize-at-build-time=org.apache.crimson.parser.Parser2,org.apache.crimson.parser.Parser2\\$Catalog,org.apache.crimson.parser.Parser2\\$NullHandler,org.apache.xml.utils.res.CharArrayWrapper"
+        ]
+    },
+    {
+        "name": "micronaut-shopcart",
+        "type": "barista"
+    },
+    {
+        "name": "micronaut-hello-world",
+        "type": "barista"
+    },
+    {
+        "name": "micronaut-similarity",
+        "type": "barista"
+    }
+]

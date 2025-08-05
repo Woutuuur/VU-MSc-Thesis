@@ -1,0 +1,22 @@
+{
+    "benchmarks": [
+        "avrora",
+        "batik",
+        "biojava",
+        "graphchi",
+        "h2",
+        "sunflow",
+        "lusearch",
+        "luindex",
+        "pmd",
+        "xalan",
+        "micronaut-shopcart",
+        "micronaut-hello-world",
+        "micronaut-similarity"
+    ],
+    "optimization_levels_by_compiler": {
+        "CLOSED": ["SIZE", "O0", "O3", "PGO"],
+        "OPEN": ["SIZE", "O0", "O3"],
+        "CUSTOM_OPEN": ["SIZE", "O0", "O3", "CUSTOM_PGO", "CUSTOM_PGO_O3", "CUSTOM_PGO_FULL", "CUSTOM_PGO_FULL_O3"]
+    }
+}
