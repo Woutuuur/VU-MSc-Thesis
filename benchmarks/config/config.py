@@ -12,7 +12,6 @@ from config.options import ConfigOptions
 
 @dataclass
 class Config:
-    name: str = field(default="default")
     options: ConfigOptions = field(default_factory=ConfigOptions)
     benchmarks: list[str] = field(default_factory=list)
     optimization_levels_by_compiler: dict[Compiler, list[OptimizationLevel]] = field(default_factory=dict)

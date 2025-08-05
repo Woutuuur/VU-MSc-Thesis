@@ -1,5 +1,4 @@
 {
-    "name": "test",
     "benchmarks": [
         "micronaut-shopcart",
         "micronaut-hello-world",
