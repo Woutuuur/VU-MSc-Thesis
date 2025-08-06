@@ -13,6 +13,11 @@ def proportion_virtual_in_top_n_percent(call_sites: pd.DataFrame, n_percent: flo
 
     return virtual_counts / total_counts
 
+def proportion_virtual_callsites_in_top_n_percent(call_sites: pd.DataFrame, n_percent: float) -> float:
+    n = int(len(call_sites) * n_percent / 100)
+    top_n = call_sites.nlargest(n, "totalCount")
+    return len(top_n[top_n["isDirectCall"] == False]) / len(top_n)
+
 def proportion_of_total_count_in_top_n_percent(call_sites: pd.DataFrame, n_percent: float) -> float:
     n = int(len(call_sites) * n_percent / 100)
     top_n = call_sites.nlargest(n, "totalCount")
@@ -45,6 +50,9 @@ def data_analysis(call_sites: pd.DataFrame) -> pd.DataFrame:
 
     for percent in [1, 2, 3, 4, 10]:
         res[f"prop_virtual_top_{percent}%"] = proportion_virtual_in_top_n_percent(call_sites, percent)
+
+    for percent in [1, 2, 3, 4, 10, 50, 75, 90, 100]:
+        res[f"prop_virtual_sites_top_{percent}%"] = proportion_virtual_callsites_in_top_n_percent(call_sites, percent)
 
     for percent in [1, 2, 3, 4, 10]:
         res[f"prop_of_total_top_{percent}%"] = proportion_of_total_count_in_top_n_percent(call_sites, percent)
