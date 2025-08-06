@@ -8,6 +8,7 @@ class ConfigOptions:
     dump_profiling_data: bool = field(default=False)
     skip_agent: bool = field(default=False)
     skip_run: bool = field(default=False)
+    skip_profiling: bool = field(default=False)
     graalvm_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_HOME", "None")))
     graalvm_open_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_OPEN_HOME", "None")))
     java_home: Path = field(default_factory=lambda: Path(os.environ.get("JAVA_HOME", "None")))

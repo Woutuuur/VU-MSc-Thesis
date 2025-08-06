@@ -54,7 +54,7 @@ class DacapoBenchmark(Benchmark):
             "-march=native",
         ]
         print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
-        return subprocess.call(command, stderr = subprocess.STDOUT, stdout = subprocess.DEVNULL, cwd = self.context_path.as_posix())
+        return subprocess.call(command, stderr = subprocess.STDOUT, cwd = self.context_path.as_posix())
 
     def _get_run_command(self, additional_args: list[str] = []) -> list[str]:
         return [

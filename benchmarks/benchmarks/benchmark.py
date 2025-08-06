@@ -91,14 +91,15 @@ class Benchmark(ABC):
         prof_file_path = (self.context_path / f"{self.name}.iprof").as_posix() if compiler == Compiler.CLOSED else (self.context_path / f"profiler-data.json").as_posix()
         profiling_binary_optimization_level = OptimizationLevel.NONE if compiler == Compiler.CLOSED else OptimizationLevel.O0
 
-        # 1. Create instrumented binary
-        instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
-        self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
+        if not self.options.skip_profiling:
+            # 1. Create instrumented binary
+            instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
+            self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
 
-        # 2. Run the instrumented binary to collect profiling data
-        print(f"{C.GRAY}Running benchmark {self.name} to collect profiling data...{C.ENDC}")
-        run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
-        self.run(log=False, additional_args=run_args)
+            # 2. Run the instrumented binary to collect profiling data
+            print(f"{C.GRAY}Running benchmark {self.name} to collect profiling data...{C.ENDC}")
+            run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
+            self.run(log=True, additional_args=run_args)
 
         if self.options.dump_profiling_data:
             prof_file_path = Path(prof_file_path)
@@ -107,12 +108,10 @@ class Benchmark(ABC):
             logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
             shutil.copy(prof_file_path, logged_prof_file_path)
 
-        if self.options.skip_run:
-            return
-
-        # 3. Build the optimized binary using the collected profiling data
-        optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
-        self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
+        if not self.options.skip_run:
+            # 3. Build the optimized binary using the collected profiling data
+            optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
+            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
 
     @staticmethod
     @abstractmethod
