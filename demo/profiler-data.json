@@ -1,64 +1,714 @@
 [
   {
-    "targetMethod": "AtomicLong.compareAndSet",
-    "totalCount": 300001,
-    "uniqueCallsites": 1,
-    "source": "Random.java:438",
-    "isDirectCall": true,
-    "receiverCounts": {
-      "java.util.concurrent.atomic.AtomicLong": 300001
-    }
-  },
-  {
-    "targetMethod": "Random.next",
-    "totalCount": 300000,
-    "uniqueCallsites": 1,
-    "source": "Random.java:552",
-    "isDirectCall": true,
-    "receiverCounts": {
-      "java.util.Random": 300000
-    }
-  },
-  {
-    "targetMethod": "Random.nextInt",
-    "totalCount": 100000,
-    "uniqueCallsites": 1,
-    "source": "Main.java:12",
-    "isDirectCall": true,
-    "receiverCounts": {
-      "java.util.Random": 100000
-    }
-  },
-  {
-    "targetMethod": "Random.nextInt",
-    "totalCount": 100000,
-    "uniqueCallsites": 1,
-    "source": "Main.java:13",
-    "isDirectCall": true,
-    "receiverCounts": {
-      "java.util.Random": 100000
-    }
-  },
-  {
-    "targetMethod": "Random.nextInt",
-    "totalCount": 100000,
-    "uniqueCallsites": 1,
-    "source": "Main.java:14",
-    "isDirectCall": true,
-    "receiverCounts": {
-      "java.util.Random": 100000
-    }
-  },
-  {
-    "targetMethod": "Demo.foo",
+    "targetMethod": "nl.vu.wouter.Demo.foo(int, int):int",
     "totalCount": 100000,
     "uniqueCallsites": 3,
     "source": "Main.java:16",
     "isDirectCall": false,
     "receiverCounts": {
-      "nl.vu.wouter.DemoC": 60007,
-      "nl.vu.wouter.DemoB": 20055,
-      "nl.vu.wouter.DemoA": 19938
+      "nl.vu.wouter.DemoB": 19952,
+      "nl.vu.wouter.DemoC": 59985,
+      "nl.vu.wouter.DemoA": 20063
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.collections.EconomicMapImpl.findLinear(Object):int",
+    "totalCount": 31,
+    "uniqueCallsites": 1,
+    "source": "EconomicMapImpl.java:255",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.collections.EconomicMapImpl": 31
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.collections.EconomicMapImpl.compareKeys(Object, Object):boolean",
+    "totalCount": 31,
+    "uniqueCallsites": 1,
+    "source": "EconomicMapImpl.java:262",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.collections.EconomicMapImpl": 31
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.collections.EconomicMapImpl.find(Object):int",
+    "totalCount": 23,
+    "uniqueCallsites": 1,
+    "source": "EconomicMapImpl.java:244",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.collections.EconomicMapImpl": 23
+    }
+  },
+  {
+    "targetMethod": "jdk.graal.compiler.options.OptionValues.get(UnmodifiableEconomicMap, OptionKey):Object",
+    "totalCount": 23,
+    "uniqueCallsites": 1,
+    "source": "ModifiableOptionValues.java:113",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "jdk.graal.compiler.options.OptionValues": 23
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.collections.EconomicMapImpl.get(Object):Object",
+    "totalCount": 23,
+    "uniqueCallsites": 1,
+    "source": "OptionValues.java:115",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.collections.EconomicMapImpl": 23
+    }
+  },
+  {
+    "targetMethod": "jdk.graal.compiler.options.ModifiableOptionValues.get(OptionKey):Object",
+    "totalCount": 5,
+    "uniqueCallsites": 1,
+    "source": "OptionKey.java:153",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "jdk.graal.compiler.options.ModifiableOptionValues": 5
+    }
+  },
+  {
+    "targetMethod": "jdk.graal.compiler.options.ModifiableOptionValues.containsKey(OptionKey):boolean",
+    "totalCount": 5,
+    "uniqueCallsites": 1,
+    "source": "OptionKey.java:145",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "jdk.graal.compiler.options.ModifiableOptionValues": 5
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.collections.EconomicMapImpl.find(Object):int",
+    "totalCount": 5,
+    "uniqueCallsites": 1,
+    "source": "EconomicMapImpl.java:605",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.collections.EconomicMapImpl": 5
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringLatin1.writeDigitPair(byte[], int, int):void",
+    "totalCount": 4,
+    "uniqueCallsites": 1,
+    "source": "StringLatin1.java:117",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringLatin1": 4
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.nativeimage.ImageInfo.isExecutable():boolean",
+    "totalCount": 3,
+    "uniqueCallsites": 1,
+    "source": "SubstrateOptions.java:1119",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.nativeimage.ImageInfo": 3
+    }
+  },
+  {
+    "targetMethod": "org.graalvm.nativeimage.ImageInfo.ensureKindAvailable():void",
+    "totalCount": 3,
+    "uniqueCallsites": 1,
+    "source": "ImageInfo.java:151",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "org.graalvm.nativeimage.ImageInfo": 3
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedOutputStream.flushBuffer():void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "BufferedOutputStream.java:203",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedOutputStream": 2
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.position(int):Buffer",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "CharBuffer.java:1561",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.Buffer": 2
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringLatin1.getChars(byte[], int, int, char[], int):void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "String.java:1772",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringLatin1": 2
+    }
+  },
+  {
+    "targetMethod": "java.io.Writer.write(String, int, int):void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "Writer.java:248",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.io.BufferedWriter": 2
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedWriter.ensureOpen():void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "BufferedWriter.java:273",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedWriter": 2
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedWriter.growIfNeeded(int):void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "BufferedWriter.java:274",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedWriter": 2
+    }
+  },
+  {
+    "targetMethod": "java.lang.String.getChars(int, int, char[], int):void",
+    "totalCount": 2,
+    "uniqueCallsites": 1,
+    "source": "BufferedWriter.java:278",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.String": 2
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringLatin1.writeDigitPair(byte[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StringLatin1.java:124",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringLatin1": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.limit(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "Buffer.java:255",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapCharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.position(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "Buffer.java:256",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapCharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.FileOutputStream.write(byte[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "BufferedOutputStream.java:123",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.FileOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.FileOutputStream.writeBytes(byte[], int, int, boolean):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "FileOutputStream.java:360",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.FileOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.position(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "ByteBuffer.java:1561",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.Buffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.limit(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "CharBuffer.java:1575",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.Buffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringLatin1.getChars(int, int, byte[]):int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StringConcatHelper.java:713",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringLatin1": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.String.getBytes(byte[], int, byte):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StringConcatHelper.java:715",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.String": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.Shutdown.runHooks():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "Shutdown.java:200",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.Shutdown": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:82",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapCharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.position(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:82",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapCharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:83",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.position(int):Buffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:83",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.nio.HeapByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.PrintStream.ensureOpen():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:686",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.PrintStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.Writer.write(String):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:687",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.Writer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.Writer.write(String):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "BufferedWriter.java:295",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.Writer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedWriter.flushBuffer():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:689",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedWriter": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.flushBuffer():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "OutputStreamWriter.java:179",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.OutputStream.flush():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:692",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.io.BufferedOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.implFlushBuffer():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:101",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.writeBytes():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:315",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.ByteBuffer.array():byte[]",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:220",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.ByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.ByteBuffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:220",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.ByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.OutputStream.write(byte[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:220",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.io.PrintStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.Buffer.<init>(int, int, int, int, MemorySegment):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "CharBuffer.java:323",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.Buffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.PrintStream.ensureOpen():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:538",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.PrintStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.OutputStream.write(byte[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:539",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.io.BufferedOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.OutputStream.flush():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:541",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "java.io.BufferedOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedOutputStream.growIfNeeded(int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "BufferedOutputStream.java:186",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedOutputStream": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.BufferedWriter.ensureOpen():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "BufferedWriter.java:165",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.BufferedWriter": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.write(char[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "OutputStreamWriter.java:206",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.ensureOpen():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:115",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.implWrite(char[], int, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:122",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.CharBuffer.wrap(char[], int, int):CharBuffer",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:266",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.CharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.implWrite(CharBuffer):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:267",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.StreamEncoder.growByteBufferIfNeeded(int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:277",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.StreamEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.charset.CharsetEncoder.encode(CharBuffer, ByteBuffer, boolean):CoderResult",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StreamEncoder.java:280",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.charset.CharsetEncoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.charset.CharsetEncoder.encodeLoop(CharBuffer, ByteBuffer):CoderResult",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "CharsetEncoder.java:587",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "sun.nio.cs.UTF_8$Encoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.Runnable.run():void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "Shutdown.java:130",
+    "isDirectCall": false,
+    "receiverCounts": {
+      "com.oracle.svm.core.jdk.Target_java_lang_Shutdown$$Lambda/0xf6e743a403dc6282391a70c2fa4f9a7a0": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.PrintStream.writeln(String):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "PrintStream.java:1004",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.PrintStream": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.UTF_8$Encoder.encodeArrayLoop(CharBuffer, ByteBuffer):CoderResult",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:564",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.UTF_8$Encoder": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.CharBuffer.array():char[]",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:447",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.CharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.CharBuffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:448",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.CharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.CharBuffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:449",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.CharBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.ByteBuffer.array():byte[]",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:451",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.ByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.ByteBuffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:452",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.ByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "java.nio.ByteBuffer.arrayOffset():int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:453",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.nio.ByteBuffer": 1
+    }
+  },
+  {
+    "targetMethod": "sun.nio.cs.UTF_8.updatePositions(Buffer, int, Buffer, int):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "UTF_8.java:463",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "sun.nio.cs.UTF_8": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringConcatHelper.stringSize(int, int):int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StringConcatHelper.java:103",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringConcatHelper": 1
+    }
+  },
+  {
+    "targetMethod": "java.lang.StringConcatHelper.prepend(int, byte, byte[], int, String):int",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "StringConcatHelper.java:107",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.lang.StringConcatHelper": 1
+    }
+  },
+  {
+    "targetMethod": "java.io.PrintStream.println(String):void",
+    "totalCount": 1,
+    "uniqueCallsites": 1,
+    "source": "Main.java:19",
+    "isDirectCall": true,
+    "receiverCounts": {
+      "java.io.PrintStream": 1
     }
   }
 ]
