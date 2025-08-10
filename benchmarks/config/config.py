@@ -46,7 +46,7 @@ class Config:
                     job = BenchmarkJob(benchmark=benchmark, optimization_level=optimization_level, compiler=compiler)
                     jobs[benchmark_name].append(job)
         return jobs
-    
+
     def check_installations(self) -> None:
         required_path_for_compilers = {
             Compiler.CLOSED: self.options.graalvm_home,

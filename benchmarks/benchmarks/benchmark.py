@@ -96,10 +96,11 @@ class Benchmark(ABC):
             instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
             self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
 
-            # 2. Run the instrumented binary to collect profiling data
-            print(f"{C.GRAY}Running benchmark {self.name} to collect profiling data...{C.ENDC}")
-            run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
-            self.run(log=True, additional_args=run_args)
+            if not self.options.skip_profiling_run:
+                # 2. Run the instrumented binary to collect profiling data
+                print(f"{C.GRAY}Running benchmark {self.name} to collect profiling data...{C.ENDC}")
+                run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
+                self.run(log=True, additional_args=run_args)
 
         if self.options.dump_profiling_data:
             prof_file_path = Path(prof_file_path)
