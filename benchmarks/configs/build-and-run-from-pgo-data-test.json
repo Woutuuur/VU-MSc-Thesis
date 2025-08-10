@@ -1,0 +1,13 @@
+{
+    "benchmarks": [
+        "biojava"
+    ],
+    "optimization_levels_by_compiler": {
+        "CUSTOM_OPEN": ["CUSTOM_PGO_FULL_O3"]
+    },
+    "options": {
+        "skip_run": false,
+        "skip_agent": true,
+        "skip_profiling": true
+    }
+}
