@@ -1,5 +1,6 @@
 #!/bin/bash
 
+/usr/bin/python3 /data/baristabench/build.py
 echo "export GRAALVM_HOME=$(sdk home java 24-graal)" >> ~/.bashrc
 sdk install java labsjdk-ce /data/jdk
 sdk default java labsjdk-ce
