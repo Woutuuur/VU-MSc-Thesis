@@ -3,3 +3,6 @@ logs/
 .venv/
 scratch/
 .vscode/
+graal_dumps/
+out.txt
+*.log
