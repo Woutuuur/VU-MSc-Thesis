@@ -56,6 +56,9 @@ class Benchmark(ABC):
         from benchmarks.dacapobench import DacapoBenchmark
         from benchmarks.baristabench import BaristaBenchmark
 
+        if options.n_runs is not None:
+            config["n_runs"] = options.n_runs
+
         if options.skip_run:
             config["n_runs"] = 0
 
@@ -93,8 +96,9 @@ class Benchmark(ABC):
 
         if not self.options.skip_profiling:
             # 1. Create instrumented binary
-            instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
-            self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
+            if not self.options.skip_profiling_build:
+                instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
+                self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
 
             if not self.options.skip_profiling_run:
                 # 2. Run the instrumented binary to collect profiling data
@@ -102,17 +106,23 @@ class Benchmark(ABC):
                 run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
                 self.run(log=True, additional_args=run_args)
 
+        logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
+
         if self.options.dump_profiling_data:
             prof_file_path = Path(prof_file_path)
             if not prof_file_path.exists():
                 raise FileNotFoundError(f"Profiling data file does not exist: {prof_file_path}")
-            logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
             shutil.copy(prof_file_path, logged_prof_file_path)
+        
+        if self.options.use_dumped_profiling_data:
+            if not logged_prof_file_path.exists():
+                raise FileNotFoundError(f"Dumped profiling data file does not exist: {logged_prof_file_path}")
+            prof_file_path = logged_prof_file_path.absolute().as_posix()
 
-        if not self.options.skip_run:
+        if not self.options.skip_pgo_build:
             # 3. Build the optimized binary using the collected profiling data
             optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
-            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
+            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args )
 
     @staticmethod
     @abstractmethod

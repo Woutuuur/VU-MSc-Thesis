@@ -10,11 +10,15 @@ class ConfigOptions:
     skip_run: bool = field(default=False)
     skip_profiling: bool = field(default=False)
     skip_profiling_run: bool = field(default=False)
+    skip_profiling_build: bool = field(default=False)
+    skip_pgo_build: bool = field(default=False)
     graalvm_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_HOME", "None")))
     graalvm_open_home: Path = field(default_factory=lambda: Path(os.environ.get("GRAALVM_OPEN_HOME", "None")))
     java_home: Path = field(default_factory=lambda: Path(os.environ.get("JAVA_HOME", "None")))
     benchmarks_file_path: Path = field(default=Path("configs") / "benchmarks.json")
     results_output_dir_base_path: Path = field(default=Path("results"))
+    n_runs: int | None = field(default=None)
+    use_dumped_profiling_data: bool = field(default=False)
 
     @property
     def results_output_dir_path(self) -> Path:
