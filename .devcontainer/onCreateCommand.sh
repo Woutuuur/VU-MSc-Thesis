@@ -5,5 +5,6 @@ sdk install java labsjdk-ce /data/jdk
 sdk default java labsjdk-ce
 mx -p /workspace/graal/substratevm intellijinit
 find /workspace/graal -name mxbuild -print -type d -exec rm -rf {} \;
+/workspace/fix-data-dir
 
 exit 0
