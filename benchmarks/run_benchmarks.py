@@ -9,11 +9,11 @@ from benchmarks.job import BenchmarkJob, read_jobs_from_config_file
 from benchmarks.optimization_level import OptimizationLevel
 from util.color import ANSIColorCode as C
 from benchmarks.benchmark import Benchmark, BenchmarkResult, read_benchmarks_from_file
-from config.config import Config, ConfigOptions
+from config.config import Config
 
 
 def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
-    runs = []
+    runs: list[BenchmarkResult] = []
     for _ in range(benchmark.n_runs):
         print(".", end="", flush=True)
         runs.append(benchmark.run())
@@ -22,7 +22,9 @@ def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
     return runs
 
 
-def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler, config_options: ConfigOptions) -> None:
+def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler) -> None:
+    rename_log = True
+
     match optimization_level:
         case OptimizationLevel.PGO:
             benchmark.build_pgo_optimized_binary(compiler)  # Closed source PGO determines optimization level itself
@@ -36,12 +38,20 @@ def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLev
             benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3"])
         case OptimizationLevel.CUSTOM_PGO_O3_NO_DYN_INVOKE_IC:
             benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-J-DdisableInlineCachePhase=true", "-O3"])
+        case OptimizationLevel.CUSTOM_PGO_FULL_O3_ONLY_IC:
+            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DoriginalInlining=true", "-O3"])
         case _:
-            benchmark.build_native_image(
+            rename_log = False
+            _ = benchmark.build_native_image(
                 compiler,
                 optimization_level,
                 additional_build_args=["-J-DdisableVirtualInvokeProfilingPhase=true"],
             )
+
+    # Hack because we have optimization level NONE for PGO builds, so have to rename it back to the requested optimization level
+    if rename_log:
+        original_log_path = benchmark.get_log_path(compiler, OptimizationLevel.NONE)
+        _ = original_log_path.rename(benchmark.get_log_path(compiler, optimization_level))
 
 
 ResultsDict = dict[str, dict[BenchmarkJob, list[BenchmarkResult]]]
@@ -61,16 +71,13 @@ def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
         for name, result in results.items():
             for job, benchmark_results in result.items():
                 for r in benchmark_results:
-                    writer.writerow(
-                        {
-                            "benchmark": name,
-                            "optimization_level": job.optimization_level.value,
-                            "result": r.result,
-                            "binary_size": r.binary_size,
-                            "compiler": job.compiler.name,
-                        }
-                    )
-
+                    writer.writerow({
+                        "benchmark": name,
+                        "optimization_level": job.optimization_level.value,
+                        "result": r.result,
+                        "binary_size": r.binary_size,
+                        "compiler": job.compiler.name,
+                    })
 
 def cur_time() -> str:
     return datetime.now(tz=ZoneInfo("Europe/Amsterdam")).strftime("%H:%M:%S")
@@ -104,19 +111,19 @@ def main():
         if not jobs:
             continue
 
-        def line_prefix(idx) -> str:
+        def line_prefix(idx: int) -> str:
             return f"{C.BOLD}[{idx}/{len(jobs)}] [{cur_time()}]{C.ENDC}"
 
         if not config.options.skip_agent:
             print(f"{line_prefix(0)} Running agent for {name}...")
-            jobs[0].benchmark.run_agent(vm_binary=config.options.java_bin_path.as_posix())
+            _ = jobs[0].benchmark.run_agent(vm_binary=config.options.java_bin_path.as_posix())
 
         start_time = datetime.now()
 
         for i, job in enumerate(jobs):
             try:
                 print(f"{line_prefix(i + 1)} Building using {C.BOLD}{job.compiler.name.lower().replace('_', ' ')}{C.ENDC} native image with optimization level {C.BOLD}{job.optimization_level.value}{C.ENDC}...")
-                build_native_image(job.benchmark, job.optimization_level, job.compiler, config.options)
+                build_native_image(job.benchmark, job.optimization_level, job.compiler)
 
                 print(f"{C.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{C.ENDC}")
                 print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)", end="", flush=True)
@@ -135,7 +142,7 @@ def main():
                 continue
             average_result = sum(r.result for r in benchmark_results) / len(benchmark_results)
             stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
-            median_result = f"({sorted(r.result for r in benchmark_results)[len(benchmark_results) // 2]:.2f})"
+            median_result = f"(med. {sorted(r.result for r in benchmark_results)[len(benchmark_results) // 2]:.2f})"
             print(f"  {job.compiler.name.replace('_', ' ').capitalize():<12} {job.optimization_level.value:>34}: {average_result:>10.2f} {median_result:>12} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
     write_results_to_csv(results, config.options.results_output_dir_path / "results.csv")

@@ -14,6 +14,7 @@ class OptimizationLevel(Enum):
     CUSTOM_PGO_O3 = "--custom-pgo -O3"
     CUSTOM_PGO_FULL = "--custom-pgo -O0 (combined)"
     CUSTOM_PGO_FULL_O3 = "--custom-pgo -O3 (combined)"
+    CUSTOM_PGO_FULL_O3_ONLY_IC = "--custom-pgo-only-ic -O3"
     CUSTOM_PGO_O3_NO_DYN_INVOKE_IC = "--custom-pgo-no-ic -O3 (combined)"
 
     NONE = ""
