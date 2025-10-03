@@ -10,6 +10,7 @@ from benchmarks.optimization_level import OptimizationLevel
 from util.color import ANSIColorCode as C
 from benchmarks.benchmark import Benchmark, BenchmarkResult, read_benchmarks_from_file
 from config.config import Config
+import statistics
 
 
 def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
@@ -135,17 +136,25 @@ def main():
         duration = (datetime.now() - start_time).seconds
         print(f"{C.OKBLUE}Finished processing {name} in {duration // 60}m {duration % 60}s{C.ENDC}")
 
+    write_results_to_csv(results, config.options.results_output_dir_path / "results.csv")
+
     for name, result in results.items():
         print(f"Results for {C.BOLD}{name}{C.BOLD}:")
         for job, benchmark_results in result.items():
             if not benchmark_results:
                 continue
-            average_result = sum(r.result for r in benchmark_results) / len(benchmark_results)
-            stddev_result = (sum((r.result - average_result) ** 2 for r in benchmark_results) / len(benchmark_results)) ** 0.5
-            median_result = f"(med. {sorted(r.result for r in benchmark_results)[len(benchmark_results) // 2]:.2f})"
-            print(f"  {job.compiler.name.replace('_', ' ').capitalize():<12} {job.optimization_level.value:>34}: {average_result:>10.2f} {median_result:>12} ± {stddev_result:>7.2f} {job.benchmark.unit.value:<5} size: {benchmark_results[0].binary_size:>10} bytes")
 
-    write_results_to_csv(results, config.options.results_output_dir_path / "results.csv")
+            raw_results = [r.result for r in benchmark_results]
+            average_result = f"{statistics.mean(raw_results):>10.2f}"
+            stddev_result  = f"± {statistics.stdev(raw_results):>8.2f}"
+            median_result  = f"(med. {statistics.median(raw_results):.2f})"
+
+            compiler_name = f"{job.compiler.name.replace('_', ' ').capitalize():<12}"
+            optimization_level = f"{job.optimization_level.value:>34}"
+            size = f"size: {benchmark_results[0].binary_size:>10} bytes"
+            unit = f"{job.benchmark.unit.value:<5}"
+
+            print(f"  {compiler_name} {optimization_level}: {average_result} {median_result:>12} {stddev_result} {unit} {size}")
 
 if __name__ == "__main__":
     main()
