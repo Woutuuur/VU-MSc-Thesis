@@ -1,0 +1,17 @@
+{
+    "benchmarks": [
+        "batik",
+        "h2",
+        "pmd",
+        "biojava"
+    ],
+    "optimization_levels_by_compiler": {
+        "CUSTOM_OPEN": ["CUSTOM_PGO_FULL_O3_ONLY_IC", "CUSTOM_PGO_FULL_O3", "CUSTOM_PGO_O3_NO_DYN_INVOKE_IC", "O3"]
+    },
+    "options": {
+        "skip_run": true,
+        "skip_profiling": true,
+        "skip_agent": true,
+        "use_dumped_profiling_data": true
+    }
+}
