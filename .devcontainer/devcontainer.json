@@ -1,33 +1,38 @@
 {
-	"name": "Substratevm Development Environment",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			"MX_BRANCH": "release/graal-vm/24.2",
-			"DACAPO_VERSION": "23.11-MR2-chopin"
-		}
-	},
-	"workspaceFolder": "/workspace/graal/substratevm",
-	"customizations": {
-		"jetbrains": {
-			"plugins": [
-				"Pythonid",
-				"PythonCore"
+    "name": "Substratevm Development Environment",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "MX_BRANCH": "release/graal-vm/24.2",
+            "DACAPO_VERSION": "23.11-MR2-chopin"
+        }
+    },
+    "workspaceFolder": "/workspace/graal/substratevm",
+    "customizations": {
+        "jetbrains": {
+            "plugins": [
+                "Pythonid",
+                "PythonCore"
             ]
         }
     },
-	"securityOpt": [ "seccomp=unconfined", "label=disable" ],
+    "securityOpt": [
+        "seccomp=unconfined",
+        "label=disable"
+    ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
-	"runArgs": [
-		"-v", "/tmp/.X11-unix:/tmp/.X11-unix",
-		"--hostname", "substratevm.devcontainer"
-	],
-	"features": {
-		"ghcr.io/devcontainers/features/java:1": {
-			"version": "24-graal",
-			"additionalVersions": "21.0.7-graal, 24-graalce"
-		}
-	},
-	"onCreateCommand": "bash /workspace/.devcontainer/onCreateCommand.sh"
+    "runArgs": [
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix",
+        "--hostname",
+        "substratevm.devcontainer"
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "24-graal",
+            "additionalVersions": "21.0.7-graal, 24-graalce"
+        }
+    },
+    "onCreateCommand": "bash /workspace/.devcontainer/onCreateCommand.sh"
 }
