@@ -3,6 +3,7 @@ from functools import cached_property
 from pathlib import Path
 import re
 import subprocess
+from typing_extensions import override
 
 from benchmarks.benchmark import Benchmark, BenchmarkUnit
 from util.color import ANSIColorCode as C
@@ -23,7 +24,7 @@ class BaristaBenchmark(Benchmark):
     @property
     def jar_path(self) -> Path:
         return self.context_path / Path(".")
-    
+
     @property
     def config_dir(self) -> Path:
         return self.context_path / f"{self.name}-config"
@@ -51,16 +52,22 @@ class BaristaBenchmark(Benchmark):
 
         return nib_file
 
+    @override
     @staticmethod
     def _extract_result(output: str) -> float:
-        warmup, final = re.findall(r".*Measures for throughput iteration 1:\n.*throughput *(\d+\.\d+) ops/s", output, re.MULTILINE)
+        _warmup, final = re.findall(r".*Measures for throughput iteration 1:\n.*throughput *(\d+\.\d+) ops/s", output, re.MULTILINE)
 
         return float(final)
 
+    @override
     def run_agent(self, vm_binary: str = "java") -> int:
         return 0 # We expect to already have a .nib file in the target directory
 
-    def build_native_image(self, compiler: Compiler, optimization_level = OptimizationLevel.O3, additional_build_args: list[str] = []) -> int:
+    @override
+    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> int:
+        if additional_build_args is None:
+            additional_build_args = []
+
         command = [
             *compiler.get_command(self.options).split(),
             optimization_level.value,
@@ -77,14 +84,15 @@ class BaristaBenchmark(Benchmark):
             output = subprocess.check_output(
                 [x for x in command if x],
                 text = True,
-                stderr = subprocess.STDOUT
+                stderr = subprocess.STDOUT,
+                cwd = self.context_path
             )
         except subprocess.CalledProcessError as e:
             raise RuntimeError(f"Failed to build native image: {e.output}") from e
 
         if not (m := re.search(r"Bundle build output written to (.*)", output, re.MULTILINE)):
             raise RuntimeError(f"Could not find bundle build output in command output: {output}")
-        
+
         binary_path = Path(m.group(1)) / 'default' / self.name
 
         if not binary_path.exists():
@@ -93,8 +101,12 @@ class BaristaBenchmark(Benchmark):
         self.binary_path.unlink(missing_ok = True)
         self.binary_path.symlink_to(binary_path)
 
+        with open(self.get_log_path(compiler, optimization_level), "w") as f:
+            f.write(output)
+
         return 0
 
+    @override
     def _get_run_command(self, additional_args: list[str] = []) -> list[str]:
         return [
             "python3", (self.context_path / "barista.py").absolute().as_posix(),

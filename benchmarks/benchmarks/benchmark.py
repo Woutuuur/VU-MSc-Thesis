@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing_extensions import override
 from util.color import ANSIColorCode as C
 from benchmarks.compiler import Compiler
 from config.options import ConfigOptions
@@ -16,6 +17,7 @@ class BenchmarkUnit(Enum):
     THROUGHPUT = "ops/sec"
     BINARY_SIZE = "bytes"
 
+    @override
     def __str__(self) -> str:
         return self.value
 
@@ -39,8 +41,18 @@ class Benchmark(ABC):
     benchmark_args: list[str] = field(default_factory=list)
     options: ConfigOptions = field(default_factory=ConfigOptions)
 
+    @property
+    def log_dir(self) -> Path:
+        return self.options.results_output_dir_path / "logs"
+
+    def get_log_path(self, compiler: Compiler, optimization_level: OptimizationLevel) -> Path:
+        return self.log_dir / f"{self.name}|{compiler.value}|{optimization_level.value}.log"
+
+    def __post_init__(self):
+        self.log_dir.mkdir(exist_ok = True)
+
     @classmethod
-    def from_config(cls, config: dict, options: ConfigOptions) -> "Benchmark":
+    def from_config(cls, config, options: ConfigOptions) -> "Benchmark":
         benchmark_type = config.get("type")
         if benchmark_type is None:
             raise ValueError("Benchmark type must be specified in the config.")
@@ -67,8 +79,6 @@ class Benchmark(ABC):
                 return DacapoBenchmark(options=options, **config)
             case "barista":
                 return BaristaBenchmark(options=options, **config)
-            case _:
-                raise ValueError(f"Unknown benchmark type: {config['type']}")
 
     @property
     def binary_path(self) -> Path:
@@ -85,7 +95,7 @@ class Benchmark(ABC):
         pass
 
     @abstractmethod
-    def build_native_image(self, compiler: Compiler = Compiler.CLOSED, optimization_level=OptimizationLevel.O3, additional_build_args: list[str] = []) -> int:
+    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> int:
         pass
 
     def build_pgo_optimized_binary(self, compiler: Compiler, additional_build_args: list[str] = []) -> None:
@@ -113,7 +123,7 @@ class Benchmark(ABC):
             if not prof_file_path.exists():
                 raise FileNotFoundError(f"Profiling data file does not exist: {prof_file_path}")
             shutil.copy(prof_file_path, logged_prof_file_path)
-        
+
         if self.options.use_dumped_profiling_data:
             if not logged_prof_file_path.exists():
                 raise FileNotFoundError(f"Dumped profiling data file does not exist: {logged_prof_file_path}")
@@ -122,7 +132,7 @@ class Benchmark(ABC):
         if not self.options.skip_pgo_build:
             # 3. Build the optimized binary using the collected profiling data
             optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
-            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args )
+            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
 
     @staticmethod
     @abstractmethod
@@ -138,7 +148,7 @@ class Benchmark(ABC):
     def _get_run_command(self, additional_args: list[str] = []) -> list[str]:
         pass
 
-    def run(self, log=True, additional_args: list[str] = []) -> BenchmarkResult:
+    def run(self, log: bool = True, additional_args: list[str] = []) -> BenchmarkResult:
         command = self._get_run_command(additional_args)
         output = subprocess.check_output([x for x in command if x], text=True, stderr=subprocess.STDOUT, cwd=self.context_path.as_posix())
         result = BenchmarkResult(self.name, self._extract_result(output), self._get_binary_size(), output)
@@ -153,7 +163,7 @@ def read_benchmarks_from_file(file_path: Path, options: ConfigOptions) -> dict[s
     with open(file_path, "r") as f:
         benchmarks_data = json.load(f) or []
 
-    benchmarks = {}
+    benchmarks: dict[str, Benchmark] = {}
     for benchmark_config in benchmarks_data:
         benchmark = Benchmark.from_config(benchmark_config, options)
         if benchmark.name in benchmarks:

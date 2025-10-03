@@ -16,5 +16,3 @@ class Compiler(Enum):
                 return (options.graalvm_home / "bin" / "native-image").absolute().as_posix()
             case Compiler.CUSTOM_OPEN:
                 return "mx -p /workspace/graal/substratevm native-image"
-            case _:
-                raise ValueError(f"Unknown compiler: {self.name}")
