@@ -1,0 +1,172 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Config",
+    "type": "object",
+    "properties": {
+        "options": {
+            "$ref": "#/definitions/ConfigOptions",
+            "description": "Configuration options for the benchmark runner."
+        },
+        "benchmarks": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "avrora",
+                    "batik",
+                    "biojava",
+                    "graphchi",
+                    "h2",
+                    "sunflow",
+                    "lusearch",
+                    "luindex",
+                    "pmd",
+                    "xalan",
+                    "micronaut-shopcart",
+                    "micronaut-hello-world",
+                    "micronaut-similarity"
+                ]
+            },
+            "description": "List of benchmark names."
+        },
+        "optimization_levels_by_compiler": {
+            "type": "object",
+            "description": "Mapping from compiler name to list of optimization levels.",
+            "properties": {
+                "OPEN": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "O0",
+                            "O1",
+                            "O2",
+                            "O3",
+                            "SIZE",
+                            "BUILD_TIME",
+                            "PGO",
+                            "CUSTOM_PGO",
+                            "CUSTOM_PGO_O3",
+                            "CUSTOM_PGO_FULL",
+                            "CUSTOM_PGO_FULL_O3",
+                            "CUSTOM_PGO_O3_NO_DYN_INVOKE_IC"
+                        ]
+                    },
+                    "description": "Optimization levels for the OPEN compiler."
+                },
+                "CLOSED": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "O0",
+                            "O1",
+                            "O2",
+                            "O3",
+                            "SIZE",
+                            "BUILD_TIME",
+                            "PGO",
+                            "CUSTOM_PGO",
+                            "CUSTOM_PGO_O3",
+                            "CUSTOM_PGO_FULL",
+                            "CUSTOM_PGO_FULL_O3",
+                            "CUSTOM_PGO_O3_NO_DYN_INVOKE_IC"
+                        ]
+                    },
+                    "description": "Optimization levels for the CLOSED compiler."
+                },
+                "CUSTOM_OPEN": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "O0",
+                            "O1",
+                            "O2",
+                            "O3",
+                            "SIZE",
+                            "BUILD_TIME",
+                            "PGO",
+                            "CUSTOM_PGO",
+                            "CUSTOM_PGO_O3",
+                            "CUSTOM_PGO_FULL",
+                            "CUSTOM_PGO_FULL_O3",
+                            "CUSTOM_PGO_FULL_O3_ONLY_IC",
+                            "CUSTOM_PGO_O3_NO_DYN_INVOKE_IC"
+                        ]
+                    },
+                    "description": "Optimization levels for the CUSTOM_OPEN compiler."
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "benchmarks",
+        "optimization_levels_by_compiler"
+    ],
+    "definitions": {
+        "ConfigOptions": {
+            "type": "object",
+            "properties": {
+                "dump_profiling_data": {
+                    "type": "boolean",
+                    "description": "If true, dump profiling data in the results directory after running the profiling build."
+                },
+                "skip_agent": {
+                    "type": "boolean",
+                    "description": "If true, skip running the agent step."
+                },
+                "skip_run": {
+                    "type": "boolean",
+                    "description": "If true, skip running the benchmark itself."
+                },
+                "skip_profiling": {
+                    "type": "boolean",
+                    "description": "If true, skip the profiling step entirely."
+                },
+                "skip_profiling_run": {
+                    "type": "boolean",
+                    "description": "If true, skip the profiling run step."
+                },
+                "skip_profiling_build": {
+                    "type": "boolean",
+                    "description": "If true, skip the profiling build step."
+                },
+                "skip_pgo_build": {
+                    "type": "boolean",
+                    "description": "If true, skip the PGO (Profile-Guided Optimization) build step."
+                },
+                "graalvm_home": {
+                    "type": "string",
+                    "description": "Path to the GraalVM installation (closed source)."
+                },
+                "graalvm_open_home": {
+                    "type": "string",
+                    "description": "Path to the open-source GraalVM installation."
+                },
+                "java_home": {
+                    "type": "string",
+                    "description": "Path to the Java installation to use."
+                },
+                "benchmarks_file_path": {
+                    "type": "string",
+                    "description": "Path to the JSON file listing available benchmarks."
+                },
+                "results_output_dir_base_path": {
+                    "type": "string",
+                    "description": "Base directory path for storing benchmark results."
+                },
+                "n_runs": {
+                    "type": "number",
+                    "description": "Override the number of runs for each configuration globally"
+                },
+                "use_dumped_profiling_data": {
+                    "type": "boolean",
+                    "description": "Use the dumped profiling data (e.g. from a previous run to prevent having to re-obtain it), usually used in combination with skip_profiling=true"
+                }
+            },
+            "description": "Options for configuring benchmark execution."
+        }
+    }
+}

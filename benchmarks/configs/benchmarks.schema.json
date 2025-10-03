@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Benchmarks List",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the benchmark."
+      },
+      "type": {
+        "type": "string",
+        "enum": ["dacapo", "barista"],
+        "description": "Type of the benchmark (dacapo or barista)."
+      },
+      "benchmark_args": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Arguments to pass to the benchmark."
+      },
+      "benchmark_runner_args": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Arguments to pass to the benchmark runner."
+      },
+      "native_image_args": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Arguments to pass to native-image."
+      },
+      "n_runs": {
+        "type": "number",
+        "description": "The number of times to run this benchmark for every configuration",
+        "default": 5
+      }
+    },
+    "required": ["name", "type"],
+    "additionalProperties": false
+  }
+}
