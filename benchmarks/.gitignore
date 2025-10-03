@@ -6,3 +6,7 @@ scratch/
 graal_dumps/
 out.txt
 *.log
+sources/
+*.so
+.zed/
+*.log
