@@ -10,3 +10,7 @@ sources/
 *.so
 .zed/
 *.log
+svm_err_*.md
+*.txt
+gdb-debughelpers.py
+*.iml
