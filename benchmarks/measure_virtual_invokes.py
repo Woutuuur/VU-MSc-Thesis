@@ -70,3 +70,20 @@ all_data = pd.DataFrame(all_data)
 all_data = all_data.sort_values(by="totalCount", ascending=False).reset_index(drop=True)
 pd.set_option('display.float_format', '{:.4f}'.format)
 print(data_analysis(all_data).T)
+
+# Analysis for biojava benchmark only
+print("\n" + "="*50)
+print("BIOJAVA BENCHMARK ANALYSIS")
+print("="*50)
+
+biojava_file = profile_data_dir / "biojava-custom_open.json"
+if biojava_file.exists():
+    with open(biojava_file, "r") as f:
+        biojava_data = json.load(f)
+    
+    biojava_df = pd.DataFrame(biojava_data)
+    biojava_df = biojava_df.sort_values(by="totalCount", ascending=False).reset_index(drop=True)
+    
+    print(data_analysis(biojava_df).T)
+else:
+    print("biojava-custom_open.json not found in profiling data directory")
