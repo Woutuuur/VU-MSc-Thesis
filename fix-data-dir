@@ -4,6 +4,6 @@
 # We'll manually run the native image commands so we can't rely on native-image-run
 
 set -e
-LAUNCHERS_DIR=/data/dacapobench/$DACAPO_VERSION/launchers
+LAUNCHERS_DIR=dacapo-$DACAPO_VERSION/launchers
 parent_dir="$(dirname "$LAUNCHERS_DIR")"
 echo "Data-Location=$parent_dir" > ~/.dacapo-config.properties
