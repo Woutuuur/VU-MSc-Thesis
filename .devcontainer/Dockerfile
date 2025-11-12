@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:bookworm
+FROM mcr.microsoft.com/devcontainers/python:3.12-bookworm
 
 ARG MX_BRANCH
 ARG DACAPO_VERSION
