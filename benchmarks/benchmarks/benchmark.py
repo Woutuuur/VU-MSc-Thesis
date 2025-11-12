@@ -16,6 +16,7 @@ class BenchmarkUnit(Enum):
     EXECUTION_TIME = "ms"
     THROUGHPUT = "ops/sec"
     BINARY_SIZE = "bytes"
+    COMPILATION_TIME = "s"
 
     @override
     def __str__(self) -> str:
@@ -28,7 +29,10 @@ class BenchmarkResult:
     result: float
     binary_size: int
     output: str = field(repr=False)
-
+    compilation_time: float = field(init=False)
+    
+    def set_compilation_time(self, compilation_time: float) -> None:
+        self.compilation_time = compilation_time
 
 @dataclass
 class Benchmark(ABC):
@@ -95,10 +99,10 @@ class Benchmark(ABC):
         pass
 
     @abstractmethod
-    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> int:
+    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> str:
         pass
 
-    def build_pgo_optimized_binary(self, compiler: Compiler, additional_build_args: list[str] = []) -> None:
+    def build_pgo_optimized_binary(self, compiler: Compiler, additional_build_args: list[str] = []) -> str:
         assert compiler in (Compiler.CLOSED, Compiler.CUSTOM_OPEN), "PGO optimization is only supported for CLOSED and CUSTOM_OPEN compilers."
 
         prof_file_path = (self.context_path / f"{self.name}.iprof").as_posix() if compiler == Compiler.CLOSED else (self.context_path / f"profiler-data.json").as_posix()
@@ -114,7 +118,7 @@ class Benchmark(ABC):
                 # 2. Run the instrumented binary to collect profiling data
                 print(f"{C.GRAY}Running benchmark {self.name} to collect profiling data...{C.ENDC}")
                 run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
-                self.run(log=True, additional_args=run_args)
+                self.run(log = True, additional_args = run_args)
 
         logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
 
@@ -132,7 +136,9 @@ class Benchmark(ABC):
         if not self.options.skip_pgo_build:
             # 3. Build the optimized binary using the collected profiling data
             optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
-            self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
+            return self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
+
+        return ""
 
     @staticmethod
     @abstractmethod

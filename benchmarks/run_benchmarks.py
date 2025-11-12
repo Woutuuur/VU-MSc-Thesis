@@ -1,4 +1,5 @@
 import csv
+import re
 import sys
 from pathlib import Path
 from datetime import datetime
@@ -11,6 +12,7 @@ from util.color import ANSIColorCode as C
 from benchmarks.benchmark import Benchmark, BenchmarkResult, read_benchmarks_from_file
 from config.config import Config
 import statistics
+import shutil
 
 
 def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
@@ -23,39 +25,64 @@ def run_benchmark(benchmark: Benchmark) -> list[BenchmarkResult]:
     return runs
 
 
-def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler) -> None:
+# Returns compilation time in seconds
+def build_native_image(benchmark: Benchmark, optimization_level: OptimizationLevel, compiler: Compiler) -> float:
     rename_log = True
+    out = ""
 
     match optimization_level:
         case OptimizationLevel.PGO:
-            benchmark.build_pgo_optimized_binary(compiler)  # Closed source PGO determines optimization level itself
+            out = benchmark.build_pgo_optimized_binary(compiler)  # Closed source PGO determines optimization level itself
         case OptimizationLevel.CUSTOM_PGO:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O0"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O0"])
         case OptimizationLevel.CUSTOM_PGO_O3:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O3"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-O3"])
         case OptimizationLevel.CUSTOM_PGO_FULL:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O0"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O0"])
         case OptimizationLevel.CUSTOM_PGO_FULL_O3:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3"])
         case OptimizationLevel.CUSTOM_PGO_O3_NO_DYN_INVOKE_IC:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-J-DdisableInlineCachePhase=true", "-O3"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-J-DdisableInlineCachePhase=true", "-O3"])
         case OptimizationLevel.CUSTOM_PGO_FULL_O3_ONLY_IC:
-            benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DoriginalInlining=true", "-O3"])
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DoriginalInlining=true", "-O3"])
+        case OptimizationLevel.CUSTOM_FULL_COMPILER_PROFILING:
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3", "-J-DprofileCompiler=true"])
+        case OptimizationLevel.CUSTOM_FULL_COMPILER_PGO:
+            out = benchmark.build_pgo_optimized_binary(compiler, additional_build_args=["-J-DcombinedInlining=true", "-O3", "-J-DuseCompilerPGO=true"])
         case _:
             rename_log = False
-            _ = benchmark.build_native_image(
+            out = benchmark.build_native_image(
                 compiler,
                 optimization_level,
                 additional_build_args=["-J-DdisableVirtualInvokeProfilingPhase=true"],
             )
+    
+    # E.g.:
+    # Finished generating 'sunflow' in 22.9s.
+    # Finished generating 'pmd' in 1m 4s.
+    build_time_match = re.search(f"Finished generating '{benchmark.name}' in ((?:([0-9]+)m )?([0-9.]+)s).", str(out))
+    if not build_time_match:
+        raise RuntimeError(f"Could not determine build time from output:\n{out}")
+    
+    # Parse the time components
+    minutes_str = build_time_match.group(2)  # Could be None if no minutes
+    seconds_str = build_time_match.group(3)  # Always present
+    
+    minutes = int(minutes_str) if minutes_str else 0
+    seconds = float(seconds_str)
+    build_time_seconds = minutes * 60 + seconds
 
     # Hack because we have optimization level NONE for PGO builds, so have to rename it back to the requested optimization level
     if rename_log:
         original_log_path = benchmark.get_log_path(compiler, OptimizationLevel.NONE)
         _ = original_log_path.rename(benchmark.get_log_path(compiler, optimization_level))
 
+    return build_time_seconds
+
 
 ResultsDict = dict[str, dict[BenchmarkJob, list[BenchmarkResult]]]
+BenchmarkTimesResultsDict = dict[str, dict[BenchmarkJob, list[float]]]
+
 
 
 def write_results_to_csv(results: ResultsDict, output_file: Path) -> None:
@@ -105,6 +132,7 @@ def main():
     config.check_installations()
 
     results: ResultsDict = defaultdict(lambda: defaultdict(list))
+    compilation_time_results: BenchmarkTimesResultsDict = defaultdict(lambda: defaultdict(list))
 
     for i, (name, jobs) in enumerate(jobs_by_compiler.items()):
         print(C.BOLD + "=" * 20 + f" {name} ({i + 1}/{len(jobs_by_compiler)}) " + "=" * 20 + C.ENDC)
@@ -124,7 +152,14 @@ def main():
         for i, job in enumerate(jobs):
             try:
                 print(f"{line_prefix(i + 1)} Building using {C.BOLD}{job.compiler.name.lower().replace('_', ' ')}{C.ENDC} native image with optimization level {C.BOLD}{job.optimization_level.value}{C.ENDC}...")
-                build_native_image(job.benchmark, job.optimization_level, job.compiler)
+                for _ in range(config.options.n_compilations):
+                    compilation_time_results[name][job].append(build_native_image(job.benchmark, job.optimization_level, job.compiler))
+
+                # Copy binary to results/current/binaries with optimization level and compiler name in the name
+                binary_output_dir = config.options.results_output_dir_path / "binaries"
+                binary_output_dir.mkdir(parents=True, exist_ok=True)
+                binary_output_path = binary_output_dir / f"{name}_{job.compiler.name.lower()}_{job.optimization_level.value}"
+                shutil.copy(job.benchmark.binary_path, binary_output_path)
 
                 print(f"{C.GRAY}Running benchmark {name} with command: {' '.join(job.benchmark._get_run_command())}{C.ENDC}")
                 print(f"{line_prefix(i + 1)} Running benchmark {name} {job.benchmark.n_runs} time(s)", end="", flush=True)
@@ -141,20 +176,30 @@ def main():
     for name, result in results.items():
         print(f"Results for {C.BOLD}{name}{C.BOLD}:")
         for job, benchmark_results in result.items():
-            if not benchmark_results:
+            if not benchmark_results and not compilation_time_results:
                 continue
 
-            raw_results = [r.result for r in benchmark_results]
-            average_result = f"{statistics.mean(raw_results):>10.2f}"
-            stddev_result  = f"± {statistics.stdev(raw_results):>8.2f}"
-            median_result  = f"(med. {statistics.median(raw_results):.2f})"
+            benchmarks_stats = ""
+            if benchmark_results:
+                size = f"size: {benchmark_results[0].binary_size:>10} bytes"
+                unit = f"{job.benchmark.unit.value:<5}"
+
+                raw_results = [r.result for r in benchmark_results]
+                average_result = f"{statistics.mean(raw_results):>10.2f}"
+                stddev_result  = f"± {statistics.stdev(raw_results):>8.2f}" if len(raw_results) > 2 else ""
+                median_result  = f"(med. {statistics.median(raw_results):.2f})"
+                benchmarks_stats = f"{average_result} {median_result:>12} {stddev_result} {unit} {size}"
+
+            compilation_time_stats = ""
+            if compilation_time_results and config.options.show_compilation_times:
+                raw_results = compilation_time_results[name][job]
+                average_compilation_time = f"{statistics.mean(raw_results):.2f}s"
+                stddev_compilation_time = f"± {statistics.stdev(raw_results):.2f}s" if len(raw_results) > 2 else ""
+                compilation_time_stats = f"comp. time: {average_compilation_time} {stddev_compilation_time}"
 
             compiler_name = f"{job.compiler.name.replace('_', ' ').capitalize():<12}"
             optimization_level = f"{job.optimization_level.value:>34}"
-            size = f"size: {benchmark_results[0].binary_size:>10} bytes"
-            unit = f"{job.benchmark.unit.value:<5}"
-
-            print(f"  {compiler_name} {optimization_level}: {average_result} {median_result:>12} {stddev_result} {unit} {size}")
+            print(f"  {compiler_name} {optimization_level}: {benchmarks_stats}, {compilation_time_stats}")
 
 if __name__ == "__main__":
     main()

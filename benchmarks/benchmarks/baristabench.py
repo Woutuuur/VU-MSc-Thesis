@@ -64,7 +64,7 @@ class BaristaBenchmark(Benchmark):
         return 0 # We expect to already have a .nib file in the target directory
 
     @override
-    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> int:
+    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> str:
         if additional_build_args is None:
             additional_build_args = []
 
@@ -104,7 +104,7 @@ class BaristaBenchmark(Benchmark):
         with open(self.get_log_path(compiler, optimization_level), "w") as f:
             f.write(output)
 
-        return 0
+        return output
 
     @override
     def _get_run_command(self, additional_args: list[str] = []) -> list[str]:

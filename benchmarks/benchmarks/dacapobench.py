@@ -48,7 +48,7 @@ class DacapoBenchmark(Benchmark):
         ], stderr = subprocess.STDOUT, stdout = subprocess.DEVNULL, cwd = self.context_path.as_posix())
 
     @override
-    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> int:
+    def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> str:
         if additional_build_args is None:
             additional_build_args = []
 
@@ -60,23 +60,32 @@ class DacapoBenchmark(Benchmark):
             *self.native_image_args,
             *additional_build_args,
             "-jar", self.jar_path.as_posix(),
-            "-march=native",
             # Temp:
+            # "-march=native", 
             # "-g"
             # "-H:+TraceInlineDuringParsing",
             # "-H:+TraceInlining",
-            # "-H:NumberOfThreads=1"
+            "-H:NumberOfThreads=4"
         ]
         print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
-        out = subprocess.check_output(command, stderr = subprocess.STDOUT, cwd = self.context_path.absolute().as_posix())
+
+        out = subprocess.check_output(
+            [x for x in command if x],
+            stderr = subprocess.STDOUT,
+            cwd = self.context_path.absolute().as_posix(),
+            timeout = 5 * 60
+        )
 
         with open(self.get_log_path(compiler, optimization_level), "wb") as f:
             f.write(out)
 
-        return 0
+        return str(out)
 
     @override
-    def _get_run_command(self, additional_args: list[str] = []) -> list[str]:
+    def _get_run_command(self, additional_args: list[str] | None = None) -> list[str]:
+        if additional_args is None:
+            additional_args = []
+
         return [
             self.binary_path.absolute().as_posix(),
             *self.benchmark_runner_args,
@@ -88,10 +97,12 @@ class DacapoBenchmark(Benchmark):
 @dataclass
 class FopBenchmark(DacapoBenchmark):
     def __post_init__(self):
+        super().__post_init__()
+
         self.config_dir.mkdir(parents = True, exist_ok = True)
 
         fop_config = self.config_dir / "empty"
-        subprocess.call(["touch", fop_config.as_posix()])
+        fop_config.touch()
 
         self.native_image_args.extend([
             f"-Djava.util.logging.config.file={fop_config.as_posix()}"

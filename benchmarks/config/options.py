@@ -19,6 +19,8 @@ class ConfigOptions:
     results_output_dir_base_path: Path = field(default=Path("results"))
     n_runs: int | None = field(default=None)
     use_dumped_profiling_data: bool = field(default=False)
+    n_compilations: int = field(default=1)
+    show_compilation_times: bool = field(default=False)
 
     @property
     def results_output_dir_path(self) -> Path:

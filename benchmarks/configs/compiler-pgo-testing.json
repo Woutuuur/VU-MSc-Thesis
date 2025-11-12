@@ -1,0 +1,24 @@
+{
+  "benchmarks": [
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "pmd"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      "CUSTOM_FULL_COMPILER_PROFILING",
+      "CUSTOM_FULL_COMPILER_PGO",
+      "CUSTOM_PGO_FULL_O3"
+    ]
+  },
+  "options": {
+    "skip_profiling": true,
+    "skip_agent": true,
+    "use_dumped_profiling_data": true,
+    "n_compilations": 5,
+    "n_runs": 0,
+    "show_compilation_times": true
+  }
+}

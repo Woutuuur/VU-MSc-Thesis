@@ -16,6 +16,7 @@ class Config:
     benchmarks: list[str] = field(default_factory=list)
     optimization_levels_by_compiler: dict[Compiler, list[OptimizationLevel]] = field(default_factory=dict)
 
+    # [TODO] Kinda hacky
     def __post_init__(self):
         if isinstance(self.options, dict):
             self.options = ConfigOptions(**self.options)
