@@ -1,0 +1,32 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      "O0",
+      "O2",
+      "O3",
+      "SIZE"
+    ]
+  },
+  "options": {
+    "skip_profiling": true,
+    "skip_agent": true,
+    "use_dumped_profiling_data": true,
+    "n_compilations": 5,
+    "show_compilation_times": true
+  }
+}
