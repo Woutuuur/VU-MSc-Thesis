@@ -1,0 +1,26 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": ["CUSTOM_PGO_O3"]
+  },
+  "options": {
+    "skip_agent": true,
+    "dump_profiling_data": true,
+    "skip_run": true,
+    "skip_pgo_build": true
+  }
+}
