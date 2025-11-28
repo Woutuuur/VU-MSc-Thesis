@@ -14,4 +14,4 @@ svm_err_*.md
 *.txt
 gdb-debughelpers.py
 *.iml
-results/*/binaries
+results/**/binaries
