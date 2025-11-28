@@ -1,5 +1,31 @@
+from dataclasses import dataclass, field
 from enum import Enum
+from typing import TypedDict
 
+class OptimizationLevelConfig(TypedDict):
+    label: str
+    build_flags: list[str]
+    load_dumped_prof_file: bool
+    load_dumped_skippable_phases_file: bool
+
+@dataclass(frozen=True)
+class CustomOptimizationLevel:
+    label: str = field(default="")
+    build_flags: tuple[str, ...] = field(default_factory=tuple)
+    load_dumped_prof_file: bool = field(default=False)
+    load_dumped_skippable_phases_file: bool = field(default=False)
+
+    @classmethod
+    def from_optimization_level_config(cls, config: OptimizationLevelConfig) -> "CustomOptimizationLevel":
+        load_dumped_prof_file = config.get("load_dumped_prof_file", False)
+        load_dumped_skippable_phases_file = config.get("load_dumped_skippable_phases_file", False)
+
+        return cls(
+            config["label"],
+            tuple(config["build_flags"]),
+            load_dumped_prof_file,
+            load_dumped_skippable_phases_file
+        )
 
 class OptimizationLevel(Enum):
     O0 = "-O0"
@@ -8,6 +34,9 @@ class OptimizationLevel(Enum):
     O3 = "-O3"
     SIZE = "-Os"
     BUILD_TIME = "-Ob"
+
+    INVOKE_PROFILING = "Invokes profiling"
+    COMPILER_PROFILING = "Phase profiling"
 
     PGO = "--pgo"
     CUSTOM_PGO = "--custom-pgo -O0"
@@ -22,5 +51,6 @@ class OptimizationLevel(Enum):
 
     NONE = ""
 
-
-# build-aot && mx -p /workspace/graal/substratevm native-image  -H:+PlatformInterfaceCompatibilityMode -H:ConfigurationFileDirectories=/data/dacapobench/avrora-config -H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/avrora-custom_open.json -J-DdisableVirtualInvokeProfilingPhase=true -J-DcombinedInlining=true -O3 -jar /data/dacapobench/dacapo-23.11-MR2-chopin/launchers/avrora.jar -march=native --debug-attach
+    @property
+    def label(self) -> str:
+        return self.value

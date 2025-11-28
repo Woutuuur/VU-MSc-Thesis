@@ -6,6 +6,7 @@ from pathlib import Path
 @dataclass
 class ConfigOptions:
     dump_profiling_data: bool = field(default=False)
+    dump_skippable_phases: bool = field(default=False)
     skip_agent: bool = field(default=False)
     skip_run: bool = field(default=False)
     skip_profiling: bool = field(default=False)

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from benchmarks.benchmark import Benchmark
 from benchmarks.compiler import Compiler
 from benchmarks.job import BenchmarkJob
-from benchmarks.optimization_level import OptimizationLevel
+from benchmarks.optimization_level import CustomOptimizationLevel, OptimizationLevel
 from config.options import ConfigOptions
 
 
@@ -14,7 +14,7 @@ from config.options import ConfigOptions
 class Config:
     options: ConfigOptions = field(default_factory=ConfigOptions)
     benchmarks: list[str] = field(default_factory=list)
-    optimization_levels_by_compiler: dict[Compiler, list[OptimizationLevel]] = field(default_factory=dict)
+    optimization_levels_by_compiler: dict[Compiler, list[OptimizationLevel | CustomOptimizationLevel]] = field(default_factory=dict)
 
     # [TODO] Kinda hacky
     def __post_init__(self):

@@ -1,3 +1,4 @@
+from calendar import c
 import json
 import subprocess
 from abc import ABC, abstractmethod
@@ -8,7 +9,7 @@ from typing_extensions import override
 from util.color import ANSIColorCode as C
 from benchmarks.compiler import Compiler
 from config.options import ConfigOptions
-from benchmarks.optimization_level import OptimizationLevel
+from benchmarks.optimization_level import CustomOptimizationLevel, OptimizationLevel
 import shutil
 
 
@@ -49,8 +50,8 @@ class Benchmark(ABC):
     def log_dir(self) -> Path:
         return self.options.results_output_dir_path / "logs"
 
-    def get_log_path(self, compiler: Compiler, optimization_level: OptimizationLevel) -> Path:
-        return self.log_dir / f"{self.name}|{compiler.value}|{optimization_level.value}.log"
+    def get_log_path(self, compiler: Compiler, optimization_level: OptimizationLevel | CustomOptimizationLevel) -> Path:
+        return self.log_dir / f"{self.name}|{compiler.value}|{optimization_level.label}.log"
 
     def __post_init__(self):
         self.log_dir.mkdir(exist_ok = True)
@@ -102,16 +103,22 @@ class Benchmark(ABC):
     def build_native_image(self, compiler: Compiler, optimization_level: OptimizationLevel = OptimizationLevel.O3, additional_build_args: list[str] | None = None) -> str:
         pass
 
+    def get_prof_file_path(self, compiler: Compiler):
+        return (self.context_path / f"{self.name}.iprof").as_posix() if compiler == Compiler.CLOSED else (self.context_path / "profiler-data.json").as_posix()
+
+    def get_dumped_prof_file_path(self, compiler: Compiler):
+        return self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
+
     def build_pgo_optimized_binary(self, compiler: Compiler, additional_build_args: list[str] = []) -> str:
         assert compiler in (Compiler.CLOSED, Compiler.CUSTOM_OPEN), "PGO optimization is only supported for CLOSED and CUSTOM_OPEN compilers."
 
-        prof_file_path = (self.context_path / f"{self.name}.iprof").as_posix() if compiler == Compiler.CLOSED else (self.context_path / f"profiler-data.json").as_posix()
-        profiling_binary_optimization_level = OptimizationLevel.NONE if compiler == Compiler.CLOSED else OptimizationLevel.O0
+        prof_file_path = self.get_prof_file_path(compiler)
+        profiling_binary_optimization_level = OptimizationLevel.NONE if compiler == Compiler.CLOSED else OptimizationLevel.O3
 
         if not self.options.skip_profiling:
             # 1. Create instrumented binary
             if not self.options.skip_profiling_build:
-                instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else []
+                instrumentation_args = ["--pgo-instrument"] if compiler == Compiler.CLOSED else ["-J-DenableInvokeProfilingPhase=true"]
                 self.build_native_image(compiler, profiling_binary_optimization_level, instrumentation_args)
 
             if not self.options.skip_profiling_run:
@@ -120,7 +127,7 @@ class Benchmark(ABC):
                 run_args = [f"-XX:ProfilesDumpFile={prof_file_path}"] if compiler == Compiler.CLOSED else []
                 self.run(log = True, additional_args = run_args)
 
-        logged_prof_file_path = self.options.profiling_data_output_dir_path / f"{self.name}-{compiler.value}.json"
+        logged_prof_file_path = self.get_dumped_prof_file_path(compiler)
 
         if self.options.dump_profiling_data:
             prof_file_path = Path(prof_file_path)
@@ -135,7 +142,7 @@ class Benchmark(ABC):
 
         if not self.options.skip_pgo_build:
             # 3. Build the optimized binary using the collected profiling data
-            optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DdisableVirtualInvokeProfilingPhase=true"]
+            optimized_binary_args = [f"--pgo={prof_file_path}"] if compiler == Compiler.CLOSED else [f"-H:ProfileDataDumpFileName={prof_file_path}", "-J-DenablePGODirectInvokeInlining=true"]
             return self.build_native_image(compiler, OptimizationLevel.NONE, optimized_binary_args + additional_build_args)
 
         return ""
