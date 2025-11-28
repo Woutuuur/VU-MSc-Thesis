@@ -1,0 +1,44 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      {
+        "label": "IC O3",
+        "build_flags": ["-O3", "-J-DenableInlineCachePhase=true"],
+        "load_dumped_prof_file": true
+      },
+      {
+        "label": "DII O3 combined",
+        "build_flags": ["-O3", "-J-DenablePGODirectInvokeInlining=true", "-J-DcombinedInlining=true"],
+        "load_dumped_prof_file": true
+      },
+      {
+        "label": "IC + DII O3 combined",
+        "build_flags": ["-O3", "-J-DenableInlineCachePhase=true", "-J-DenablePGODirectInvokeInlining=true", "-J-DcombinedInlining=true"],
+        "load_dumped_prof_file": true
+      },
+      "O3"
+    ]
+  },
+  "options": {
+    "skip_profiling": true,
+    "skip_agent": true,
+    "use_dumped_profiling_data": true,
+    "n_compilations": 5,
+    "show_compilation_times": true
+  }
+}
