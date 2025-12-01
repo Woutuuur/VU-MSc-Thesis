@@ -20,6 +20,11 @@
         "label": "IC + DII O0 combined",
         "build_flags": ["-O0", "-J-DenableInlineCachePhase=true", "-J-DenablePGODirectInvokeInlining=true", "-J-DcombinedInlining=true", "-Xmx32g"],
         "load_dumped_prof_file": true
+      },
+      {
+        "label": "IC + DII O3 combined",
+        "build_flags": ["-O3", "-J-DenableInlineCachePhase=true", "-J-DenablePGODirectInvokeInlining=true", "-J-DcombinedInlining=true", "-Xmx32g"],
+        "load_dumped_prof_file": true
       }
     ]
   },
