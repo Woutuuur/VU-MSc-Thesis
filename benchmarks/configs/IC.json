@@ -25,7 +25,10 @@
         "label": "IC O3",
         "build_flags": ["-O3", "-J-DenableInlineCachePhase=true"],
         "load_dumped_prof_file": true
-      }
+      },
+      "O0",
+      "O3",
+      "SIZE"
     ]
   },
   "options": {
