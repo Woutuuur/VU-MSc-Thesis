@@ -17,13 +17,8 @@
   "optimization_levels_by_compiler": {
     "CUSTOM_OPEN": [
       {
-        "label": "IC O0",
-        "build_flags": ["-O0", "-J-DenableInlineCachePhase=true"],
-        "load_dumped_prof_file": true
-      },
-      {
-        "label": "IC O3",
-        "build_flags": ["-O3", "-J-DenableInlineCachePhase=true"],
+        "label": "IC + DII O0 combined",
+        "build_flags": ["-O0", "-J-DenableInlineCachePhase=true", "-J-DenablePGODirectInvokeInlining=true", "-J-DcombinedInlining=true", "-Xmx32g"],
         "load_dumped_prof_file": true
       }
     ]
