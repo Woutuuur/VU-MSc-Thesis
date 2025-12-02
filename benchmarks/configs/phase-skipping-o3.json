@@ -1,0 +1,34 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      "O3",
+      {
+        "label": "Phase skipping O3",
+        "build_flags": ["-O3", "-J-DuseCompilerPGO=true"],
+        "load_dumped_skippable_phases_file": true
+      }
+    ]
+  },
+  "options": {
+    "skip_profiling": true,
+    "skip_agent": true,
+    "n_compilations": 5,
+    "show_compilation_times": true,
+    "n_runs": 1
+  }
+}

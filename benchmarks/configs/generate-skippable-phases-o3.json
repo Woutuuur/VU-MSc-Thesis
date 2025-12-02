@@ -1,0 +1,30 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      {
+        "label": "Phase profiler O3",
+        "build_flags": ["-O3", "-J-DprofileCompiler=true"]
+      }
+    ]
+  },
+  "options": {
+    "skip_agent": true,
+    "dump_skippable_phases": true,
+    "skip_run": true
+  }
+}
