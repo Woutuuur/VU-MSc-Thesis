@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 Below we detail which commands were used to obtain the data for every figure and table in the thesis. Plots are written as svg files to [results/plots](results/plots).
 
-The scripts are located in the [analysis-scripts](analysis-scripts) directory. Scripts that were used throughout the study for preliminary analysis but were not used to create the final data in the paper are included in [analysis-scripts/misc](analysis-scripts/misc).
+The scripts are located in the [analysis_scripts](analysis_scripts) directory. Scripts that were used throughout the study for preliminary analysis but were not used to create the final data in the paper are included in [analysis_scripts/misc](analysis_scripts/misc).
 
 ### DII
 
