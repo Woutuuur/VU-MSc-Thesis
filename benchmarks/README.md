@@ -1,4 +1,4 @@
-# Profile-Guided Optimizations in AOT Java compilation
+# Experiment runner suite
 
 ## Setup
 
