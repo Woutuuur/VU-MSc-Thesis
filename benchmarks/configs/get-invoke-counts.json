@@ -1,0 +1,33 @@
+{
+  "benchmarks": [
+    "avrora",
+    "batik",
+    "biojava",
+    "graphchi",
+    "h2",
+    "sunflow",
+    "lusearch",
+    "luindex",
+    "pmd",
+    "xalan",
+    "micronaut-shopcart",
+    "micronaut-hello-world",
+    "micronaut-similarity"
+  ],
+  "optimization_levels_by_compiler": {
+    "CUSTOM_OPEN": [
+      {
+        "label": ".count",
+        "build_flags": ["-Ob", "-J-DenablePGODirectInvokeInlining=true"],
+        "load_dumped_prof_file": true
+      }
+    ]
+  },
+  "options": {
+    "skip_profiling": true,
+    "skip_agent": true,
+    "n_compilations": 1,
+    "skip_run": true,
+    "show_compilation_times": true
+  }
+}
