@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ## Data analysis and plot generation
 
-Below we detail which commands were used to obtain the data for every figure and table in the thesis. Plots are written as svg files to [results/plots](results/plots).
+Below we detail which commands were used to obtain the data for every figure and table in the thesis. Plots are written as svg files to [results/plots](results/plots) and in come case additionally write to the standard output for quick manual analysis used for quantitative commenting on the figures in the paper.
 
 The scripts are located in the [analysis_scripts](analysis_scripts) directory. Scripts that were used throughout the study for preliminary analysis but were not used to create the final data in the paper are included in [analysis_scripts/misc](analysis_scripts/misc).
 
