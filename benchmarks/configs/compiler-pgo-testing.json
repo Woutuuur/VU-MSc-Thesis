@@ -10,6 +10,9 @@
     "CUSTOM_OPEN": [
       "CUSTOM_FULL_COMPILER_PROFILING",
       "CUSTOM_FULL_COMPILER_PGO",
+      "O3",
+      "CUSTOM_FULL_FULL_PROFILING",
+      "CUSTOM_FULL_FULL",
       "CUSTOM_PGO_FULL_O3"
     ]
   },
@@ -18,7 +21,7 @@
     "skip_agent": true,
     "use_dumped_profiling_data": true,
     "n_compilations": 5,
-    "n_runs": 0,
+    "n_runs": 5,
     "show_compilation_times": true
   }
 }
