@@ -2,12 +2,14 @@
 
 ## Setup
 
+The setup from the [top-level README](../README.md) is a prerequisite for the benchmark runner and experiment execution setup, so ensure your setup is complete before continuing.
+
 **Important:** some parts of the benchmark runner suite assume file paths specific to the devcontainer setup used during development. **To setup the project with the devcontainer please refer to the [general README](../README.md).** Otherwise, several modifications must be made:
 
 - The implemented benchmarks suites - DaCapo and Barista - are by default expected to be available at `/data/dacapobench` and `/data/baristabench`. See the [devcontainer configuration](../.devcontainer/Dockerfile#L49-L66) for installation instructions. Either place the suites at their respective `/data` directories or add the `"context_path"` property to every benchmark configuration in [configs/benchmarks.json]() (note the `type`).
 - The graal open source compiler location needs to be properly configured. By default the suite expects graal to be at `/workspace/graal/`. Change the compiler location in [benchmarks/compiler.py]() if this does not match your setup.
 
-Create and activate the environment and install dependencies:
+Then, create and activate the environment and install dependencies:
 
 ```bash
 python3 -m venv .venv
