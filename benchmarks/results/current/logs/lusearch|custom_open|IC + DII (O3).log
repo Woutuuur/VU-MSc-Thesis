@@ -1,0 +1,374 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/lusearch-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'lusearch' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/lusearch-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 2962 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/lusearch-custom_open.json
+Using top 1185 call sites for PGO based inlining
+Out of which 288 are indirect call sites and 897 are direct call sites
+Representing 5801615644 and 7095990320 calls respectively (44.98211265093352% indirect)
+
+{org.apache.lucene.analysis.ReusableStringReader=public void org.apache.lucene.analysis.ReusableStringReader.close(), org.apache.lucene.analysis.Tokenizer$1=public void org.apache.lucene.analysis.Tokenizer$1.close()}
+{org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector$1=public void org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector$1.setScorer(org.apache.lucene.search.Scorable) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{sun.nio.cs.UTF_8=public java.nio.charset.CharsetDecoder sun.nio.cs.UTF_8.newDecoder()}
+{org.apache.lucene.search.TermQuery$TermWeight=public org.apache.lucene.search.Scorer org.apache.lucene.search.TermQuery$TermWeight.scorer(org.apache.lucene.index.LeafReaderContext) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{}
+{java.io.BufferedWriter=public void java.io.BufferedWriter.write(java.lang.String,int,int) throws java.io.IOException, java.io.OutputStreamWriter=public void java.io.OutputStreamWriter.write(java.lang.String,int,int) throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public org.apache.lucene.index.Impacts org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.getImpacts() throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public long org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.totalTermFreq() throws java.io.IOException}
+{java.lang.String=public int java.lang.String.compareTo(java.lang.Object)}
+{org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer=public float org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer.score(float,long)}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{}
+{org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector$1=public void org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector$1.collect(int) throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1=public int org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1.getDocIdUpTo(int)}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.docID(), org.apache.lucene.search.ImpactsDISI=public int org.apache.lucene.search.ImpactsDISI.docID()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.ByteArrayDataInput=public byte org.apache.lucene.store.ByteArrayDataInput.readByte(), org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public org.apache.lucene.index.TermState org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.termState() throws java.io.IOException}
+{com.oracle.svm.core.util.Utf8$WrappedAsciiCString=public int com.oracle.svm.core.util.Utf8$WrappedAsciiCString.length()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$2=void org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$2.read(org.apache.lucene.store.DataInput,byte[],int) throws java.io.IOException, org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$3=void org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$3.read(org.apache.lucene.store.DataInput,byte[],int) throws java.io.IOException, org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$1=void org.apache.lucene.codecs.lucene90.blocktree.CompressionAlgorithm$1.read(org.apache.lucene.store.DataInput,byte[],int) throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public byte org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.readByte(long) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{java.lang.invoke.DirectMethodHandle=java.lang.invoke.MemberName java.lang.invoke.DirectMethodHandle.internalMemberName()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public short org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.readShort(long) throws java.io.IOException}
+{}
+{java.nio.DirectByteBufferR=java.lang.Object java.nio.DirectByteBufferR.base()}
+{java.io.PrintStream=public void java.io.PrintStream.flush()}
+{org.apache.lucene.codecs.lucene90.LZ4WithPresetDictCompressionMode$LZ4WithPresetDictDecompressor=public void org.apache.lucene.codecs.lucene90.LZ4WithPresetDictCompressionMode$LZ4WithPresetDictDecompressor.decompress(org.apache.lucene.store.DataInput,int,int,int,org.apache.lucene.util.BytesRef) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{org.apache.lucene.store.ByteArrayDataInput=public long org.apache.lucene.store.ByteArrayDataInput.readVLong()}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.nextDoc() throws java.io.IOException, org.apache.lucene.search.ImpactsDISI=public int org.apache.lucene.search.ImpactsDISI.nextDoc() throws java.io.IOException}
+{}
+{org.apache.lucene.analysis.standard.StandardTokenizer=public void org.apache.lucene.analysis.standard.StandardTokenizer.close() throws java.io.IOException}
+{}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{org.apache.lucene.search.TermScorer=public void org.apache.lucene.search.TermScorer.setMinCompetitiveScore(float)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{org.apache.lucene.analysis.ReusableStringReader=public int org.apache.lucene.analysis.ReusableStringReader.read(char[],int,int)}
+{}
+{org.apache.lucene.search.HitQueue=protected boolean org.apache.lucene.search.HitQueue.lessThan(java.lang.Object,java.lang.Object)}
+{}
+{org.apache.lucene.search.TermScorer=public float org.apache.lucene.search.TermScorer.score() throws java.io.IOException}
+{org.apache.lucene.analysis.standard.StandardTokenizer=public final void org.apache.lucene.analysis.standard.StandardTokenizer.end() throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.index.SlowImpactsEnum=public int org.apache.lucene.index.SlowImpactsEnum.advance(int) throws java.io.IOException, org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.advance(int) throws java.io.IOException}
+{java.lang.String=public int java.lang.String.length()}
+{}
+{java.lang.CharacterDataLatin1=boolean java.lang.CharacterDataLatin1.isJavaIdentifierStart(int)}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.clone()}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.FieldReader=public org.apache.lucene.index.TermsEnum org.apache.lucene.codecs.lucene90.blocktree.FieldReader.iterator() throws java.io.IOException}
+{java.io.ByteArrayInputStream=public synchronized int java.io.ByteArrayInputStream.read(byte[],int,int), java.io.FileInputStream=public int java.io.FileInputStream.read(byte[],int,int) throws java.io.IOException}
+{}
+{java.lang.CharacterDataLatin1=int java.lang.CharacterDataLatin1.digit(int,int)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.skipBytes(long)}
+{org.apache.lucene.search.BoostAttributeImpl=public void org.apache.lucene.search.BoostAttributeImpl.clear()}
+{org.apache.lucene.codecs.lucene90.blocktree.FieldReader=public long org.apache.lucene.codecs.lucene90.blocktree.FieldReader.getSumTotalTermFreq()}
+{org.apache.lucene.search.TermScorer=public org.apache.lucene.search.DocIdSetIterator org.apache.lucene.search.TermScorer.iterator()}
+{java.nio.DirectByteBufferR=public java.nio.ByteBuffer java.nio.DirectByteBufferR.duplicate()}
+{}
+{com.oracle.svm.core.util.Utf8$WrappedAsciiCString=public char com.oracle.svm.core.util.Utf8$WrappedAsciiCString.charAt(int)}
+{}
+{}
+{java.lang.String=public int java.lang.String.compareTo(java.lang.Object)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public void org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.seekExact(org.apache.lucene.util.BytesRef,org.apache.lucene.index.TermState)}
+{java.io.InputStreamReader=public int java.io.InputStreamReader.read(char[],int,int) throws java.io.IOException}
+{sun.nio.cs.UTF_8$Encoder=public boolean sun.nio.cs.UTF_8$Encoder.isLegalReplacement(byte[])}
+{}
+{org.apache.lucene.util.packed.DirectReader$DirectPackedReader16=public long org.apache.lucene.util.packed.DirectReader$DirectPackedReader16.get(long), org.apache.lucene.util.packed.DirectReader$DirectPackedReader12=public long org.apache.lucene.util.packed.DirectReader$DirectPackedReader12.get(long)}
+{org.apache.lucene.store.ByteArrayDataInput=public void org.apache.lucene.store.ByteArrayDataInput.readBytes(byte[],int,int), org.apache.lucene.store.BufferedChecksumIndexInput=public void org.apache.lucene.store.BufferedChecksumIndexInput.readBytes(byte[],int,int) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public byte org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.readByte(long) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{java.io.PrintStream=public void java.io.PrintStream.write(byte[],int,int), java.io.FileOutputStream=public void java.io.FileOutputStream.write(byte[],int,int) throws java.io.IOException}
+{}
+{java.nio.DirectByteBufferR=public java.nio.LongBuffer java.nio.DirectByteBufferR.asLongBuffer()}
+{java.io.PrintStream=public void java.io.PrintStream.write(int)}
+{}
+{java.lang.String=public int java.lang.String.compareTo(java.lang.Object)}
+{org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl=public void org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl.clear(), org.apache.lucene.search.BoostAttributeImpl=public void org.apache.lucene.search.BoostAttributeImpl.clear()}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.nextDoc() throws java.io.IOException, org.apache.lucene.search.ImpactsDISI=public int org.apache.lucene.search.ImpactsDISI.nextDoc() throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{java.io.FileOutputStream=public void java.io.FileOutputStream.close() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public org.apache.lucene.index.ImpactsEnum org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.impacts(int) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.ByteArrayDataInput=public byte org.apache.lucene.store.ByteArrayDataInput.readByte(), org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{}
+{java.nio.DirectByteBufferR=public java.nio.ByteBuffer java.nio.DirectByteBufferR.slice()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.clone()}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader=protected void org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader.readImpacts(int,org.apache.lucene.store.IndexInput) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public byte org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.readByte(long) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{}
+{}
+{org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.skipBytes(long)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public short org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.readShort(long) throws java.io.IOException}
+{}
+{java.lang.CharacterDataLatin1=int java.lang.CharacterDataLatin1.toLowerCase(int)}
+{}
+{}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.freq() throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public org.apache.lucene.index.PostingsEnum org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.postings(org.apache.lucene.index.PostingsEnum,int) throws java.io.IOException}
+{}
+{org.apache.lucene.search.TermQuery=public java.lang.String org.apache.lucene.search.TermQuery.toString(java.lang.String)}
+{org.apache.lucene.util.AttributeSource$2=protected java.lang.Object org.apache.lucene.util.AttributeSource$2.computeValue(java.lang.Class), org.apache.lucene.util.VirtualMethod$1=protected java.lang.Object org.apache.lucene.util.VirtualMethod$1.computeValue(java.lang.Class), org.apache.lucene.util.AttributeFactory$DefaultAttributeFactory$1=protected java.lang.Object org.apache.lucene.util.AttributeFactory$DefaultAttributeFactory$1.computeValue(java.lang.Class)}
+{java.nio.DirectLongBufferRU=public java.nio.ByteOrder java.nio.DirectLongBufferRU.order()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.clone()}
+{java.nio.DirectByteBufferR=public java.nio.ByteBuffer java.nio.DirectByteBufferR.duplicate()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{java.io.ByteArrayInputStream=public synchronized int java.io.ByteArrayInputStream.available(), java.io.FileInputStream=public int java.io.FileInputStream.available() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.compressing.Lucene90CompressingStoredFieldsReader=public void org.apache.lucene.codecs.lucene90.compressing.Lucene90CompressingStoredFieldsReader.document(int,org.apache.lucene.index.StoredFieldVisitor) throws java.io.IOException}
+{}
+{java.lang.Float=public float java.lang.Float.floatValue()}
+{}
+{java.io.InputStreamReader=public void java.io.InputStreamReader.close() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.blocktree.FieldReader=public org.apache.lucene.index.TermsEnum org.apache.lucene.codecs.lucene90.blocktree.FieldReader.iterator() throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.slice(java.lang.String,long,long) throws java.io.IOException}
+{org.apache.lucene.index.SegmentCoreReaders$1=protected java.lang.Object org.apache.lucene.index.SegmentCoreReaders$1.initialValue(), org.apache.lucene.util.CloseableThreadLocal=protected java.lang.Object org.apache.lucene.util.CloseableThreadLocal.initialValue()}
+{org.apache.lucene.codecs.lucene90.blocktree.Lucene90BlockTreeTermsReader=public org.apache.lucene.index.Terms org.apache.lucene.codecs.lucene90.blocktree.Lucene90BlockTreeTermsReader.terms(java.lang.String) throws java.io.IOException}
+{java.io.ByteArrayInputStream=public void java.io.ByteArrayInputStream.close() throws java.io.IOException, java.io.FileInputStream=public void java.io.FileInputStream.close() throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{org.apache.lucene.index.SlowImpactsEnum=public int org.apache.lucene.index.SlowImpactsEnum.docID(), org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.docID()}
+{java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.write(byte[],int,int) throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.docID()}
+{org.apache.lucene.search.HitQueue=protected boolean org.apache.lucene.search.HitQueue.lessThan(java.lang.Object,java.lang.Object)}
+{java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.write(int) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.readBytes(byte[],int,int) throws java.io.IOException, org.apache.lucene.util.fst.ReverseBytesReader=public void org.apache.lucene.util.fst.ReverseBytesReader.readBytes(byte[],int,int)}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{java.lang.StringBuilder=public int java.lang.StringBuilder.length()}
+{}
+{}
+{}
+{}
+{}
+{org.apache.lucene.analysis.standard.StandardTokenizer=public final boolean org.apache.lucene.analysis.standard.StandardTokenizer.incrementToken() throws java.io.IOException}
+{}
+{org.apache.lucene.index.SlowImpactsEnum=public int org.apache.lucene.index.SlowImpactsEnum.docID(), org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.docID()}
+{com.oracle.svm.core.util.Utf8$WrappedAsciiCString=public int com.oracle.svm.core.util.Utf8$WrappedAsciiCString.length()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.blocktree.FieldReader=public long org.apache.lucene.codecs.lucene90.blocktree.FieldReader.getSumDocFreq()}
+{}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1=public java.util.List org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1.getImpacts(int)}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public org.apache.lucene.index.Impacts org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.getImpacts() throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90NormsProducer=public org.apache.lucene.index.NumericDocValues org.apache.lucene.codecs.lucene90.Lucene90NormsProducer.getNorms(org.apache.lucene.index.FieldInfo) throws java.io.IOException}
+{}
+{}
+{}
+{sun.nio.cs.UTF_8$Encoder=protected final java.nio.charset.CoderResult sun.nio.cs.UTF_8$Encoder.encodeLoop(java.nio.CharBuffer,java.nio.ByteBuffer)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1=public int org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1.getDocIdUpTo(int)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{org.apache.lucene.search.HitsThresholdChecker$LocalHitsThresholdChecker=boolean org.apache.lucene.search.HitsThresholdChecker$LocalHitsThresholdChecker.isThresholdReached(), org.apache.lucene.search.HitsThresholdChecker$1=boolean org.apache.lucene.search.HitsThresholdChecker$1.isThresholdReached()}
+{org.apache.lucene.index.SlowImpactsEnum=public int org.apache.lucene.index.SlowImpactsEnum.freq() throws java.io.IOException, org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.freq() throws java.io.IOException, org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.freq() throws java.io.IOException}
+{java.io.BufferedWriter=public void java.io.BufferedWriter.close() throws java.io.IOException}
+{org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector=public org.apache.lucene.search.LeafCollector org.apache.lucene.search.TopScoreDocCollector$SimpleTopScoreDocCollector.getLeafCollector(org.apache.lucene.index.LeafReaderContext) throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.index.SlowImpactsEnum=public int org.apache.lucene.index.SlowImpactsEnum.docID(), org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.docID(), org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.docID()}
+{java.lang.CharacterDataLatin1=boolean java.lang.CharacterDataLatin1.isWhitespace(int)}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public int org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.docFreq() throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public void org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.advanceShallow(int) throws java.io.IOException}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{java.lang.reflect.Method=public java.lang.String java.lang.reflect.Method.getName()}
+{org.apache.lucene.search.HitQueue=protected boolean org.apache.lucene.search.HitQueue.lessThan(java.lang.Object,java.lang.Object)}
+{java.lang.reflect.Constructor=public int java.lang.reflect.Constructor.getModifiers(), java.lang.reflect.Method=public int java.lang.reflect.Method.getModifiers()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{org.apache.lucene.search.HitsThresholdChecker$1=org.apache.lucene.search.ScoreMode org.apache.lucene.search.HitsThresholdChecker$1.scoreMode()}
+{java.io.RandomAccessFile$1=public void java.io.RandomAccessFile$1.close() throws java.io.IOException, java.io.FileOutputStream$1=public void java.io.FileOutputStream$1.close() throws java.io.IOException, java.io.FileInputStream$1=public void java.io.FileInputStream$1.close() throws java.io.IOException}
+{sun.nio.cs.UTF_8$Decoder=protected java.nio.charset.CoderResult sun.nio.cs.UTF_8$Decoder.decodeLoop(java.nio.ByteBuffer,java.nio.CharBuffer)}
+{org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl=public org.apache.lucene.util.AttributeImpl org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl.clone()}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{org.dacapo.harness.TeeOutputStream=public void org.dacapo.harness.TeeOutputStream.flush() throws java.io.IOException, java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.flush() throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{org.apache.lucene.search.Weight$DefaultBulkScorer=public int org.apache.lucene.search.Weight$DefaultBulkScorer.score(org.apache.lucene.search.LeafCollector,org.apache.lucene.util.Bits,int,int) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{java.io.BufferedWriter=public void java.io.BufferedWriter.write(java.lang.String,int,int) throws java.io.IOException}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum=public boolean org.apache.lucene.codecs.lucene90.blocktree.SegmentTermsEnum.seekExact(org.apache.lucene.util.BytesRef) throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.codecs.lucene90.blocktree.FieldReader=public int org.apache.lucene.codecs.lucene90.blocktree.FieldReader.getDocCount()}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1=public int org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1.getDocIdUpTo(int)}
+{}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{org.apache.lucene.analysis.standard.StandardTokenizer=public void org.apache.lucene.analysis.standard.StandardTokenizer.reset() throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException, org.apache.lucene.util.fst.ReverseBytesReader=public byte org.apache.lucene.util.fst.ReverseBytesReader.readByte(), org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer=public float org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer.score(float,long)}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum=public org.apache.lucene.index.Impacts org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockImpactsDocsEnum.getImpacts() throws java.io.IOException}
+{}
+{org.apache.lucene.analysis.LowerCaseFilter=public final boolean org.apache.lucene.analysis.LowerCaseFilter.incrementToken() throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum=public int org.apache.lucene.codecs.lucene90.Lucene90PostingsReader$BlockDocsEnum.advance(int) throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.search.TermQuery=public org.apache.lucene.search.Weight org.apache.lucene.search.TermQuery.createWeight(org.apache.lucene.search.IndexSearcher,org.apache.lucene.search.ScoreMode,float) throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.clone()}
+{}
+{}
+{org.apache.lucene.store.BufferedChecksumIndexInput=public byte org.apache.lucene.store.BufferedChecksumIndexInput.readByte() throws java.io.IOException}
+{}
+{}
+{org.apache.lucene.store.ByteArrayDataInput=public int org.apache.lucene.store.ByteArrayDataInput.readVInt()}
+{}
+{}
+{org.apache.lucene.analysis.CharArrayMap$EmptyCharArrayMap=public boolean org.apache.lucene.analysis.CharArrayMap$EmptyCharArrayMap.containsKey(char[],int,int)}
+{org.apache.lucene.search.HitsThresholdChecker$LocalHitsThresholdChecker=void org.apache.lucene.search.HitsThresholdChecker$LocalHitsThresholdChecker.incrementHitCount(), org.apache.lucene.search.HitsThresholdChecker$1=void org.apache.lucene.search.HitsThresholdChecker$1.incrementHitCount()}
+{org.apache.lucene.codecs.lucene90.Lucene90NormsProducer$3=public long org.apache.lucene.codecs.lucene90.Lucene90NormsProducer$3.longValue() throws java.io.IOException}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public org.apache.lucene.store.IndexInput org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.clone()}
+{org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1=public int org.apache.lucene.codecs.lucene90.Lucene90ScoreSkipReader$1.numLevels()}
+{org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer=public float org.apache.lucene.search.similarities.BM25Similarity$BM25Scorer.score(float,long)}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public long org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.getFilePointer()}
+{}
+{}
+{org.apache.lucene.search.TermQuery=public void org.apache.lucene.search.TermQuery.visit(org.apache.lucene.search.QueryVisitor)}
+{org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl=public void org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl.copyTo(org.apache.lucene.util.AttributeImpl), org.apache.lucene.search.BoostAttributeImpl=public void org.apache.lucene.search.BoostAttributeImpl.copyTo(org.apache.lucene.util.AttributeImpl)}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public void org.apache.lucene.util.fst.ReverseRandomAccessReader.setPosition(long)}
+{java.nio.DirectLongBufferRU=java.lang.Object java.nio.DirectLongBufferRU.base()}
+{org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl=public void org.apache.lucene.analysis.tokenattributes.PackedTokenAttributeImpl.end()}
+{}
+{}
+{java.io.BufferedWriter=public void java.io.BufferedWriter.flush() throws java.io.IOException}
+{java.lang.reflect.Method=public java.lang.String java.lang.reflect.Method.getName()}
+{java.io.FileOutputStream=public void java.io.FileOutputStream.write(byte[],int,int) throws java.io.IOException}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public long org.apache.lucene.util.fst.ReverseRandomAccessReader.getPosition()}
+{}
+{org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl=public void org.apache.lucene.store.ByteBufferIndexInput$SingleBufferImpl.seek(long) throws java.io.IOException}
+{com.oracle.svm.core.jni.access.JNIReflectionDictionary$1=public boolean com.oracle.svm.core.jni.access.JNIReflectionDictionary$1.equals(java.lang.Object,java.lang.Object)}
+{org.apache.lucene.util.fst.ReverseRandomAccessReader=public byte org.apache.lucene.util.fst.ReverseRandomAccessReader.readByte() throws java.io.IOException}
+{sun.nio.cs.UTF_8=public java.nio.charset.CharsetEncoder sun.nio.cs.UTF_8.newEncoder()}
+{}
+{java.lang.CharacterDataLatin1=boolean java.lang.CharacterDataLatin1.isJavaIdentifierPart(int)}
+[1/8] Initializing...                                                                                    (2.8s @ 0.15GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 15.93GB of memory (26.4% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (8.7s @ 0.65GB)
+    6,332 reachable types   (79.0% of    8,012 total)
+    9,388 reachable fields  (50.9% of   18,438 total)
+   29,623 reachable methods (51.8% of   57,221 total)
+    2,206 types,    64 fields, and   562 methods registered for reflection
+       64 types,    75 fields, and    54 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.4s @ 0.77GB)
+[4/8] Parsing methods...      [*]                                                                        (0.7s @ 0.81GB)
+[5/8] Inlining methods...     [**]                                                                       (2.6s @ 0.84GB)
+[6/8] Compiling methods...    [***]                                                                      (7.4s @ 0.93GB)
+[7/8] Laying out methods...   [*]                                                                        (1.7s @ 0.80GB)
+[8/8] Creating image...       [*]                                                                        (1.5s @ 0.92GB)
+  11.04MB (37.25%) for code area:    24,851 compilation units
+  15.25MB (51.47%) for image heap:  187,774 objects and 67 resources
+   3.34MB (11.28%) for other data
+  29.63MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   5.35MB java.base                                            3.64MB byte[] for code metadata
+   2.66MB lucene-core-9.7.0-SNAPSHOT.jar                       2.31MB byte[] for java.lang.String
+   1.32MB svm.jar (Native Image)                               1.64MB java.lang.String
+ 503.80kB lucene-backward-codecs-9.7.0-SNAPSHOT.jar            1.49MB java.lang.Class
+ 322.76kB dacapo-23.11-MR2-chopin.jar                        666.98kB byte[] for general heap data
+ 149.30kB lucene-queryparser-9.7.0-SNAPSHOT.jar              544.16kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 138.05kB jdk.zipfs                                          451.21kB byte[] for reflection metadata
+ 124.21kB dacapo-lusearch.jar                                406.84kB java.lang.Object[]
+  82.95kB java.logging                                       333.56kB java.util.HashMap$Node
+  69.33kB jdk.charsets                                       327.22kB byte[] for embedded resources
+ 181.78kB for 15 more packages                                 3.50MB for 1545 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1410026, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/195 (0.00%)
+------------------------------------------------------------------------------------------------------------------------
+                        1.9s (7.0% of total time) in 480 GCs | Peak RSS: 1.89GB | CPU load: 5.88
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/lusearch (executable)
+========================================================================================================================
+Finished generating 'lusearch' in 27.5s.

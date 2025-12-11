@@ -1,0 +1,86 @@
+
+Native Image Bundles: Loaded Bundle from /data/baristabench/benchmarks/micronaut-hello-world/target/micronaut-hello-world-1.0.7.nib
+Native Image Bundles: Bundle created at 'Tuesday, September 9, 2025, 10:00:11 PM Coordinated Universal Time'
+Native Image Bundles: Using version: '24+36' != '24+36-jvmci-b01' (vendor 'Oracle Corporation' != 'GraalVM Community') on platform: 'linux-amd64'
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Native Image Bundles are an experimental feature.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'micronaut-hello-world' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = false
+combinedInlining = false
+ProfileDataDumpFileName = null
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+[1/8] Initializing...                                                                                    (1.9s @ 0.16GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 0, target machine: native
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 2 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+ - io.micronaut.core.io.service.ServiceLoaderFeature
+------------------------------------------------------------------------------------------------------------------------
+ 2 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 24.85GB of memory (41.1% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [******]                                                                   (9.1s @ 1.40GB)
+   14,021 reachable types   (88.3% of   15,880 total)
+   20,252 reachable fields  (53.0% of   38,183 total)
+   69,355 reachable methods (60.9% of  113,888 total)
+    4,720 types,   174 fields, and 1,306 methods registered for reflection
+       63 types,    62 fields, and    57 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (2.4s @ 1.50GB)
+[4/8] Parsing methods...      [*]                                                                        (1.4s @ 1.74GB)
+[5/8] Inlining methods...     [**]                                                                       (0.7s @ 1.85GB)
+[6/8] Compiling methods...    [***]                                                                     (10.6s @ 2.18GB)
+[7/8] Laying out methods...   [**]                                                                       (2.6s @ 2.64GB)
+[8/8] Creating image...       [**]                                                                       (2.2s @ 2.93GB)
+  26.63MB (39.51%) for code area:    61,386 compilation units
+  31.13MB (46.18%) for image heap:  334,717 objects and 349 resources
+   9.64MB (14.30%) for other data
+  67.39MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  10.94MB java.base                                            8.90MB byte[] for code metadata
+   9.27MB micronaut-hello-world-1.0.7.jar                      4.42MB byte[] for java.lang.String
+   2.53MB java.xml                                             4.01MB java.lang.Class
+   2.09MB svm.jar (Native Image)                               2.94MB java.lang.String
+ 285.33kB java.rmi                                             1.18MB com.oracle.svm.core.hub.DynamicHubCompanion
+ 226.37kB jdk.proxy4                                         875.23kB byte[] for reflection metadata
+ 179.76kB java.naming                                        835.00kB byte[] for general heap data
+ 178.31kB jdk.zipfs                                          596.11kB java.lang.String[]
+ 108.73kB jdk.naming.dns                                     531.41kB java.lang.Object[]
+ 101.10kB java.logging                                       514.02kB int[][]
+ 340.58kB for 19 more packages                                 6.40MB for 2991 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+Total skippable fingerprints recorded: 0
+Total phases ran: 3401043, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                       2.3s (7.2% of total time) in 1365 GCs | Peak RSS: 3.86GB | CPU load: 6.13
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /tmp/bundleRoot-16429146830447649914/output/default/micronaut-hello-world (executable)
+========================================================================================================================
+Finished generating 'micronaut-hello-world' in 31.8s.
+
+Native Image Bundles: Bundle build output written to /data/baristabench/benchmarks/micronaut-hello-world/target/micronaut-hello-world-1.0.7.output
+

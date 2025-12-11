@@ -1,0 +1,27 @@
+benchmark,optimization_level,result,binary_size,compiler
+avrora,O3,2068.0,25495840,CUSTOM_OPEN
+avrora,Phase skipping O3,2059.0,25495840,CUSTOM_OPEN
+batik,O3,1268.0,48367904,CUSTOM_OPEN
+batik,Phase skipping O3,1284.0,48367904,CUSTOM_OPEN
+biojava,O3,7908.0,44108064,CUSTOM_OPEN
+biojava,Phase skipping O3,7895.0,44108064,CUSTOM_OPEN
+graphchi,O3,5976.0,25495840,CUSTOM_OPEN
+graphchi,Phase skipping O3,5982.0,25495840,CUSTOM_OPEN
+h2,O3,24601.0,59443488,CUSTOM_OPEN
+h2,Phase skipping O3,26217.0,59443488,CUSTOM_OPEN
+sunflow,O3,18647.0,48105760,CUSTOM_OPEN
+sunflow,Phase skipping O3,19052.0,48105760,CUSTOM_OPEN
+lusearch,O3,3533.0,29362464,CUSTOM_OPEN
+lusearch,Phase skipping O3,3583.0,29362464,CUSTOM_OPEN
+luindex,O3,3320.0,31590688,CUSTOM_OPEN
+luindex,Phase skipping O3,3195.0,31590688,CUSTOM_OPEN
+pmd,O3,2439.0,58198304,CUSTOM_OPEN
+pmd,Phase skipping O3,2420.0,58198304,CUSTOM_OPEN
+xalan,O3,1409.0,39455008,CUSTOM_OPEN
+xalan,Phase skipping O3,1412.0,39455008,CUSTOM_OPEN
+micronaut-shopcart,O3,106881.83,73533728,CUSTOM_OPEN
+micronaut-shopcart,Phase skipping O3,98317.06,73533728,CUSTOM_OPEN
+micronaut-hello-world,O3,80188.03,66914592,CUSTOM_OPEN
+micronaut-hello-world,Phase skipping O3,79326.44,66914592,CUSTOM_OPEN
+micronaut-similarity,O3,8.83,66980128,CUSTOM_OPEN
+micronaut-similarity,Phase skipping O3,8.84,66980128,CUSTOM_OPEN

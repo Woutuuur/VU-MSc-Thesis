@@ -1,0 +1,89 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'h2' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = false
+combinedInlining = false
+ProfileDataDumpFileName = null
+useCompilerPGOData = true
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is enabled, compiler profiling is disabled
+Compiler PGO enabled, reading skippable phases from skippable_phases.txt
+Found 498903 skippable phases.
+[1/8] Initializing...                                                                                    (1.9s @ 0.23GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 2 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 14.14GB of memory (23.4% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (8.6s @ 1.20GB)
+   10,618 reachable types   (83.4% of   12,728 total)
+   19,764 reachable fields  (53.8% of   36,751 total)
+   59,561 reachable methods (58.4% of  102,033 total)
+    3,334 types,    34 fields, and   670 methods registered for reflection
+       62 types,    66 fields, and    55 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.7s @ 1.36GB)
+[4/8] Parsing methods...      [*]                                                                        (0.9s @ 1.52GB)
+[5/8] Inlining methods...     [***]                                                                      (1.2s @ 1.69GB)
+[6/8] Compiling methods...    [***]                                                                     (10.6s @ 1.46GB)
+[7/8] Laying out methods...   [**]                                                                       (2.1s @ 1.87GB)
+[8/8] Creating image...       [*]                                                                        (1.9s @ 1.30GB)
+  27.95MB (46.86%) for code area:    37,670 compilation units
+  26.25MB (44.01%) for image heap:  303,236 objects and 165 resources
+   5.45MB ( 9.14%) for other data
+  59.65MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  11.86MB java.base                                            7.01MB byte[] for code metadata
+   5.31MB h2-2.2.220.jar                                       3.88MB byte[] for java.lang.String
+   3.26MB java.xml                                             2.89MB java.lang.String
+   1.97MB java.desktop                                         2.64MB java.lang.Class
+   1.59MB svm.jar (Native Image)                             949.18kB byte[] for embedded resources
+   1.07MB derbyclient.jar                                    912.48kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 532.15kB java.security.jgss                                 836.02kB byte[] for general heap data
+ 376.69kB dacapo-23.11-MR2-chopin.jar                        668.98kB byte[] for reflection metadata
+ 319.29kB java.rmi                                           598.23kB java.lang.String[]
+ 217.09kB jdk.zipfs                                          513.05kB int[][]
+   1.22MB for 29 more packages                                 5.44MB for 2238 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ AWT:  Use the tracing agent to collect metadata for AWT.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 498903
+Total phases ran: 2216066, total phases skipped: 585392
+------------------------------------------------------------------------------------------------------------------------
+                       2.2s (7.3% of total time) in 1336 GCs | Peak RSS: 2.67GB | CPU load: 6.42
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/h2 (executable)
+ /data/dacapobench/libawt.so (jdk_library)
+ /data/dacapobench/libawt_headless.so (jdk_library)
+ /data/dacapobench/libawt_xawt.so (jdk_library)
+ /data/dacapobench/libfontmanager.so (jdk_library)
+ /data/dacapobench/libjava.so (jdk_library_shim)
+ /data/dacapobench/libjavajpeg.so (jdk_library)
+ /data/dacapobench/libjvm.so (jdk_library_shim)
+ /data/dacapobench/liblcms.so (jdk_library)
+========================================================================================================================
+Finished generating 'h2' in 30.1s.

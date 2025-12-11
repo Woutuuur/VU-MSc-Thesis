@@ -1,0 +1,95 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/pmd-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'pmd' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/pmd-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 16453 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/pmd-custom_open.json
+Using top 6581 call sites for PGO based inlining
+Out of which 1139 are indirect call sites and 5442 are direct call sites
+Representing 491260902 and 1180888685 calls respectively
+
+[1/8] Initializing...                                                                                    (3.6s @ 0.34GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 14.08GB of memory (23.3% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                   (27.8s @ 1.82GB)
+   10,956 reachable types   (83.9% of   13,058 total)
+   18,399 reachable fields  (49.9% of   36,867 total)
+   52,904 reachable methods (50.7% of  104,388 total)
+    5,120 types,   893 fields, and 1,861 methods registered for reflection
+       58 types,    59 fields, and    52 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (2.0s @ 1.94GB)
+[4/8] Parsing methods...      [*]                                                                        (1.4s @ 0.99GB)
+[5/8] Inlining methods...     [**]                                                                      (40.3s @ 1.53GB)
+[6/8] Compiling methods...    [****]                                                                    (18.5s @ 4.93GB)
+[7/8] Laying out methods...   [**]                                                                       (3.4s @ 5.35GB)
+[8/8] Creating image...       [**]                                                                       (2.3s @ 5.75GB)
+  28.75MB (42.78%) for code area:    42,144 compilation units
+  32.50MB (48.36%) for image heap:  312,818 objects and 681 resources
+   5.95MB ( 8.86%) for other data
+  67.20MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   6.40MB pmd-java-6.55.0.jar                                  9.58MB byte[] for code metadata
+   6.08MB saxon-9.1.0.8.jar                                    4.16MB byte[] for java.lang.String
+   5.47MB java.base                                            3.01MB java.lang.String
+   2.41MB java.xml                                             2.81MB java.lang.Class
+   2.03MB java.desktop                                         2.64MB byte[] for embedded resources
+   1.95MB xercesImpl.jar                                       2.05MB byte[] for reflection metadata
+   1.48MB svm.jar (Native Image)                             941.53kB com.oracle.svm.core.hub.DynamicHubCompanion
+   1.37MB pmd-core-6.55.0.jar                                814.21kB byte[] for general heap data
+ 248.35kB asm-9.4.jar                                        654.27kB java.lang.String[]
+ 240.60kB dacapo-23.11-MR2-chopin.jar                        513.12kB int[][]
+ 809.21kB for 19 more packages                                 5.40MB for 1834 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ AWT:  Use the tracing agent to collect metadata for AWT.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 2395656, total phases skipped: 0
+Percentage of ICs missed due to large code size: 72/724 (9.94%)
+------------------------------------------------------------------------------------------------------------------------
+                       5.1s (5.1% of total time) in 2553 GCs | Peak RSS: 7.17GB | CPU load: 4.51
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/libawt.so (jdk_library)
+ /data/dacapobench/libawt_headless.so (jdk_library)
+ /data/dacapobench/libawt_xawt.so (jdk_library)
+ /data/dacapobench/libfontmanager.so (jdk_library)
+ /data/dacapobench/libjava.so (jdk_library_shim)
+ /data/dacapobench/libjavajpeg.so (jdk_library)
+ /data/dacapobench/libjvm.so (jdk_library_shim)
+ /data/dacapobench/liblcms.so (jdk_library)
+ /data/dacapobench/pmd (executable)
+========================================================================================================================
+Finished generating 'pmd' in 1m 40s.

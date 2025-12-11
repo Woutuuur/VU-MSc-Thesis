@@ -1,0 +1,94 @@
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/sunflow-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'sunflow' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = true
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/sunflow-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 4032 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/sunflow-custom_open.json
+Using top 1613 call sites for PGO based inlining
+Out of which 120 are indirect call sites and 1493 are direct call sites (7.439553626782393% indirect)
+Representing 2340820859 and 7149038832 calls respectively (24.666548665835276% indirect)
+Total calls represented: 9489859691
+
+[1/8] Initializing...                                                                                    (1.6s @ 0.25GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 18.77GB of memory (31.1% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (6.7s @ 1.70GB)
+    8,502 reachable types   (80.6% of   10,551 total)
+   15,901 reachable fields  (54.8% of   29,032 total)
+   46,521 reachable methods (56.6% of   82,197 total)
+    2,732 types,    29 fields, and   528 methods registered for reflection
+       73 types,    91 fields, and    60 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.3s @ 1.87GB)
+[4/8] Parsing methods...      [*]                                                                        (0.8s @ 2.03GB)
+[5/8] Inlining methods...     [***]                                                                      (2.5s @ 2.09GB)
+[6/8] Compiling methods...    [***]                                                                      (9.1s @ 1.35GB)
+[7/8] Laying out methods...   [*]                                                                        (1.6s @ 1.67GB)
+[8/8] Creating image...       [*]                                                                        (1.5s @ 1.87GB)
+  24.01MB (47.71%) for code area:    29,090 compilation units
+  22.06MB (43.84%) for image heap:  259,574 objects and 159 resources
+   4.25MB ( 8.44%) for other data
+  50.32MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   8.59MB java.desktop                                         5.70MB byte[] for code metadata
+   8.03MB java.base                                            3.27MB byte[] for java.lang.String
+   3.68MB java.xml                                             2.46MB java.lang.String
+   1.52MB svm.jar (Native Image)                               2.07MB java.lang.Class
+ 690.83kB sunflow-0.07.2.jar                                 940.59kB byte[] for embedded resources
+ 584.39kB dacapo-23.11-MR2-chopin.jar                        816.35kB byte[] for general heap data
+ 193.78kB jdk.zipfs                                          730.64kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 109.54kB java.logging                                       513.51kB byte[] for reflection metadata
+  82.95kB java.prefs                                         513.21kB int[][]
+  76.33kB org.graalvm.nativeimage.base                       497.75kB java.lang.String[]
+ 305.56kB for 10 more packages                                 4.65MB for 1708 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1744334, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                        1.6s (6.0% of total time) in 667 GCs | Peak RSS: 2.82GB | CPU load: 6.55
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/libawt.so (jdk_library)
+ /data/dacapobench/libawt_headless.so (jdk_library)
+ /data/dacapobench/libawt_xawt.so (jdk_library)
+ /data/dacapobench/libfontmanager.so (jdk_library)
+ /data/dacapobench/libjava.so (jdk_library_shim)
+ /data/dacapobench/libjavajpeg.so (jdk_library)
+ /data/dacapobench/libjvm.so (jdk_library_shim)
+ /data/dacapobench/liblcms.so (jdk_library)
+ /data/dacapobench/sunflow (executable)
+========================================================================================================================
+Finished generating 'sunflow' in 25.7s.

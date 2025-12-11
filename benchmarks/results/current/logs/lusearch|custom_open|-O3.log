@@ -1,0 +1,78 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'lusearch' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = false
+combinedInlining = false
+ProfileDataDumpFileName = null
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+[1/8] Initializing...                                                                                    (1.7s @ 0.26GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 2 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 14.29GB of memory (23.7% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (4.9s @ 0.61GB)
+    6,331 reachable types   (79.0% of    8,013 total)
+    9,388 reachable fields  (50.9% of   18,438 total)
+   29,621 reachable methods (51.8% of   57,213 total)
+    2,204 types,    64 fields, and   561 methods registered for reflection
+       64 types,    75 fields, and    54 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.0s @ 0.73GB)
+[4/8] Parsing methods...      [*]                                                                        (0.5s @ 0.77GB)
+[5/8] Inlining methods...     [***]                                                                      (0.6s @ 0.85GB)
+[6/8] Compiling methods...    [***]                                                                      (5.2s @ 0.70GB)
+[7/8] Laying out methods...   [*]                                                                        (1.1s @ 0.73GB)
+[8/8] Creating image...       [*]                                                                        (1.1s @ 0.89GB)
+  12.04MB (40.74%) for code area:    18,656 compilation units
+  14.63MB (49.48%) for image heap:  187,652 objects and 67 resources
+   2.89MB ( 9.78%) for other data
+  29.56MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   6.89MB java.base                                            2.96MB byte[] for code metadata
+   1.87MB lucene-core-9.7.0-SNAPSHOT.jar                       2.31MB byte[] for java.lang.String
+   1.44MB svm.jar (Native Image)                               1.64MB java.lang.String
+ 599.16kB lucene-backward-codecs-9.7.0-SNAPSHOT.jar            1.49MB java.lang.Class
+ 373.81kB dacapo-23.11-MR2-chopin.jar                        666.98kB byte[] for general heap data
+ 192.51kB jdk.zipfs                                          544.07kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 131.74kB lucene-queryparser-9.7.0-SNAPSHOT.jar              451.26kB byte[] for reflection metadata
+ 102.91kB java.logging                                       406.82kB java.lang.Object[]
+  73.58kB org.graalvm.nativeimage.base                       333.61kB java.util.HashMap$Node
+  69.38kB jdk.charsets                                       327.22kB byte[] for embedded resources
+ 207.08kB for 15 more packages                                 3.56MB for 1497 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1099038, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                        1.0s (5.9% of total time) in 363 GCs | Peak RSS: 1.59GB | CPU load: 7.77
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/lusearch (executable)
+========================================================================================================================
+Finished generating 'lusearch' in 16.7s.

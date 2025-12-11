@@ -1,0 +1,87 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/graphchi-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'graphchi' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/graphchi-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 2219 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/graphchi-custom_open.json
+Using top 888 call sites for PGO based inlining
+Out of which 123 are indirect call sites and 765 are direct call sites
+Representing 7703728 and 5135280103 calls respectively (0.14979102118822119% indirect)
+
+[1/8] Initializing...                                                                                    (2.5s @ 0.17GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 2 user-specific feature(s):
+ - com.oracle.svm.polyglot.scala.ScalaFeature
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 26.49GB of memory (43.8% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [****]                                                                     (5.5s @ 0.77GB)
+    5,521 reachable types   (76.7% of    7,197 total)
+    6,783 reachable fields  (46.8% of   14,503 total)
+   25,134 reachable methods (43.7% of   57,575 total)
+    2,138 types,    61 fields, and   560 methods registered for reflection
+       68 types,    67 fields, and    55 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (0.9s @ 0.80GB)
+[4/8] Parsing methods...      [*]                                                                        (0.5s @ 0.91GB)
+[5/8] Inlining methods...     [**]                                                                       (1.3s @ 0.82GB)
+[6/8] Compiling methods...    [**]                                                                       (4.5s @ 0.71GB)
+[7/8] Laying out methods...   [*]                                                                        (1.0s @ 0.83GB)
+[8/8] Creating image...       [*]                                                                        (1.2s @ 0.56GB)
+   8.15MB (32.49%) for code area:    20,738 compilation units
+  14.06MB (56.08%) for image heap:  174,630 objects and 64 resources
+   2.86MB (11.42%) for other data
+  25.07MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   5.03MB java.base                                            2.86MB byte[] for code metadata
+   1.22MB svm.jar (Native Image)                               2.47MB byte[] for java.lang.String
+ 598.86kB java.management                                      1.53MB java.lang.String
+ 496.92kB graphchi-0.2.2.jar                                   1.33MB java.lang.Class
+ 234.07kB dacapo-23.11-MR2-chopin.jar                        663.60kB byte[] for general heap data
+ 137.47kB jdk.zipfs                                          474.46kB com.oracle.svm.core.hub.DynamicHubCompanion
+  86.21kB java.logging                                       435.46kB byte[] for reflection metadata
+  69.35kB jdk.charsets                                       382.17kB java.lang.Object[]
+  50.36kB org.graalvm.nativeimage.base                       360.95kB heap alignment
+  35.16kB org.graalvm.collections                            331.59kB java.util.HashMap$Node
+  96.42kB for 13 more packages                                 3.28MB for 1442 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1181123, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/121 (0.00%)
+------------------------------------------------------------------------------------------------------------------------
+                        1.0s (5.2% of total time) in 158 GCs | Peak RSS: 1.82GB | CPU load: 7.38
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/graphchi (executable)
+========================================================================================================================
+Finished generating 'graphchi' in 18.1s.

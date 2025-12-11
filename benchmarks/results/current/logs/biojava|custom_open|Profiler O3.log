@@ -1,0 +1,81 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'biojava' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = true
+enablePGODirectInvokeInlining = false
+combinedInlining = false
+ProfileDataDumpFileName = null
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+[1/8] Initializing...                                                                                    (2.1s @ 0.19GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 2 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 17.70GB of memory (29.3% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (7.6s @ 1.04GB)
+    8,975 reachable types   (83.5% of   10,748 total)
+   13,454 reachable fields  (51.2% of   26,269 total)
+   44,508 reachable methods (52.7% of   84,481 total)
+    3,640 types,   266 fields, and   948 methods registered for reflection
+       71 types,    70 fields, and    58 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.4s @ 1.24GB)
+[4/8] Parsing methods...      [*]                                                                        (0.8s @ 1.23GB)
+[5/8] Inlining methods...     [***]                                                                      (0.9s @ 1.35GB)
+Injecting invoke profiling phase
+Injecting invoke profiling phase
+[6/8] Compiling methods...    [***]                                                                      (8.6s @ 1.16GB)
+[7/8] Laying out methods...   [*]                                                                        (2.0s @ 1.26GB)
+[8/8] Creating image...       [**]                                                                       (3.4s @ 1.73GB)
+  24.01MB (17.17%) for code area:    28,323 compilation units
+ 111.63MB (79.80%) for image heap:  544,330 objects and 165 resources
+   4.24MB ( 3.03%) for other data
+ 139.88MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  10.77MB java.base                                           76.29MB jdk.graal.compiler.java.CallSiteProfile[]
+   4.76MB AAProperties-jar-with-dependencies.jar              12.38MB byte[] for java.lang.String
+   4.54MB java.xml                                             6.73MB java.lang.String
+   1.79MB svm.jar (Native Image)                               5.59MB byte[] for code metadata
+ 566.98kB java.management                                      2.16MB java.lang.Class
+ 469.64kB dacapo-23.11-MR2-chopin.jar                        847.98kB byte[] for reflection metadata
+ 257.24kB jdk.zipfs                                          821.45kB byte[] for general heap data
+ 120.96kB java.logging                                       771.29kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 117.38kB jdk.proxy4                                         514.02kB int[][]
+  97.39kB org.graalvm.nativeimage.base                       474.83kB java.lang.String[]
+ 372.03kB for 16 more packages                                 5.13MB for 1888 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1693963, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/0 (NaN%)
+------------------------------------------------------------------------------------------------------------------------
+                        1.8s (6.4% of total time) in 392 GCs | Peak RSS: 2.64GB | CPU load: 6.24
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/biojava (executable)
+========================================================================================================================
+Finished generating 'biojava' in 27.8s.

@@ -1,0 +1,95 @@
+
+Native Image Bundles: Loaded Bundle from /data/baristabench/benchmarks/micronaut-shopcart/target/shopcart-0.3.10.nib
+Native Image Bundles: Bundle created at 'Tuesday, September 9, 2025, 10:00:19 PM Coordinated Universal Time'
+Native Image Bundles: Using version: '24+36' != '24+36-jvmci-b01' (vendor 'Oracle Corporation' != 'GraalVM Community') on platform: 'linux-amd64'
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/micronaut-shopcart-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Native Image Bundles are an experimental feature.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'micronaut-shopcart' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/micronaut-shopcart-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 11987 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/micronaut-shopcart-custom_open.json
+Using top 4795 call sites for PGO based inlining
+Out of which 1086 are indirect call sites and 3709 are direct call sites (22.64859228362878% indirect)
+Representing 2190618995 and 6713189469 calls respectively (24.603168451535552% indirect)
+Total calls represented: 8903808464
+
+[1/8] Initializing...                                                                                    (2.2s @ 0.15GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: b, target machine: native
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 3 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+ - io.micronaut.cache.caffeine.graal.CaffeineFeature
+ - io.micronaut.core.io.service.ServiceLoaderFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 10.64GB of memory (17.6% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [******]                                                                   (9.7s @ 1.40GB)
+   15,252 reachable types   (88.4% of   17,258 total)
+   22,618 reachable fields  (53.8% of   42,068 total)
+   76,100 reachable methods (62.7% of  121,403 total)
+    5,203 types,   151 fields, and 1,487 methods registered for reflection
+       63 types,    62 fields, and    57 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (2.3s @ 1.62GB)
+[4/8] Parsing methods...      [*]                                                                        (1.2s @ 1.78GB)
+[5/8] Inlining methods...     [**]                                                                       (9.5s @ 1.83GB)
+[6/8] Compiling methods...    [***]                                                                      (6.7s @ 1.46GB)
+[7/8] Laying out methods...   [**]                                                                       (3.2s @ 2.10GB)
+[8/8] Creating image...       [**]                                                                       (2.6s @ 2.43GB)
+  29.53MB (39.33%) for code area:    66,735 compilation units
+  34.63MB (46.12%) for image heap:  354,435 objects and 419 resources
+  10.92MB (14.54%) for other data
+  75.07MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  12.83MB shopcart-0.3.10.jar                                 10.85MB byte[] for code metadata
+  10.53MB java.base                                            4.75MB byte[] for java.lang.String
+   2.41MB java.xml                                             4.54MB java.lang.Class
+   1.94MB svm.jar (Native Image)                               3.11MB java.lang.String
+ 268.96kB java.rmi                                             1.28MB com.oracle.svm.core.hub.DynamicHubCompanion
+ 268.21kB jdk.proxy4                                         954.58kB byte[] for reflection metadata
+ 164.03kB jdk.zipfs                                          838.32kB byte[] for general heap data
+ 163.95kB java.naming                                        630.44kB java.lang.String[]
+ 100.49kB jdk.naming.dns                                     573.82kB java.lang.Object[]
+  91.54kB java.logging                                       557.07kB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
+ 317.06kB for 19 more packages                                 6.63MB for 3153 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1885516, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                        2.0s (5.1% of total time) in 991 GCs | Peak RSS: 3.31GB | CPU load: 5.35
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /tmp/bundleRoot-10037585383934372594/output/default/micronaut-shopcart (executable)
+========================================================================================================================
+Finished generating 'micronaut-shopcart' in 38.4s.
+
+Native Image Bundles: Bundle build output written to /data/baristabench/benchmarks/micronaut-shopcart/target/shopcart-0.3.10.output
+

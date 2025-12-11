@@ -1,0 +1,95 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/batik-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'batik' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = true
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/batik-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 7852 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/batik-custom_open.json
+Using top 3141 call sites for PGO based inlining
+Out of which 600 are indirect call sites and 2541 are direct call sites (19.10219675262655% indirect)
+Representing 37371675 and 128320041 calls respectively (22.554944750526936% indirect)
+Total calls represented: 165691716
+
+[1/8] Initializing...                                                                                    (2.2s @ 0.21GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 9.58GB of memory (15.9% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                   (15.3s @ 1.59GB)
+    9,392 reachable types   (82.2% of   11,419 total)
+   16,442 reachable fields  (54.4% of   30,236 total)
+   48,006 reachable methods (56.0% of   85,753 total)
+    3,160 types,    24 fields, and   624 methods registered for reflection
+      153 types,   168 fields, and    81 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.5s @ 1.74GB)
+[4/8] Parsing methods...      [*]                                                                        (0.8s @ 1.83GB)
+[5/8] Inlining methods...     [***]                                                                     (14.3s @ 1.05GB)
+[6/8] Compiling methods...    [****]                                                                    (12.5s @ 2.13GB)
+[7/8] Laying out methods...   [**]                                                                       (2.1s @ 2.54GB)
+[8/8] Creating image...       [*]                                                                        (1.6s @ 2.72GB)
+  30.47MB (51.97%) for code area:    30,457 compilation units
+  23.56MB (40.19%) for image heap:  260,036 objects and 80 resources
+   4.60MB ( 7.85%) for other data
+  58.63MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   8.24MB batik-all-1.16.jar                                   7.13MB byte[] for code metadata
+   7.95MB java.base                                            3.26MB byte[] for java.lang.String
+   7.74MB java.desktop                                         2.42MB java.lang.String
+   3.58MB java.xml                                             2.41MB java.lang.Class
+   1.55MB svm.jar (Native Image)                             886.17kB byte[] for general heap data
+ 505.86kB dacapo-23.11-MR2-chopin.jar                        807.13kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 193.94kB jdk.zipfs                                          542.95kB byte[] for reflection metadata
+ 107.81kB java.logging                                       513.88kB int[][]
+  75.40kB org.graalvm.nativeimage.base                       491.21kB java.lang.String[]
+  69.35kB jdk.charsets                                       460.84kB java.lang.Object[]
+ 275.19kB for 11 more packages                                 4.73MB for 1640 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1812290, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                       2.8s (5.5% of total time) in 2846 GCs | Peak RSS: 3.55GB | CPU load: 5.26
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/batik (executable)
+ /data/dacapobench/libawt.so (jdk_library)
+ /data/dacapobench/libawt_headless.so (jdk_library)
+ /data/dacapobench/libawt_xawt.so (jdk_library)
+ /data/dacapobench/libfontmanager.so (jdk_library)
+ /data/dacapobench/libjava.so (jdk_library_shim)
+ /data/dacapobench/libjavajpeg.so (jdk_library)
+ /data/dacapobench/libjvm.so (jdk_library_shim)
+ /data/dacapobench/liblcms.so (jdk_library)
+ /data/dacapobench/libmlib_image.so (jdk_library)
+========================================================================================================================
+Finished generating 'batik' in 50.9s.

@@ -1,0 +1,834 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/h2-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'h2' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/h2-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 7587 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/h2-custom_open.json
+Using top 3035 call sites for PGO based inlining
+Out of which 739 are indirect call sites and 2296 are direct call sites
+Representing 4971751396 and 9331864940 calls respectively (34.7587021296626% indirect)
+
+{org.h2.command.dml.Delete=public long org.h2.command.dml.Delete.update(org.h2.result.ResultTarget,org.h2.table.DataChangeDeltaTable$ResultOption), org.h2.command.dml.Insert=public long org.h2.command.dml.Insert.update(org.h2.result.ResultTarget,org.h2.table.DataChangeDeltaTable$ResultOption), org.h2.command.dml.Update=public long org.h2.command.dml.Update.update(org.h2.result.ResultTarget,org.h2.table.DataChangeDeltaTable$ResultOption)}
+{org.h2.command.Token$IdentifierToken=boolean org.h2.command.Token$IdentifierToken.isQuoted()}
+{}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public void org.h2.result.LocalResult.close()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setNull(int,int) throws java.sql.SQLException}
+{java.lang.StringBuilder=public java.lang.AbstractStringBuilder java.lang.StringBuilder.append(java.lang.String)}
+{java.io.BufferedWriter=public void java.io.BufferedWriter.write(java.lang.String,int,int) throws java.io.IOException}
+{org.h2.command.Token$ParameterToken=java.lang.String org.h2.command.Token$ParameterToken.asIdentifier(), org.h2.command.Token$KeywordToken=java.lang.String org.h2.command.Token$KeywordToken.asIdentifier(), org.h2.command.Token$IdentifierToken=java.lang.String org.h2.command.Token$IdentifierToken.asIdentifier()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(int) throws java.sql.SQLException}
+{org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getInt()}
+{}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.commit() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.table.TableFilter=public org.h2.table.Column org.h2.table.TableFilter.findColumn(java.lang.String)}
+{org.h2.expression.Parameter=public boolean org.h2.expression.Parameter.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.function.CurrentDateTimeValueFunction=public boolean org.h2.expression.function.CurrentDateTimeValueFunction.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.command.dml.SetClauseList$SetSimple=boolean org.h2.command.dml.SetClauseList$SetSimple.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.command.Token$IdentifierToken=boolean org.h2.command.Token$IdentifierToken.isQuoted()}
+{}
+{org.h2.command.CommandContainer=public java.util.Set org.h2.command.CommandContainer.getDependencies()}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(int) throws java.sql.SQLException}
+{org.h2.value.ValueInteger=public long org.h2.value.ValueInteger.getLong()}
+{org.h2.value.ValueInteger=public org.h2.value.Value org.h2.value.ValueInteger.add(org.h2.value.Value), org.h2.value.ValueNumeric=public org.h2.value.Value org.h2.value.ValueNumeric.add(org.h2.value.Value)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ExtTypeInfoNumeric=public java.lang.StringBuilder org.h2.value.ExtTypeInfoNumeric.getSQL(java.lang.StringBuilder,int)}
+{}
+{org.h2.mvstore.db.MVTable=public void org.h2.mvstore.db.MVTable.addRow(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public org.h2.util.TimeZoneProvider org.h2.jdbc.JdbcConnection.currentTimeZone()}
+{}
+{org.h2.command.dml.SetClauseList$SetSimple=org.h2.value.Value org.h2.command.dml.SetClauseList$SetSimple.update(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.type.LongDataType=public int org.h2.mvstore.type.LongDataType.compare(java.lang.Object,java.lang.Object), org.h2.mvstore.db.RowDataType=public int org.h2.mvstore.db.RowDataType.compare(java.lang.Object,java.lang.Object)}
+{org.h2.value.ValueNumeric=public org.h2.value.Value org.h2.value.ValueNumeric.multiply(org.h2.value.Value)}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.commit() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{org.h2.engine.SessionLocal=public org.h2.engine.Mode org.h2.engine.SessionLocal.getMode()}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.constraint.ConstraintUnique=public boolean org.h2.constraint.ConstraintUnique.isBefore(), org.h2.constraint.ConstraintReferential=public boolean org.h2.constraint.ConstraintReferential.isBefore()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public org.h2.value.Value org.h2.expression.condition.Comparison.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.value.Value org.h2.expression.condition.NullPredicate.getValue(org.h2.engine.SessionLocal)}
+{org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal)}
+{org.h2.command.Token$KeywordToken=int org.h2.command.Token$KeywordToken.tokenType(), org.h2.command.Token$IdentifierToken=int org.h2.command.Token$IdentifierToken.tokenType()}
+{org.h2.result.DefaultRow=public void org.h2.result.DefaultRow.setValue(int,org.h2.value.Value)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.command.Token$CharacterStringToken=org.h2.value.Value org.h2.command.Token$CharacterStringToken.value(org.h2.engine.CastDataProvider), org.h2.command.Token$IntegerToken=org.h2.value.Value org.h2.command.Token$IntegerToken.value(org.h2.engine.CastDataProvider), org.h2.command.Token$ValueToken=org.h2.value.Value org.h2.command.Token$ValueToken.value(org.h2.engine.CastDataProvider)}
+{org.h2.mvstore.Page$Leaf=public void org.h2.mvstore.Page$Leaf.remove(int), org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.remove(int)}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public java.lang.Object org.h2.mvstore.Page$Leaf.setValue(int,java.lang.Object)}
+{org.h2.command.Token$ParameterToken=int org.h2.command.Token$ParameterToken.tokenType(), org.h2.command.Token$KeywordToken=int org.h2.command.Token$KeywordToken.tokenType(), org.h2.command.Token$IdentifierToken=int org.h2.command.Token$IdentifierToken.tokenType(), org.h2.command.Token$EndOfInputToken=int org.h2.command.Token$EndOfInputToken.tokenType()}
+{}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isClosed()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.expression.Parameter=public boolean org.h2.expression.Parameter.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{}
+{org.h2.mvstore.tx.TxDecisionMaker=java.lang.Object org.h2.mvstore.tx.TxDecisionMaker.getNewValue(org.h2.value.VersionedValue)}
+{org.h2.engine.SessionLocal=public org.h2.engine.Mode org.h2.engine.SessionLocal.getMode()}
+{org.h2.expression.aggregate.Aggregate=protected java.lang.Object org.h2.expression.aggregate.Aggregate.createAggregateData()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.aggregate.Aggregate=public org.h2.value.Value org.h2.expression.aggregate.Aggregate.getValue(org.h2.engine.SessionLocal), org.h2.expression.Alias=public org.h2.value.Value org.h2.expression.Alias.getValue(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.db.MVTable=public void org.h2.mvstore.db.MVTable.removeRow(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{}
+{org.h2.result.LocalResult=public org.h2.value.Value[] org.h2.result.LocalResult.currentRow()}
+{org.h2.value.CompareMode=public int org.h2.value.CompareMode.compareString(java.lang.String,java.lang.String,boolean)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.expression.Expression org.h2.expression.Parameter.optimize(org.h2.engine.SessionLocal), org.h2.expression.BinaryOperation=public org.h2.expression.Expression org.h2.expression.BinaryOperation.optimize(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.commit() throws java.sql.SQLException}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueNull=public int org.h2.value.ValueNull.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{}
+{}
+{org.h2.value.ValueChar=public boolean org.h2.value.ValueChar.equals(java.lang.Object), org.h2.value.ValueDouble=public boolean org.h2.value.ValueDouble.equals(java.lang.Object), org.h2.value.ValueSmallint=public boolean org.h2.value.ValueSmallint.equals(java.lang.Object), org.h2.value.ValueVarchar=public boolean org.h2.value.ValueVarchar.equals(java.lang.Object), org.h2.value.ValueTimestampTimeZone=public boolean org.h2.value.ValueTimestampTimeZone.equals(java.lang.Object), org.h2.value.ValueTimestamp=public boolean org.h2.value.ValueTimestamp.equals(java.lang.Object), org.h2.value.ValueNumeric=public boolean org.h2.value.ValueNumeric.equals(java.lang.Object), org.h2.value.ValueBigint=public boolean org.h2.value.ValueBigint.equals(java.lang.Object)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setNull(int,int) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVTable=public org.h2.result.Row org.h2.mvstore.db.MVTable.lockRow(org.h2.engine.SessionLocal,org.h2.result.Row,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{com.oracle.svm.core.util.Utf8$WrappedAsciiCString=public char com.oracle.svm.core.util.Utf8$WrappedAsciiCString.charAt(int)}
+{}
+{org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.split(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setDouble(int,double) throws java.sql.SQLException}
+{org.h2.value.ValueDouble=public java.math.BigDecimal org.h2.value.ValueDouble.getBigDecimal(), org.h2.value.ValueSmallint=public java.math.BigDecimal org.h2.value.ValueSmallint.getBigDecimal(), org.h2.value.ValueInteger=public java.math.BigDecimal org.h2.value.ValueInteger.getBigDecimal()}
+{org.h2.mvstore.type.ObjectDataType=public java.lang.Object[] org.h2.mvstore.type.ObjectDataType.createStorage(int), org.h2.mvstore.type.LongDataType=public java.lang.Object[] org.h2.mvstore.type.LongDataType.createStorage(int), org.h2.mvstore.type.StringDataType=public java.lang.Object[] org.h2.mvstore.type.StringDataType.createStorage(int), org.h2.mvstore.db.LobStorageMap$BlobReference$Type=public java.lang.Object[] org.h2.mvstore.db.LobStorageMap$BlobReference$Type.createStorage(int), org.h2.mvstore.db.RowDataType=public java.lang.Object[] org.h2.mvstore.db.RowDataType.createStorage(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal), org.h2.expression.BinaryOperation=public org.h2.value.Value org.h2.expression.BinaryOperation.getValue(org.h2.engine.SessionLocal), org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.type.MetaType=public java.lang.Object[] org.h2.mvstore.type.MetaType.createStorage(int), org.h2.mvstore.type.ObjectDataType=public java.lang.Object[] org.h2.mvstore.type.ObjectDataType.createStorage(int), org.h2.mvstore.tx.VersionedValueType=public java.lang.Object[] org.h2.mvstore.tx.VersionedValueType.createStorage(int), org.h2.mvstore.type.ByteArrayDataType=public java.lang.Object[] org.h2.mvstore.type.ByteArrayDataType.createStorage(int), org.h2.mvstore.type.StringDataType=public java.lang.Object[] org.h2.mvstore.type.StringDataType.createStorage(int), org.h2.mvstore.db.NullValueDataType=public java.lang.Object[] org.h2.mvstore.db.NullValueDataType.createStorage(int), org.h2.mvstore.tx.Record$Type=public java.lang.Object[] org.h2.mvstore.tx.Record$Type.createStorage(int), org.h2.mvstore.db.LobStorageMap$BlobMeta$Type=public java.lang.Object[] org.h2.mvstore.db.LobStorageMap$BlobMeta$Type.createStorage(int)}
+{org.apache.derbyTesting.system.oe.direct.OrderItem4Sort=public int org.apache.derbyTesting.system.oe.direct.OrderItem4Sort.compareTo(java.lang.Object)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public int org.h2.result.LocalResult.getVisibleColumnCount()}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.mapColumns(org.h2.table.ColumnResolver,int,int), org.h2.expression.condition.ConditionAndOr=public void org.h2.expression.condition.ConditionAndOr.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.schema.Schema=public java.util.Collection org.h2.schema.Schema.getAllTablesAndViews(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ValueChar=public int org.h2.value.ValueChar.hashCode(), org.h2.value.ValueDouble=public int org.h2.value.ValueDouble.hashCode(), org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.hashCode(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.hashCode(), org.h2.value.ValueTimestampTimeZone=public int org.h2.value.ValueTimestampTimeZone.hashCode(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.hashCode(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.hashCode(), org.h2.value.ValueBigint=public int org.h2.value.ValueBigint.hashCode()}
+{org.h2.result.SimpleRowValue=public void org.h2.result.SimpleRowValue.copyFrom(org.h2.result.SearchRow), org.h2.result.Sparse=public void org.h2.result.Sparse.copyFrom(org.h2.result.SearchRow)}
+{}
+{org.h2.mvstore.Page$Leaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$Leaf.getAppendCursorPos(org.h2.mvstore.CursorPos), org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$NonLeaf.getAppendCursorPos(org.h2.mvstore.CursorPos)}
+{org.h2.expression.condition.ConditionAndOrN=public void org.h2.expression.condition.ConditionAndOrN.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.condition.ConditionAndOr=public void org.h2.expression.condition.ConditionAndOr.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.condition.ConditionNot=public void org.h2.expression.condition.ConditionNot.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public boolean org.h2.expression.condition.Comparison.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.next()}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.expression.ExpressionColumn=public org.h2.expression.Expression org.h2.expression.ExpressionColumn.optimize(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isLazy()}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.condition.ConditionAndOrN=public boolean org.h2.expression.condition.ConditionAndOrN.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.Comparison=public boolean org.h2.expression.condition.Comparison.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.ConditionAndOr=public boolean org.h2.expression.condition.ConditionAndOr.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.ConditionNot=public boolean org.h2.expression.condition.ConditionNot.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.value.ValueTimestampTimeZone=public int org.h2.value.ValueTimestampTimeZone.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{org.h2.result.LocalResult=public void org.h2.result.LocalResult.close()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setDouble(int,double) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueType=public int org.h2.mvstore.tx.VersionedValueType.compare(java.lang.Object,java.lang.Object)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.command.query.SelectGroups$Grouped=public void org.h2.command.query.SelectGroups$Grouped.reset()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.result.ResultWithGeneratedKeys=public org.h2.result.ResultInterface org.h2.result.ResultWithGeneratedKeys.getGeneratedKeys()}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{org.h2.value.ValueInteger=public org.h2.value.Value org.h2.value.ValueInteger.subtract(org.h2.value.Value), org.h2.value.ValueNumeric=public org.h2.value.Value org.h2.value.ValueNumeric.subtract(org.h2.value.Value)}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public java.lang.Object org.h2.mvstore.tx.VersionedValueUncommitted.getCommittedValue()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.sql.Timestamp org.h2.jdbc.JdbcResultSet.getTimestamp(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.result.SimpleRowValue=public org.h2.value.Value org.h2.result.SimpleRowValue.getValue(int), org.h2.result.Sparse=public org.h2.value.Value org.h2.result.Sparse.getValue(int), org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.index.Cursor org.h2.mvstore.db.MVSecondaryIndex.find(org.h2.engine.SessionLocal,org.h2.result.SearchRow,org.h2.result.SearchRow), org.h2.index.QueryExpressionIndex=public org.h2.index.Cursor org.h2.index.QueryExpressionIndex.find(org.h2.engine.SessionLocal,org.h2.result.SearchRow,org.h2.result.SearchRow), org.h2.mvstore.db.MVPrimaryIndex=public org.h2.index.Cursor org.h2.mvstore.db.MVPrimaryIndex.find(org.h2.engine.SessionLocal,org.h2.result.SearchRow,org.h2.result.SearchRow)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor=public boolean org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor.next()}
+{org.h2.command.dml.TransactionCommand=public boolean org.h2.command.dml.TransactionCommand.needRecompile(), org.h2.command.dml.NoOperation=public boolean org.h2.command.dml.NoOperation.needRecompile()}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.table.Table org.h2.mvstore.db.MVSecondaryIndex.getTable()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.insertNode(int,java.lang.Object,org.h2.mvstore.Page)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public org.h2.expression.Expression org.h2.expression.condition.Comparison.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.expression.Expression org.h2.expression.condition.NullPredicate.optimize(org.h2.engine.SessionLocal)}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{}
+{org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.aggregate.Aggregate=public boolean org.h2.expression.aggregate.Aggregate.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.Alias=public boolean org.h2.expression.Alias.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{}
+{org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{}
+{org.h2.expression.condition.Comparison=public boolean org.h2.expression.condition.Comparison.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.ConditionAndOr=public boolean org.h2.expression.condition.ConditionAndOr.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.value.ValueBoolean=public boolean org.h2.value.ValueBoolean.getBoolean()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.command.Token$KeywordToken=java.lang.String org.h2.command.Token$KeywordToken.asIdentifier(), org.h2.command.Token$IdentifierToken=java.lang.String org.h2.command.Token$IdentifierToken.asIdentifier()}
+{org.h2.mvstore.tx.RollbackDecisionMaker=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.RollbackDecisionMaker.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.tx.TxDecisionMaker$PutIfAbsentDecisionMaker=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.TxDecisionMaker$PutIfAbsentDecisionMaker.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.tx.TxDecisionMaker=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.TxDecisionMaker.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.tx.CommitDecisionMaker=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.CommitDecisionMaker.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.MVMap$DecisionMaker$4=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.MVMap$DecisionMaker$4.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.MVMap$DecisionMaker$1=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.MVMap$DecisionMaker$1.decide(java.lang.Object,java.lang.Object), org.h2.mvstore.MVMap$DecisionMaker$2=public org.h2.mvstore.MVMap$Decision org.h2.mvstore.MVMap$DecisionMaker$2.decide(java.lang.Object,java.lang.Object)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setDouble(int,double) throws java.sql.SQLException}
+{java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.write(byte[],int,int) throws java.io.IOException}
+{org.h2.mvstore.db.MVSecondaryIndex=public void org.h2.mvstore.db.MVSecondaryIndex.remove(org.h2.engine.SessionLocal,org.h2.result.Row), org.h2.mvstore.db.MVPrimaryIndex=public void org.h2.mvstore.db.MVPrimaryIndex.remove(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{java.text.StringBufFactory$StringBuilderImpl=public int java.text.StringBufFactory$StringBuilderImpl.length()}
+{org.h2.mvstore.Page$Leaf=public void org.h2.mvstore.Page$Leaf.insertLeaf(int,java.lang.Object,java.lang.Object)}
+{org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.engine.SessionLocal=public synchronized org.h2.command.CommandInterface org.h2.engine.SessionLocal.prepareCommand(java.lang.String,int)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.command.Token$KeywordToken=java.lang.String org.h2.command.Token$KeywordToken.asIdentifier(), org.h2.command.Token$IdentifierToken=java.lang.String org.h2.command.Token$IdentifierToken.asIdentifier()}
+{org.h2.value.ValueSmallint=public boolean org.h2.value.ValueSmallint.equals(java.lang.Object), org.h2.value.ValueVarchar=public boolean org.h2.value.ValueVarchar.equals(java.lang.Object), org.h2.value.ValueInteger=public boolean org.h2.value.ValueInteger.equals(java.lang.Object)}
+{org.h2.jdbc.JdbcConnection=public void org.h2.jdbc.JdbcConnection.setTransactionIsolation(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{java.lang.StringBuffer=public synchronized int java.lang.StringBuffer.length(), java.lang.StringBuilder=public int java.lang.StringBuilder.length()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.engine.SessionLocal=public org.h2.message.Trace org.h2.engine.SessionLocal.getTrace()}
+{org.h2.value.ValueBoolean=public boolean org.h2.value.ValueBoolean.getBoolean()}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.MVMap=protected int org.h2.mvstore.MVMap.getChildPageCount(org.h2.mvstore.Page)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.updateAggregate(org.h2.engine.SessionLocal,int)}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ValueChar=public int org.h2.value.ValueChar.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{}
+{org.h2.expression.aggregate.Aggregate=protected void org.h2.expression.aggregate.Aggregate.updateGroupAggregates(org.h2.engine.SessionLocal,int)}
+{org.h2.mvstore.Page$Leaf=public void org.h2.mvstore.Page$Leaf.expand(int,java.lang.Object[],java.lang.Object[])}
+{org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor=public boolean org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor.next(), org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public boolean org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.next(), org.h2.index.QueryExpressionCursor=public boolean org.h2.index.QueryExpressionCursor.next()}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public boolean org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.next()}
+{org.h2.mvstore.db.MVTable=public long org.h2.mvstore.db.MVTable.getMaxDataModificationId()}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.mvstore.type.LongDataType=public java.lang.Object[] org.h2.mvstore.type.LongDataType.createStorage(int), org.h2.mvstore.type.StringDataType=public java.lang.Object[] org.h2.mvstore.type.StringDataType.createStorage(int), org.h2.mvstore.db.RowDataType=public java.lang.Object[] org.h2.mvstore.db.RowDataType.createStorage(int)}
+{org.h2.value.ValueBoolean=public boolean org.h2.value.ValueBoolean.getBoolean()}
+{org.h2.expression.condition.Comparison=public org.h2.value.Value org.h2.expression.condition.Comparison.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.value.Value org.h2.expression.condition.NullPredicate.getValue(org.h2.engine.SessionLocal)}
+{org.h2.command.CommandContainer=public org.h2.result.ResultWithGeneratedKeys org.h2.command.CommandContainer.update(java.lang.Object)}
+{}
+{org.h2.mvstore.db.MVTable=public org.h2.result.Row org.h2.mvstore.db.MVTable.lockRow(org.h2.engine.SessionLocal,org.h2.result.Row,int)}
+{org.h2.value.ValueSmallint=public org.h2.value.TypeInfo org.h2.value.ValueSmallint.getType(), org.h2.value.ValueInteger=public org.h2.value.TypeInfo org.h2.value.ValueInteger.getType()}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.commit() throws java.sql.SQLException}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.engine.SessionLocal=public void org.h2.engine.SessionLocal.setIsolationLevel(org.h2.engine.IsolationLevel)}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.table.Table org.h2.mvstore.db.MVSecondaryIndex.getTable(), org.h2.mvstore.db.MVPrimaryIndex=public org.h2.table.Table org.h2.mvstore.db.MVPrimaryIndex.getTable()}
+{org.h2.expression.aggregate.Aggregate=protected void org.h2.expression.aggregate.Aggregate.updateAggregate(org.h2.engine.SessionLocal,java.lang.Object)}
+{sun.nio.cs.UTF_8$Encoder=protected final java.nio.charset.CoderResult sun.nio.cs.UTF_8$Encoder.encodeLoop(java.nio.CharBuffer,java.nio.ByteBuffer)}
+{}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueBigint=public int org.h2.value.ValueBigint.getValueType()}
+{org.h2.command.Token$KeywordToken=int org.h2.command.Token$KeywordToken.tokenType(), org.h2.command.Token$IdentifierToken=int org.h2.command.Token$IdentifierToken.tokenType()}
+{org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public org.h2.result.Row org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.get()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public java.lang.Object org.h2.mvstore.Page$Leaf.getValue(int)}
+{org.h2.engine.SessionLocal=public org.h2.util.TimeZoneProvider org.h2.engine.SessionLocal.currentTimeZone()}
+{org.h2.expression.condition.Comparison=public org.h2.expression.Expression org.h2.expression.condition.Comparison.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.expression.Expression org.h2.expression.condition.NullPredicate.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.ConditionAndOr=public org.h2.expression.Expression org.h2.expression.condition.ConditionAndOr.optimize(org.h2.engine.SessionLocal)}
+{org.h2.command.query.SelectGroups$Grouped=public org.h2.value.ValueRow org.h2.command.query.SelectGroups$Grouped.next()}
+{org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.value.ValueNumeric=public org.h2.value.Value org.h2.value.ValueNumeric.add(org.h2.value.Value)}
+{org.h2.expression.condition.ConditionAndOrN=public void org.h2.expression.condition.ConditionAndOrN.mapColumns(org.h2.table.ColumnResolver,int,int), org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.mapColumns(org.h2.table.ColumnResolver,int,int), org.h2.expression.condition.ConditionAndOr=public void org.h2.expression.condition.ConditionAndOr.mapColumns(org.h2.table.ColumnResolver,int,int), org.h2.expression.condition.ConditionNot=public void org.h2.expression.condition.ConditionNot.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.setChild(int,org.h2.mvstore.Page)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{org.h2.command.CommandContainer=public void org.h2.command.CommandContainer.stop()}
+{org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor=public org.h2.result.SearchRow org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor.getSearchRow(), org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public org.h2.result.SearchRow org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.getSearchRow(), org.h2.index.QueryExpressionCursor=public org.h2.result.SearchRow org.h2.index.QueryExpressionCursor.getSearchRow()}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.expression.condition.ExistsPredicate=public org.h2.value.Value org.h2.expression.condition.ExistsPredicate.getValue(org.h2.engine.SessionLocal)}
+{org.h2.command.query.Select=public boolean org.h2.command.query.Select.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcConnection=public void org.h2.jdbc.JdbcConnection.setTransactionIsolation(int) throws java.sql.SQLException}
+{org.h2.value.ValueTimestampTimeZone=public int org.h2.value.ValueTimestampTimeZone.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setNull(int,int) throws java.sql.SQLException}
+{org.h2.command.CommandContainer=public boolean org.h2.command.CommandContainer.isTransactional()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public org.h2.value.Value org.h2.expression.condition.Comparison.getValue(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.lock(org.h2.engine.SessionLocal,int)}
+{org.h2.command.query.Select=public void org.h2.command.query.Select.fireBeforeSelectTriggers()}
+{}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{}
+{org.h2.command.query.Select$LazyResultQueryFlat=protected org.h2.value.Value[] org.h2.command.query.Select$LazyResultQueryFlat.fetchNextRow()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ValueDouble=public int org.h2.value.ValueDouble.getValueType(), org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.value.ValueSmallint=public short org.h2.value.ValueSmallint.getShort()}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isLazy()}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.command.CommandContainer=public org.h2.result.ResultInterface org.h2.command.CommandContainer.query(long)}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.expression.Alias=public void org.h2.expression.Alias.mapColumns(org.h2.table.ColumnResolver,int,int), org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.type.LongDataType=public int org.h2.mvstore.type.LongDataType.binarySearch(java.lang.Object,java.lang.Object,int,int), org.h2.mvstore.type.StringDataType=public int org.h2.mvstore.type.StringDataType.binarySearch(java.lang.Object,java.lang.Object,int,int), org.h2.mvstore.db.RowDataType=public int org.h2.mvstore.db.RowDataType.binarySearch(java.lang.Object,java.lang.Object,int,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{}
+{org.h2.result.DefaultRow=public void org.h2.result.DefaultRow.setValue(int,org.h2.value.Value)}
+{org.h2.util.TimeZoneProvider$Simple=public int org.h2.util.TimeZoneProvider$Simple.getTimeZoneOffsetUTC(long)}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.value.ValueInteger=public org.h2.value.TypeInfo org.h2.value.ValueInteger.getType(), org.h2.value.ValueBoolean=public org.h2.value.TypeInfo org.h2.value.ValueBoolean.getType(), org.h2.value.ValueNumeric=public org.h2.value.TypeInfo org.h2.value.ValueNumeric.getType()}
+{org.h2.table.TableFilter=public boolean org.h2.table.TableFilter.hasDerivedColumnList()}
+{}
+{org.h2.value.ValueBoolean=public boolean org.h2.value.ValueBoolean.getBoolean()}
+{}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.sql.Timestamp org.h2.jdbc.JdbcResultSet.getTimestamp(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.mvstore.db.MVTable=public int org.h2.mvstore.db.MVTable.getMainIndexColumn()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal), org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.expression.Expression org.h2.expression.Parameter.optimize(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.expression.Expression org.h2.expression.ExpressionColumn.optimize(org.h2.engine.SessionLocal)}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isLazy()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.index.Cursor org.h2.mvstore.db.MVSecondaryIndex.find(org.h2.engine.SessionLocal,org.h2.result.SearchRow,org.h2.result.SearchRow)}
+{org.h2.expression.ExpressionColumn=public int org.h2.expression.ExpressionColumn.getCost()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal), org.h2.expression.BinaryOperation=public org.h2.value.Value org.h2.expression.BinaryOperation.getValue(org.h2.engine.SessionLocal), org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal), org.h2.expression.function.CurrentDateTimeValueFunction=public org.h2.value.Value org.h2.expression.function.CurrentDateTimeValueFunction.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcResultSet=public short org.h2.jdbc.JdbcResultSet.getShort(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.engine.SessionLocal=public org.h2.engine.IsolationLevel org.h2.engine.SessionLocal.getIsolationLevel()}
+{}
+{org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getInt()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor=public org.h2.result.SearchRow org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor.getSearchRow()}
+{org.h2.engine.SessionLocal=public org.h2.message.Trace org.h2.engine.SessionLocal.getTrace()}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.mvstore.tx.TxDecisionMaker=org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.TxDecisionMaker.logAndDecideToPut(org.h2.value.VersionedValue,java.lang.Object), org.h2.mvstore.tx.TxDecisionMaker$RepeatableReadLockDecisionMaker=org.h2.mvstore.MVMap$Decision org.h2.mvstore.tx.TxDecisionMaker$RepeatableReadLockDecisionMaker.logAndDecideToPut(org.h2.value.VersionedValue,java.lang.Object)}
+{org.h2.expression.Alias=public void org.h2.expression.Alias.updateAggregate(org.h2.engine.SessionLocal,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{}
+{org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getInt()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{java.io.FileOutputStream=public void java.io.FileOutputStream.write(byte[],int,int) throws java.io.IOException}
+{org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.setChild(int,org.h2.mvstore.Page)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.command.query.SelectGroups$Grouped=public void org.h2.command.query.SelectGroups$Grouped.reset()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.mvstore.type.MetaType=public java.lang.Object[] org.h2.mvstore.type.MetaType.createStorage(int), org.h2.mvstore.tx.VersionedValueType=public java.lang.Object[] org.h2.mvstore.tx.VersionedValueType.createStorage(int), org.h2.mvstore.type.StringDataType=public java.lang.Object[] org.h2.mvstore.type.StringDataType.createStorage(int), org.h2.mvstore.tx.Record$Type=public java.lang.Object[] org.h2.mvstore.tx.Record$Type.createStorage(int)}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.result.SimpleRowValue=public org.h2.value.Value org.h2.result.SimpleRowValue.getValue(int), org.h2.result.Sparse=public org.h2.value.Value org.h2.result.Sparse.getValue(int)}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.hasNext()}
+{}
+{}
+{org.h2.mvstore.Page$Leaf=public java.lang.Object org.h2.mvstore.Page$Leaf.getValue(int)}
+{org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.getChildPage(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.value.ValueChar=public int org.h2.value.ValueChar.getValueType(), org.h2.value.ValueDouble=public int org.h2.value.ValueDouble.getValueType(), org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueTimestampTimeZone=public int org.h2.value.ValueTimestampTimeZone.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType(), org.h2.value.ValueBigint=public int org.h2.value.ValueBigint.getValueType()}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.expression.BinaryOperation=public org.h2.value.Value org.h2.expression.BinaryOperation.getValue(org.h2.engine.SessionLocal), org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal), org.h2.expression.Alias=public org.h2.value.Value org.h2.expression.Alias.getValue(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isLazy()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{java.lang.String=public int java.lang.String.compareTo(java.lang.Object)}
+{}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.command.Token$KeywordToken=int org.h2.command.Token$KeywordToken.tokenType(), org.h2.command.Token$IdentifierToken=int org.h2.command.Token$IdentifierToken.tokenType()}
+{org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.constraint.ConstraintUnique=public void org.h2.constraint.ConstraintUnique.checkRow(org.h2.engine.SessionLocal,org.h2.table.Table,org.h2.result.Row,org.h2.result.Row), org.h2.constraint.ConstraintReferential=public void org.h2.constraint.ConstraintReferential.checkRow(org.h2.engine.SessionLocal,org.h2.table.Table,org.h2.result.Row,org.h2.result.Row)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.expression.function.SubstringFunction=public org.h2.value.Value org.h2.expression.function.SubstringFunction.getValue(org.h2.engine.SessionLocal,org.h2.value.Value,org.h2.value.Value,org.h2.value.Value)}
+{org.h2.expression.aggregate.Aggregate=public org.h2.value.Value org.h2.expression.aggregate.Aggregate.getAggregatedValue(org.h2.engine.SessionLocal,java.lang.Object)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.result.LocalResult=public long org.h2.result.LocalResult.getRowCount()}
+{org.h2.expression.aggregate.Aggregate=public void org.h2.expression.aggregate.Aggregate.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.Alias=public void org.h2.expression.Alias.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.command.dml.Insert=public void org.h2.command.dml.Insert.setCommand(org.h2.command.Command)}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public void org.h2.expression.Parameter.setValue(org.h2.value.Value,boolean)}
+{java.io.PrintStream=public void java.io.PrintStream.flush()}
+{org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.getChildPage(int)}
+{org.h2.expression.ExpressionColumn=public int org.h2.expression.ExpressionColumn.getCost()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal), org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcResultSet=public java.sql.Timestamp org.h2.jdbc.JdbcResultSet.getTimestamp(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.result.LocalResult=public org.h2.value.Value[] org.h2.result.LocalResult.currentRow()}
+{org.h2.message.TraceSystem=public boolean org.h2.message.TraceSystem.isEnabled(int)}
+{org.h2.mvstore.Page$Leaf=public int org.h2.mvstore.Page$Leaf.getNodeType(), org.h2.mvstore.Page$NonLeaf=public int org.h2.mvstore.Page$NonLeaf.getNodeType()}
+{org.h2.mvstore.db.MVTable=public void org.h2.mvstore.db.MVTable.unlock(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.findColumn(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.commit() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.mvstore.db.MVPrimaryIndex=public int org.h2.mvstore.db.MVPrimaryIndex.getColumnIndex(org.h2.table.Column)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.command.CommandContainer=public java.util.ArrayList org.h2.command.CommandContainer.getParameters()}
+{}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{}
+{}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex=public void org.h2.mvstore.db.MVSecondaryIndex.add(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.jdbc.JdbcResultSet=public void org.h2.jdbc.JdbcResultSet.close() throws java.sql.SQLException}
+{java.lang.CharacterDataLatin1=int java.lang.CharacterDataLatin1.toUpperCase(int)}
+{}
+{org.h2.result.LocalResult=public void org.h2.result.LocalResult.addRow(org.h2.value.Value[])}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setDouble(int,double) throws java.sql.SQLException}
+{org.h2.engine.SessionLocal=public org.h2.engine.Mode org.h2.engine.SessionLocal.getMode()}
+{org.h2.table.TableFilter=public org.h2.command.query.Select org.h2.table.TableFilter.getSelect()}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.lock(org.h2.engine.SessionLocal,int)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.lock(org.h2.engine.SessionLocal,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setTimestamp(int,java.sql.Timestamp) throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.table.Column=public org.h2.value.TypeInfo org.h2.table.Column.getType()}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isLazy()}
+{java.lang.CharacterDataLatin1=int java.lang.CharacterDataLatin1.digit(int,int)}
+{org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.setChild(int,org.h2.mvstore.Page)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.value.ValueNull=public int org.h2.value.ValueNull.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType()}
+{org.h2.mvstore.db.RowDataType=public int org.h2.mvstore.db.RowDataType.compare(java.lang.Object,java.lang.Object)}
+{org.h2.mvstore.Page$Leaf=public org.h2.mvstore.Page org.h2.mvstore.Page$Leaf.split(int), org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.split(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex=public double org.h2.mvstore.db.MVSecondaryIndex.getCost(org.h2.engine.SessionLocal,int[],org.h2.table.TableFilter[],int,org.h2.result.SortOrder,org.h2.command.query.AllColumnsForPlan), org.h2.mvstore.db.MVDelegateIndex=public double org.h2.mvstore.db.MVDelegateIndex.getCost(org.h2.engine.SessionLocal,int[],org.h2.table.TableFilter[],int,org.h2.result.SortOrder,org.h2.command.query.AllColumnsForPlan)}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setDouble(int,double) throws java.sql.SQLException}
+{}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType()}
+{org.h2.util.TimeZoneProvider$Simple=public int org.h2.util.TimeZoneProvider$Simple.getTimeZoneOffsetUTC(long)}
+{org.h2.expression.Parameter=public boolean org.h2.expression.Parameter.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public org.h2.result.ResultInterface org.h2.result.LocalResult.createShallowCopy(org.h2.engine.Session)}
+{org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.command.CommandContainer=public void org.h2.command.CommandContainer.stop()}
+{}
+{org.h2.expression.condition.ConditionAndOrN=public org.h2.expression.Expression org.h2.expression.condition.ConditionAndOrN.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.Comparison=public org.h2.expression.Expression org.h2.expression.condition.Comparison.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.expression.Expression org.h2.expression.condition.NullPredicate.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.ConditionAndOr=public org.h2.expression.Expression org.h2.expression.condition.ConditionAndOr.optimize(org.h2.engine.SessionLocal), org.h2.expression.condition.ConditionNot=public org.h2.expression.Expression org.h2.expression.condition.ConditionNot.optimize(org.h2.engine.SessionLocal)}
+{org.h2.expression.aggregate.AggregateDataDefault=org.h2.value.Value org.h2.expression.aggregate.AggregateDataDefault.getValue(org.h2.engine.SessionLocal)}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType()}
+{java.io.PrintStream=public void java.io.PrintStream.write(byte[],int,int)}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.setEvaluatable(org.h2.table.TableFilter,boolean), org.h2.expression.condition.ConditionAndOr=public void org.h2.expression.condition.ConditionAndOr.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.table.TableFilter=public org.h2.value.Value org.h2.table.TableFilter.getValue(org.h2.table.Column)}
+{java.text.StringBufFactory$StringBuilderImpl=public java.text.Format$StringBuf java.text.StringBufFactory$StringBuilderImpl.append(java.lang.CharSequence,int,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.mvstore.tx.TxDecisionMaker$PutIfAbsentDecisionMaker=public java.lang.Object org.h2.mvstore.tx.TxDecisionMaker$PutIfAbsentDecisionMaker.selectValue(java.lang.Object,java.lang.Object), org.h2.mvstore.tx.TxDecisionMaker=public java.lang.Object org.h2.mvstore.tx.TxDecisionMaker.selectValue(java.lang.Object,java.lang.Object), org.h2.mvstore.tx.CommitDecisionMaker=public java.lang.Object org.h2.mvstore.tx.CommitDecisionMaker.selectValue(java.lang.Object,java.lang.Object)}
+{org.h2.value.ValueChar=public int org.h2.value.ValueChar.getValueType(), org.h2.value.ValueDouble=public int org.h2.value.ValueDouble.getValueType(), org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueNull=public int org.h2.value.ValueNull.getValueType(), org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.getValueType(), org.h2.value.ValueTimestampTimeZone=public int org.h2.value.ValueTimestampTimeZone.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{java.lang.String=public int java.lang.String.length()}
+{org.h2.jdbc.JdbcResultSet=public void org.h2.jdbc.JdbcResultSet.close() throws java.sql.SQLException}
+{java.io.PrintStream=public void java.io.PrintStream.write(int)}
+{org.h2.expression.condition.Comparison=public org.h2.value.Value org.h2.expression.condition.Comparison.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.value.Value org.h2.expression.condition.NullPredicate.getValue(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.Page$Leaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$Leaf.getPrependCursorPos(org.h2.mvstore.CursorPos), org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$NonLeaf.getPrependCursorPos(org.h2.mvstore.CursorPos)}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.ValueExpression=public org.h2.value.Value org.h2.expression.ValueExpression.getValue(org.h2.engine.SessionLocal)}
+{org.h2.command.CommandContainer=public java.util.ArrayList org.h2.command.CommandContainer.getParameters()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setTimestamp(int,java.sql.Timestamp) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.mvstore.tx.TransactionMap$RepeatableIterator=public java.lang.Object org.h2.mvstore.tx.TransactionMap$RepeatableIterator.fetchNext(), org.h2.mvstore.tx.TransactionMap$CommittedIterator=public java.lang.Object org.h2.mvstore.tx.TransactionMap$CommittedIterator.fetchNext()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.util.TimeZoneProvider$Simple=public long org.h2.util.TimeZoneProvider$Simple.getEpochSecondsFromLocal(long,long)}
+{}
+{org.h2.command.dml.TransactionCommand=public boolean org.h2.command.dml.TransactionCommand.isTransactional(), org.h2.command.dml.NoOperation=public boolean org.h2.command.dml.NoOperation.isTransactional()}
+{org.h2.command.Token$KeywordToken=int org.h2.command.Token$KeywordToken.tokenType()}
+{org.h2.util.TimeZoneProvider$Simple=public int org.h2.util.TimeZoneProvider$Simple.getTimeZoneOffsetUTC(long)}
+{}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.condition.ConditionAndOrN=public int org.h2.expression.condition.ConditionAndOrN.getCost(), org.h2.expression.condition.Comparison=public int org.h2.expression.condition.Comparison.getCost(), org.h2.expression.condition.ConditionAndOr=public int org.h2.expression.condition.ConditionAndOr.getCost()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public java.lang.Object org.h2.mvstore.tx.VersionedValueUncommitted.getCommittedValue()}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.next()}
+{org.h2.mvstore.MVMap=public java.lang.Object org.h2.mvstore.MVMap.operate(java.lang.Object,java.lang.Object,org.h2.mvstore.MVMap$DecisionMaker)}
+{org.h2.table.TableFilter=public org.h2.table.TableFilter org.h2.table.TableFilter.getTableFilter()}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.lock(org.h2.engine.SessionLocal,int)}
+{org.h2.mvstore.tx.TransactionMap$ValidationIterator=boolean org.h2.mvstore.tx.TransactionMap$ValidationIterator.shouldIgnoreRemoval(org.h2.value.VersionedValue)}
+{org.h2.engine.SessionLocal=public org.h2.message.Trace org.h2.engine.SessionLocal.getTrace()}
+{org.h2.command.query.Select=public boolean org.h2.command.query.Select.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public short org.h2.jdbc.JdbcResultSet.getShort(java.lang.String) throws java.sql.SQLException}
+{java.lang.CharacterDataLatin1=int java.lang.CharacterDataLatin1.toLowerCase(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.expression.BinaryOperation=public org.h2.expression.Expression org.h2.expression.BinaryOperation.optimize(org.h2.engine.SessionLocal), org.h2.expression.aggregate.Aggregate=public org.h2.expression.Expression org.h2.expression.aggregate.Aggregate.optimize(org.h2.engine.SessionLocal), org.h2.expression.Alias=public org.h2.expression.Expression org.h2.expression.Alias.optimize(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.expression.Expression org.h2.expression.ExpressionColumn.optimize(org.h2.engine.SessionLocal)}
+{org.h2.mvstore.tx.TransactionMap$RepeatableIterator=public java.lang.Object org.h2.mvstore.tx.TransactionMap$RepeatableIterator.fetchNext(), org.h2.mvstore.tx.TransactionMap$CommittedIterator=public java.lang.Object org.h2.mvstore.tx.TransactionMap$CommittedIterator.fetchNext()}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.table.TableFilter=public org.h2.command.query.Select org.h2.table.TableFilter.getSelect()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(java.lang.String) throws java.sql.SQLException}
+{org.h2.table.TableFilter=public java.lang.String org.h2.table.TableFilter.getTableAlias()}
+{java.text.MessageFormat=final java.text.Format$StringBuf java.text.MessageFormat.format(java.lang.Object,java.text.Format$StringBuf,java.text.FieldPosition)}
+{org.h2.expression.aggregate.Aggregate=public boolean org.h2.expression.aggregate.Aggregate.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor=public org.h2.result.Row org.h2.mvstore.db.MVSecondaryIndex$MVStoreCursor.get()}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.apache.derbyTesting.system.oe.direct.OrderItem4Sort=public int org.apache.derbyTesting.system.oe.direct.OrderItem4Sort.compareTo(java.lang.Object)}
+{org.h2.expression.Parameter=public java.lang.StringBuilder org.h2.expression.Parameter.getUnenclosedSQL(java.lang.StringBuilder,int), org.h2.expression.ExpressionColumn=public java.lang.StringBuilder org.h2.expression.ExpressionColumn.getUnenclosedSQL(java.lang.StringBuilder,int)}
+{}
+{org.h2.value.ValueNumeric=public java.lang.String org.h2.value.ValueNumeric.getString()}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.result.LocalResult=public long org.h2.result.LocalResult.getRowId()}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public org.h2.value.Value org.h2.expression.Parameter.getValue(org.h2.engine.SessionLocal), org.h2.expression.ExpressionColumn=public org.h2.value.Value org.h2.expression.ExpressionColumn.getValue(org.h2.engine.SessionLocal)}
+{}
+{org.h2.mvstore.db.MVTable=public void org.h2.mvstore.db.MVTable.addRow(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.value.ValueNumeric=public java.math.BigDecimal org.h2.value.ValueNumeric.getBigDecimal()}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.write(int) throws java.io.IOException}
+{org.h2.value.ValueBigint=public long org.h2.value.ValueBigint.getLong()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getInt()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$Leaf.getAppendCursorPos(org.h2.mvstore.CursorPos), org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$NonLeaf.getAppendCursorPos(org.h2.mvstore.CursorPos)}
+{org.h2.engine.SessionLocal=public boolean org.h2.engine.SessionLocal.getAutoCommit()}
+{org.h2.command.query.Select=public boolean org.h2.command.query.Select.isEverything(org.h2.expression.ExpressionVisitor)}
+{java.lang.String=public char java.lang.String.charAt(int)}
+{org.h2.result.LocalResult=public void org.h2.result.LocalResult.close()}
+{org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{org.h2.mvstore.Page$NonLeaf=public int org.h2.mvstore.Page$NonLeaf.getRawChildPageCount()}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public java.lang.Object org.h2.mvstore.tx.VersionedValueUncommitted.getCommittedValue()}
+{}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.result.SimpleRowValue=public void org.h2.result.SimpleRowValue.copyFrom(org.h2.result.SearchRow), org.h2.result.Sparse=public void org.h2.result.Sparse.copyFrom(org.h2.result.SearchRow)}
+{org.h2.command.CommandContainer=public boolean org.h2.command.CommandContainer.canReuse()}
+{org.h2.expression.Parameter=public boolean org.h2.expression.Parameter.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{}
+{org.h2.expression.ExpressionColumn=public org.h2.value.TypeInfo org.h2.expression.ExpressionColumn.getType()}
+{org.h2.mvstore.db.MVTable=public org.h2.table.Column org.h2.mvstore.db.MVTable.getRowIdColumn()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getValueType(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.getValueType(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getValueType(), org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.getValueType(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.getValueType(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.getValueType()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.mvstore.Page$Leaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$Leaf.getPrependCursorPos(org.h2.mvstore.CursorPos), org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.CursorPos org.h2.mvstore.Page$NonLeaf.getPrependCursorPos(org.h2.mvstore.CursorPos)}
+{}
+{org.h2.jdbc.JdbcSQLNonTransientException=public java.lang.String org.h2.jdbc.JdbcSQLNonTransientException.getOriginalMessage(), org.h2.jdbc.JdbcSQLSyntaxErrorException=public java.lang.String org.h2.jdbc.JdbcSQLSyntaxErrorException.getOriginalMessage()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.setEvaluatable(org.h2.table.TableFilter,boolean)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.getChildPage(int)}
+{org.h2.mvstore.Page$Leaf=public java.lang.Object org.h2.mvstore.Page$Leaf.getValue(int)}
+{org.h2.expression.condition.Comparison=public void org.h2.expression.condition.Comparison.createIndexConditions(org.h2.engine.SessionLocal,org.h2.table.TableFilter), org.h2.expression.condition.NullPredicate=public void org.h2.expression.condition.NullPredicate.createIndexConditions(org.h2.engine.SessionLocal,org.h2.table.TableFilter)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(int) throws java.sql.SQLException}
+{org.h2.expression.aggregate.AggregateDataDefault=void org.h2.expression.aggregate.AggregateDataDefault.add(org.h2.engine.SessionLocal,org.h2.value.Value), org.h2.expression.aggregate.AggregateDataCollecting=void org.h2.expression.aggregate.AggregateDataCollecting.add(org.h2.engine.SessionLocal,org.h2.value.Value)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.value.ValueBigint=public long org.h2.value.ValueBigint.getLong()}
+{org.h2.result.LocalResult=public boolean org.h2.result.LocalResult.isAfterLast()}
+{org.h2.expression.ExpressionColumn=public void org.h2.expression.ExpressionColumn.mapColumns(org.h2.table.ColumnResolver,int,int)}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.getInt(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getInt()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setNull(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.command.query.SelectGroups$Grouped=public void org.h2.command.query.SelectGroups$Grouped.nextSource()}
+{org.h2.command.CommandContainer=public boolean org.h2.command.CommandContainer.isCacheable()}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.command.dml.TransactionCommand=public long org.h2.command.dml.TransactionCommand.update(), org.h2.command.dml.NoOperation=public long org.h2.command.dml.NoOperation.update(), org.h2.command.ddl.CreateTable=public long org.h2.command.ddl.CreateTable.update(), org.h2.command.ddl.CreateIndex=public long org.h2.command.ddl.CreateIndex.update(), org.h2.command.ddl.DropTable=public long org.h2.command.ddl.DropTable.update()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setTimestamp(int,java.sql.Timestamp) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.command.query.SelectGroups$Grouped=public void org.h2.command.query.SelectGroups$Grouped.done()}
+{org.h2.command.Token$IdentifierToken=boolean org.h2.command.Token$IdentifierToken.isQuoted()}
+{org.h2.message.TraceSystem=public void org.h2.message.TraceSystem.write(int,java.lang.String,java.lang.String,java.lang.Throwable)}
+{org.h2.mvstore.db.MVTable=public void org.h2.mvstore.db.MVTable.removeRow(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(int) throws java.sql.SQLException}
+{org.h2.command.CommandContainer=public java.util.ArrayList org.h2.command.CommandContainer.getParameters()}
+{org.h2.schema.Sequence=public int org.h2.schema.Sequence.getType(), org.h2.engine.User=public int org.h2.engine.User.getType(), org.h2.engine.Setting=public int org.h2.engine.Setting.getType()}
+{org.h2.jdbc.JdbcResultSet=public void org.h2.jdbc.JdbcResultSet.close() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(int) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.mvstore.MVMap org.h2.mvstore.db.MVSecondaryIndex.getMVMap(), org.h2.mvstore.db.MVPrimaryIndex=public org.h2.mvstore.MVMap org.h2.mvstore.db.MVPrimaryIndex.getMVMap(), org.h2.mvstore.db.MVDelegateIndex=public org.h2.mvstore.MVMap org.h2.mvstore.db.MVDelegateIndex.getMVMap()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{java.io.BufferedOutputStream=public synchronized void java.io.BufferedOutputStream.flush() throws java.io.IOException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.engine.SessionLocal=public boolean org.h2.engine.SessionLocal.isClosed()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.Parameter=public void org.h2.expression.Parameter.setValue(org.h2.value.Value,boolean)}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.mvstore.db.RowDataType=public int org.h2.mvstore.db.RowDataType.compare(java.lang.Object,java.lang.Object)}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.isRowLockable()}
+{}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isConstant()}
+{org.h2.expression.Parameter=public void org.h2.expression.Parameter.setValue(org.h2.value.Value,boolean)}
+{org.h2.engine.SessionLocal=public org.h2.util.TimeZoneProvider org.h2.engine.SessionLocal.currentTimeZone()}
+{org.h2.command.query.Select=public void org.h2.command.query.Select.fireBeforeSelectTriggers()}
+{org.h2.table.TableFilter=public java.lang.String org.h2.table.TableFilter.getColumnName(org.h2.table.Column)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVTable=public long org.h2.mvstore.db.MVTable.getMaxDataModificationId()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(java.lang.String) throws java.sql.SQLException}
+{org.h2.command.query.Select=protected org.h2.result.ResultInterface org.h2.command.query.Select.queryWithoutCache(long,org.h2.result.ResultTarget)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.expression.ValueExpression=public boolean org.h2.expression.ValueExpression.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.ExpressionColumn=public boolean org.h2.expression.ExpressionColumn.isEverything(org.h2.expression.ExpressionVisitor)}
+{}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.apache.derbyTesting.system.oe.direct.OrderItem4Sort=public int org.apache.derbyTesting.system.oe.direct.OrderItem4Sort.compareTo(java.lang.Object)}
+{org.h2.result.SimpleRowValue=public org.h2.value.Value org.h2.result.SimpleRowValue.getValue(int), org.h2.result.Sparse=public org.h2.value.Value org.h2.result.Sparse.getValue(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.command.dml.TransactionCommand=public boolean org.h2.command.dml.TransactionCommand.isCacheable(), org.h2.command.query.Select=public boolean org.h2.command.query.Select.isCacheable(), org.h2.command.dml.Insert=public boolean org.h2.command.dml.Insert.isCacheable()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setObject(int,java.lang.Object,int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.result.Sparse=public org.h2.value.Value org.h2.result.Sparse.getValue(int)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.Object org.h2.jdbc.JdbcResultSet.getObject(int) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.result.SimpleRowValue=public void org.h2.result.SimpleRowValue.copyFrom(org.h2.result.SearchRow), org.h2.result.Sparse=public void org.h2.result.Sparse.copyFrom(org.h2.result.SearchRow)}
+{org.h2.expression.condition.ConditionAndOrN=public boolean org.h2.expression.condition.ConditionAndOrN.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.Comparison=public boolean org.h2.expression.condition.Comparison.isEverything(org.h2.expression.ExpressionVisitor), org.h2.expression.condition.ConditionAndOr=public boolean org.h2.expression.condition.ConditionAndOr.isEverything(org.h2.expression.ExpressionVisitor)}
+{org.h2.mvstore.Page$NonLeaf=public void org.h2.mvstore.Page$NonLeaf.insertNode(int,java.lang.Object,org.h2.mvstore.Page)}
+{org.apache.derbyTesting.system.oe.direct.OrderItem4Sort=public int org.apache.derbyTesting.system.oe.direct.OrderItem4Sort.compareTo(java.lang.Object)}
+{org.h2.mvstore.Page$Leaf=public long org.h2.mvstore.Page$Leaf.getTotalCount(), org.h2.mvstore.Page$NonLeaf=public long org.h2.mvstore.Page$NonLeaf.getTotalCount()}
+{org.h2.command.dml.Delete=public void org.h2.command.dml.Delete.collectDependencies(java.util.HashSet), org.h2.command.dml.Insert=public void org.h2.command.dml.Insert.collectDependencies(java.util.HashSet), org.h2.command.dml.Update=public void org.h2.command.dml.Update.collectDependencies(java.util.HashSet)}
+{org.h2.result.LocalResult=public java.lang.String org.h2.result.LocalResult.getAlias(int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.schema.Schema=public org.h2.table.Table org.h2.schema.Schema.findTableOrView(org.h2.engine.SessionLocal,java.lang.String)}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVTable=public int org.h2.mvstore.db.MVTable.getMainIndexColumn()}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.isDeterministic()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setString(int,java.lang.String) throws java.sql.SQLException}
+{org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public boolean org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.next()}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.clearParameters() throws java.sql.SQLException}
+{}
+{org.h2.expression.aggregate.Aggregate=public org.h2.value.Value org.h2.expression.aggregate.Aggregate.getValue(org.h2.engine.SessionLocal)}
+{}
+{org.h2.command.query.Select=public boolean org.h2.command.query.Select.isUnion()}
+{org.h2.mvstore.db.MVSecondaryIndex=public void org.h2.mvstore.db.MVSecondaryIndex.add(org.h2.engine.SessionLocal,org.h2.result.Row), org.h2.mvstore.db.MVPrimaryIndex=public void org.h2.mvstore.db.MVPrimaryIndex.add(org.h2.engine.SessionLocal,org.h2.result.Row), org.h2.mvstore.db.MVDelegateIndex=public void org.h2.mvstore.db.MVDelegateIndex.add(org.h2.engine.SessionLocal,org.h2.result.Row)}
+{org.h2.mvstore.MVMap=public java.lang.Object org.h2.mvstore.MVMap.get(org.h2.mvstore.Page,java.lang.Object)}
+{org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor=public org.h2.result.Row org.h2.mvstore.db.MVPrimaryIndex$MVStoreCursor.get()}
+{org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.getInt()}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public int org.h2.jdbc.JdbcPreparedStatement.executeUpdate() throws java.sql.SQLException}
+{org.h2.expression.condition.ConditionAndOrN=public org.h2.value.Value org.h2.expression.condition.ConditionAndOrN.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.Comparison=public org.h2.value.Value org.h2.expression.condition.Comparison.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.NullPredicate=public org.h2.value.Value org.h2.expression.condition.NullPredicate.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.ConditionAndOr=public org.h2.value.Value org.h2.expression.condition.ConditionAndOr.getValue(org.h2.engine.SessionLocal), org.h2.expression.condition.ConditionNot=public org.h2.value.Value org.h2.expression.condition.ConditionNot.getValue(org.h2.engine.SessionLocal)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.result.DefaultRow=public org.h2.value.Value org.h2.result.DefaultRow.getValue(int)}
+{org.h2.mvstore.db.MVSecondaryIndex=public org.h2.table.Table org.h2.mvstore.db.MVSecondaryIndex.getTable()}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public java.lang.String org.h2.jdbc.JdbcResultSet.getString(java.lang.String) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcPreparedStatement=public java.sql.ResultSet org.h2.jdbc.JdbcPreparedStatement.executeQuery() throws java.sql.SQLException}
+{org.h2.result.LocalResult=public void org.h2.result.LocalResult.close()}
+{org.h2.expression.Alias=public java.lang.String org.h2.expression.Alias.getAlias(org.h2.engine.SessionLocal,int), org.h2.expression.ExpressionColumn=public java.lang.String org.h2.expression.ExpressionColumn.getAlias(org.h2.engine.SessionLocal,int)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setTimestamp(int,java.sql.Timestamp) throws java.sql.SQLException}
+{org.h2.jdbc.JdbcConnection=public int org.h2.jdbc.JdbcConnection.getTransactionIsolation() throws java.sql.SQLException}
+{org.h2.jdbc.JdbcResultSet=public boolean org.h2.jdbc.JdbcResultSet.next() throws java.sql.SQLException}
+{}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setInt(int,int) throws java.sql.SQLException}
+{org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.getValueType()}
+{org.h2.mvstore.db.MVTable=public boolean org.h2.mvstore.db.MVTable.isRowLockable()}
+{org.h2.expression.function.CastSpecification=protected org.h2.value.Value org.h2.expression.function.CastSpecification.getValue(org.h2.engine.SessionLocal,org.h2.value.Value,org.h2.value.Value)}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.mvstore.Page$NonLeaf=public org.h2.mvstore.Page org.h2.mvstore.Page$NonLeaf.getChildPage(int)}
+{org.h2.result.LocalResult=public long org.h2.result.LocalResult.getRowCount()}
+{org.h2.jdbc.JdbcConnection=public synchronized void org.h2.jdbc.JdbcConnection.rollback() throws java.sql.SQLException}
+{org.h2.mvstore.db.MVPrimaryIndex=public void org.h2.mvstore.db.MVPrimaryIndex.update(org.h2.engine.SessionLocal,org.h2.result.Row,org.h2.result.Row), org.h2.mvstore.db.MVDelegateIndex=public void org.h2.mvstore.db.MVDelegateIndex.update(org.h2.engine.SessionLocal,org.h2.result.Row,org.h2.result.Row)}
+{}
+{org.h2.jdbc.JdbcSQLNonTransientException=public java.lang.String org.h2.jdbc.JdbcSQLNonTransientException.getSQL(), org.h2.jdbc.JdbcSQLSyntaxErrorException=public java.lang.String org.h2.jdbc.JdbcSQLSyntaxErrorException.getSQL()}
+{org.h2.jdbc.JdbcPreparedStatement=public void org.h2.jdbc.JdbcPreparedStatement.setShort(int,short) throws java.sql.SQLException}
+{org.h2.value.ValueChar=public int org.h2.value.ValueChar.hashCode(), org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.hashCode(), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.hashCode(), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.hashCode(), org.h2.value.ValueNull=public int org.h2.value.ValueNull.hashCode(), org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.hashCode(), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.hashCode(), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.hashCode()}
+{org.h2.jdbc.JdbcConnection=public void org.h2.jdbc.JdbcConnection.setTransactionIsolation(int) throws java.sql.SQLException}
+{java.lang.CharacterDataLatin1=boolean java.lang.CharacterDataLatin1.isJavaIdentifierPart(int)}
+{org.h2.jdbc.JdbcResultSet=public int org.h2.jdbc.JdbcResultSet.getInt(int) throws java.sql.SQLException}
+{}
+{org.h2.engine.SessionLocal=public void org.h2.engine.SessionLocal.onRollback(org.h2.mvstore.MVMap,java.lang.Object,org.h2.value.VersionedValue,org.h2.value.VersionedValue)}
+{org.h2.jdbc.JdbcSQLNonTransientException=public java.lang.String org.h2.jdbc.JdbcSQLNonTransientException.getMessage(), org.h2.jdbc.JdbcSQLSyntaxErrorException=public java.lang.String org.h2.jdbc.JdbcSQLSyntaxErrorException.getMessage()}
+{org.h2.value.ValueSmallint=public int org.h2.value.ValueSmallint.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider), org.h2.value.ValueVarchar=public int org.h2.value.ValueVarchar.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider), org.h2.value.ValueInteger=public int org.h2.value.ValueInteger.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider), org.h2.value.ValueBoolean=public int org.h2.value.ValueBoolean.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider), org.h2.value.ValueTimestamp=public int org.h2.value.ValueTimestamp.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider), org.h2.value.ValueNumeric=public int org.h2.value.ValueNumeric.compareTypeSafe(org.h2.value.Value,org.h2.value.CompareMode,org.h2.engine.CastDataProvider)}
+{org.h2.jdbc.JdbcResultSet=public void org.h2.jdbc.JdbcResultSet.close() throws java.sql.SQLException}
+{org.h2.command.ddl.CreateTable=public void org.h2.command.ddl.CreateTable.addColumn(org.h2.table.Column)}
+{org.h2.command.query.Select=public boolean org.h2.command.query.Select.isUnion()}
+{org.h2.mvstore.tx.TransactionMap$CommittedIterator=public java.lang.Object org.h2.mvstore.tx.TransactionMap$CommittedIterator.fetchNext()}
+{org.h2.mvstore.tx.VersionedValueUncommitted=public long org.h2.mvstore.tx.VersionedValueUncommitted.getOperationId()}
+{}
+[1/8] Initializing...                                                                                    (3.3s @ 0.23GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 26.49GB of memory (43.8% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                   (24.5s @ 1.56GB)
+   10,619 reachable types   (83.4% of   12,733 total)
+   19,764 reachable fields  (53.8% of   36,756 total)
+   59,563 reachable methods (58.3% of  102,125 total)
+    3,336 types,    34 fields, and   671 methods registered for reflection
+       62 types,    66 fields, and    55 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (2.3s @ 1.61GB)
+[4/8] Parsing methods...      [*]                                                                        (1.3s @ 1.75GB)
+[5/8] Inlining methods...     [**]                                                                      (19.0s @ 1.84GB)
+[6/8] Compiling methods...    [****]                                                                    (15.3s @ 2.95GB)
+[7/8] Laying out methods...   [**]                                                                       (3.6s @ 3.39GB)
+[8/8] Creating image...       [**]                                                                       (2.6s @ 3.66GB)
+  28.52MB (44.64%) for code area:    48,864 compilation units
+  29.13MB (45.59%) for image heap:  303,637 objects and 165 resources
+   6.24MB ( 9.77%) for other data
+  63.88MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   9.51MB h2-2.2.220.jar                                       9.70MB byte[] for code metadata
+   8.84MB java.base                                            3.89MB byte[] for java.lang.String
+   2.67MB java.xml                                             2.90MB java.lang.String
+   1.51MB java.desktop                                         2.64MB java.lang.Class
+   1.45MB svm.jar (Native Image)                             949.18kB byte[] for embedded resources
+   1.38MB derbyTesting.jar                                   912.57kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 964.41kB derbyclient.jar                                    835.97kB byte[] for general heap data
+ 385.06kB java.security.jgss                                 668.85kB byte[] for reflection metadata
+ 283.03kB dacapo-23.11-MR2-chopin.jar                        599.52kB java.lang.String[]
+ 249.04kB java.rmi                                           583.02kB heap alignment
+1016.38kB for 30 more packages                                 5.55MB for 2299 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ AWT:  Use the tracing agent to collect metadata for AWT.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 2775845, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/662 (0.00%)
+------------------------------------------------------------------------------------------------------------------------
+                       4.4s (6.0% of total time) in 1465 GCs | Peak RSS: 4.67GB | CPU load: 4.73
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/h2 (executable)
+ /data/dacapobench/libawt.so (jdk_library)
+ /data/dacapobench/libawt_headless.so (jdk_library)
+ /data/dacapobench/libawt_xawt.so (jdk_library)
+ /data/dacapobench/libfontmanager.so (jdk_library)
+ /data/dacapobench/libjava.so (jdk_library_shim)
+ /data/dacapobench/libjavajpeg.so (jdk_library)
+ /data/dacapobench/libjvm.so (jdk_library_shim)
+ /data/dacapobench/liblcms.so (jdk_library)
+========================================================================================================================
+Finished generating 'h2' in 1m 12s.

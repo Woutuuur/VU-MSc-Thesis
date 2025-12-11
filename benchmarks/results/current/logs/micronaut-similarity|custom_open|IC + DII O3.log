@@ -1,0 +1,94 @@
+
+Native Image Bundles: Loaded Bundle from /data/baristabench/benchmarks/micronaut-similarity/target/micronaut-similarity-1.0.6.nib
+Native Image Bundles: Bundle created at 'Tuesday, September 9, 2025, 10:00:26 PM Coordinated Universal Time'
+Native Image Bundles: Using version: '24+36' != '24+36-jvmci-b01' (vendor 'Oracle Corporation' != 'GraalVM Community') on platform: 'linux-amd64'
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/micronaut-similarity-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Native Image Bundles are an experimental feature.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'micronaut-similarity' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/micronaut-similarity-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 6857 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/micronaut-similarity-custom_open.json
+Using top 2743 call sites for PGO based inlining
+Out of which 887 are indirect call sites and 1856 are direct call sites
+Representing 4770502 and 2907516972 calls respectively (0.163806013059822% indirect)
+
+[1/8] Initializing...                                                                                    (2.5s @ 0.28GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: native
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 2 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+ - io.micronaut.core.io.service.ServiceLoaderFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 14.06GB of memory (23.3% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                   (17.5s @ 1.71GB)
+   13,880 reachable types   (87.5% of   15,854 total)
+   20,234 reachable fields  (52.9% of   38,223 total)
+   69,475 reachable methods (61.2% of  113,574 total)
+    4,836 types,   120 fields, and 1,453 methods registered for reflection
+       63 types,    62 fields, and    57 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (2.3s @ 1.39GB)
+[4/8] Parsing methods...      [*]                                                                        (1.3s @ 1.54GB)
+[5/8] Inlining methods...     [**]                                                                      (13.5s @ 1.64GB)
+[6/8] Compiling methods...    [***]                                                                     (10.9s @ 1.73GB)
+[7/8] Laying out methods...   [**]                                                                       (3.0s @ 2.28GB)
+[8/8] Creating image...       [**]                                                                       (2.4s @ 2.55GB)
+  25.57MB (38.61%) for code area:    61,036 compilation units
+  31.06MB (46.89%) for image heap:  331,925 objects and 350 resources
+   9.61MB (14.50%) for other data
+  66.24MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  10.56MB micronaut-similarity-1.0.6.jar                       9.13MB byte[] for code metadata
+   9.42MB java.base                                            4.42MB byte[] for java.lang.String
+   2.19MB java.xml                                             3.99MB java.lang.Class
+   1.77MB svm.jar (Native Image)                               2.94MB java.lang.String
+ 249.82kB java.rmi                                             1.16MB com.oracle.svm.core.hub.DynamicHubCompanion
+ 200.70kB jdk.proxy4                                         889.05kB byte[] for reflection metadata
+ 150.89kB java.naming                                        835.80kB byte[] for general heap data
+ 148.66kB jdk.zipfs                                          595.98kB java.lang.String[]
+  96.51kB jdk.naming.dns                                     529.94kB java.lang.Object[]
+  84.81kB java.logging                                       514.02kB int[][]
+ 325.92kB for 19 more packages                                 6.13MB for 2994 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+Total skippable fingerprints recorded: 0
+Total phases ran: 3446454, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/594 (0.00%)
+------------------------------------------------------------------------------------------------------------------------
+                       3.2s (5.8% of total time) in 2509 GCs | Peak RSS: 3.44GB | CPU load: 5.28
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /tmp/bundleRoot-5590166414649426548/output/default/micronaut-similarity (executable)
+========================================================================================================================
+Finished generating 'micronaut-similarity' in 54.5s.
+
+Native Image Bundles: Bundle build output written to /data/baristabench/benchmarks/micronaut-similarity/target/micronaut-similarity-1.0.6.output
+

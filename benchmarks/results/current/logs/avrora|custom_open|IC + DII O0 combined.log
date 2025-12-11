@@ -1,0 +1,86 @@
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/avrora-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'avrora' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = true
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/avrora-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 4429 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/avrora-custom_open.json
+Using top 1772 call sites for PGO based inlining
+Out of which 68 are indirect call sites and 1704 are direct call sites (3.837471783295711% indirect)
+Representing 105108078 and 974759454 calls respectively (9.733423302887118% indirect)
+Total calls represented: 1079867532
+
+[1/8] Initializing...                                                                                    (1.9s @ 0.30GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 0, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 9.74GB of memory (16.1% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (6.3s @ 0.74GB)
+    5,997 reachable types   (80.4% of    7,462 total)
+    7,826 reachable fields  (48.7% of   16,084 total)
+   26,629 reachable methods (52.0% of   51,222 total)
+    1,833 types,    34 fields, and   454 methods registered for reflection
+       58 types,    59 fields, and    52 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (0.9s @ 0.85GB)
+[4/8] Parsing methods...      [*]                                                                        (0.7s @ 0.95GB)
+[5/8] Inlining methods...     [**]                                                                       (3.5s @ 1.01GB)
+[6/8] Compiling methods...    [***]                                                                      (5.5s @ 1.39GB)
+[7/8] Laying out methods...   [*]                                                                        (1.1s @ 1.60GB)
+[8/8] Creating image...       [*]                                                                        (1.1s @ 1.16GB)
+  10.87MB (38.28%) for code area:    21,903 compilation units
+  14.50MB (51.06%) for image heap:  179,791 objects and 61 resources
+   3.03MB (10.66%) for other data
+  28.40MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   5.88MB java.base                                            3.56MB byte[] for code metadata
+   2.58MB avrora-cvs-20131011.jar                              2.13MB byte[] for java.lang.String
+   1.46MB svm.jar (Native Image)                               1.56MB java.lang.String
+ 293.13kB dacapo-23.11-MR2-chopin.jar                          1.41MB java.lang.Class
+ 164.51kB jdk.zipfs                                          664.20kB byte[] for general heap data
+  97.69kB java.logging                                       515.37kB com.oracle.svm.core.hub.DynamicHubCompanion
+  69.70kB jdk.charsets                                       392.80kB java.lang.Object[]
+  57.73kB org.graalvm.nativeimage.base                       324.00kB java.util.HashMap$Node
+  42.62kB org.graalvm.collections                            316.47kB byte[] for reflection metadata
+  31.56kB jdk.proxy2                                         316.24kB java.lang.String[]
+  72.56kB for 7 more packages                                  3.36MB for 1633 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1222789, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                        1.5s (6.8% of total time) in 820 GCs | Peak RSS: 2.34GB | CPU load: 6.75
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/avrora (executable)
+========================================================================================================================
+Finished generating 'avrora' in 21.8s.

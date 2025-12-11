@@ -1,0 +1,78 @@
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'xalan' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = false
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = false
+combinedInlining = false
+ProfileDataDumpFileName = null
+useCompilerPGOData = false
+profileCompiler = true
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is enabled
+[1/8] Initializing...                                                                                    (1.7s @ 0.26GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 2 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 14.82GB of memory (24.5% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [****]                                                                     (6.1s @ 0.81GB)
+    7,407 reachable types   (81.6% of    9,078 total)
+   12,632 reachable fields  (51.3% of   24,611 total)
+   38,054 reachable methods (54.3% of   70,088 total)
+    2,584 types,   120 fields, and   560 methods registered for reflection
+       58 types,    59 fields, and    52 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.3s @ 0.89GB)
+[4/8] Parsing methods...      [*]                                                                        (0.8s @ 0.98GB)
+[5/8] Inlining methods...     [***]                                                                      (0.8s @ 1.09GB)
+[6/8] Compiling methods...    [***]                                                                      (7.6s @ 0.85GB)
+[7/8] Laying out methods...   [*]                                                                        (1.2s @ 1.07GB)
+[8/8] Creating image...       [*]                                                                        (1.4s @ 1.20GB)
+  17.44MB (44.09%) for code area:    23,916 compilation units
+  18.31MB (46.29%) for image heap:  213,677 objects and 169 resources
+   3.81MB ( 9.62%) for other data
+  39.56MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   6.82MB java.base                                            4.22MB byte[] for code metadata
+   4.64MB java.xml                                             2.67MB byte[] for java.lang.String
+   2.35MB xercesImpl.jar                                       1.91MB java.lang.String
+   1.36MB svm.jar (Native Image)                               1.87MB java.lang.Class
+1005.83kB xalan.jar                                          865.94kB byte[] for general heap data
+ 323.83kB dacapo-23.11-MR2-chopin.jar                        636.54kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 207.92kB serializer.jar                                     558.31kB int[]
+ 199.83kB jdk.zipfs                                          547.75kB byte[] for reflection metadata
+ 101.76kB java.logging                                       514.44kB int[][]
+  73.58kB org.graalvm.nativeimage.base                       410.72kB java.util.HashMap$Node
+ 248.02kB for 11 more packages                                 4.19MB for 1671 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 318881
+Total phases ran: 1405353, total phases skipped: 0
+------------------------------------------------------------------------------------------------------------------------
+                        1.4s (6.2% of total time) in 708 GCs | Peak RSS: 1.93GB | CPU load: 7.03
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/xalan (executable)
+========================================================================================================================
+Finished generating 'xalan' in 21.6s.

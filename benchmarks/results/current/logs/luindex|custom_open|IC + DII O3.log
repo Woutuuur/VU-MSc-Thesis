@@ -1,0 +1,86 @@
+Warning: The option '-H:ProfileDataDumpFileName=/workspace/benchmarks/results/current/profiling-data/luindex-custom_open.json' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:+PlatformInterfaceCompatibilityMode' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: The option '-H:NumberOfThreads=4' is experimental and must be enabled via '-H:+UnlockExperimentalVMOptions' in the future.
+Warning: Please re-evaluate whether any experimental option is required, and either remove or unlock it. The build output lists all active experimental options, including where they come from and possible alternatives. If you think an experimental option should be considered as stable, please file an issue.
+Warning: Option 'PlatformInterfaceCompatibilityMode' is deprecated and might be removed in a future release: This option was introduced to simplify migration to GraalVM 21.2 and will be removed in a future release. Please refer to the GraalVM release notes.
+========================================================================================================================
+GraalVM Native Image: Generating 'luindex' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+enableInlineCachePhase = true
+enableInvokeProfilingPhase = false
+enablePGODirectInvokeInlining = true
+combinedInlining = false
+ProfileDataDumpFileName = /workspace/benchmarks/results/current/profiling-data/luindex-custom_open.json
+useCompilerPGOData = false
+profileCompiler = false
+[Use -Djdk.graal.LogFile=<path> to redirect Graal log output to a file.]
+Compiler PGO is disabled, compiler profiling is disabled
+Loaded 4398 call sites profiles from file: /workspace/benchmarks/results/current/profiling-data/luindex-custom_open.json
+Using top 1759 call sites for PGO based inlining
+Out of which 421 are indirect call sites and 1338 are direct call sites
+Representing 267336478 and 1058743345 calls respectively (20.15990842807658% indirect)
+
+[1/8] Initializing...                                                                                    (2.1s @ 0.32GB)
+ Java version: 24+36, vendor version: GraalVM CE 24-dev+36.1
+ Graal compiler: optimization level: 3, target machine: x86-64-v3
+ C compiler: gcc (linux, x86_64, 12.2.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 1 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+------------------------------------------------------------------------------------------------------------------------
+ 3 experimental option(s) unlocked:
+ - '-H:+PlatformInterfaceCompatibilityMode' (origin(s): command line)
+ - '-H:NumberOfThreads' (alternative API option(s): --parallelism=4; origin(s): command line)
+ - '-H:ProfileDataDumpFileName' (origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 16.15GB of memory (26.7% of 60.42GB system memory, determined at start)
+ - 4 thread(s) (25.0% of 16 available processor(s), set via '--parallelism=4')
+Warning: The interface org.graalvm.nativeimage.hosted.Feature is not available in the current platform, but used by com.oracle.svm.core.feature.InternalFeature. GraalVM before version 21.2 ignored such interfaces, but this was an oversight. The interface is filtered because the compatibility option -H:+PlatformInterfaceCompatibilityMode is used. This option will be removed in a future GraalVM version.
+[2/8] Performing analysis...  [*****]                                                                    (7.9s @ 0.79GB)
+    6,790 reachable types   (80.3% of    8,452 total)
+   11,174 reachable fields  (55.7% of   20,047 total)
+   32,769 reachable methods (54.3% of   60,361 total)
+    2,383 types,    69 fields, and   669 methods registered for reflection
+       64 types,    75 fields, and    54 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                               (1.1s @ 0.88GB)
+[4/8] Parsing methods...      [*]                                                                        (0.6s @ 0.94GB)
+[5/8] Inlining methods...     [**]                                                                       (3.2s @ 0.98GB)
+[6/8] Compiling methods...    [***]                                                                      (6.4s @ 0.79GB)
+[7/8] Laying out methods...   [*]                                                                        (1.3s @ 1.03GB)
+[8/8] Creating image...       [*]                                                                        (1.2s @ 1.17GB)
+  11.88MB (37.54%) for code area:    27,458 compilation units
+  16.13MB (50.94%) for image heap:  195,118 objects and 67 resources
+   3.65MB (11.52%) for other data
+  31.65MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+   5.42MB java.base                                            4.00MB byte[] for code metadata
+   3.57MB lucene-core-9.7.0-SNAPSHOT.jar                       2.44MB byte[] for java.lang.String
+   1.35MB svm.jar (Native Image)                               1.72MB java.lang.String
+ 629.90kB lucene-backward-codecs-9.7.0-SNAPSHOT.jar            1.61MB java.lang.Class
+ 265.00kB dacapo-23.11-MR2-chopin.jar                        668.86kB byte[] for general heap data
+ 143.45kB jdk.zipfs                                          583.52kB com.oracle.svm.core.hub.DynamicHubCompanion
+  83.61kB java.logging                                       501.01kB byte[] for reflection metadata
+  69.35kB jdk.charsets                                       408.24kB java.lang.Object[]
+  50.36kB org.graalvm.nativeimage.base                       392.15kB heap alignment
+  35.16kB org.graalvm.collections                            333.36kB java.lang.String[]
+ 107.65kB for 13 more packages                                 3.53MB for 1550 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+Total skippable fingerprints recorded: 0
+Total phases ran: 1558146, total phases skipped: 0
+Percentage of ICs missed due to large code size: 0/264 (0.00%)
+------------------------------------------------------------------------------------------------------------------------
+                       1.5s (6.2% of total time) in 1112 GCs | Peak RSS: 1.89GB | CPU load: 6.50
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /data/dacapobench/luindex (executable)
+========================================================================================================================
+Finished generating 'luindex' in 24.5s.
