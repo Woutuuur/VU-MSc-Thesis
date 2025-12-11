@@ -23,10 +23,8 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "runArgs": [
-        "-v",
-        "/tmp/.X11-unix:/tmp/.X11-unix",
-        "--hostname",
-        "substratevm.devcontainer"
+        "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
+        "--hostname", "substratevm.devcontainer"
     ],
     "features": {
         "ghcr.io/devcontainers/features/java:1": {

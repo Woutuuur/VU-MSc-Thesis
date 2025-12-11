@@ -40,11 +40,11 @@ COPY graal/.git /tmp/graal/.git
 RUN ${MX_PATH}/mx -p /tmp/graal --java-home= fetch-jdk --jdk-id labsjdk-ce-latest --to /data/jdk-dl --alias ${JAVA_HOME}
 
 # Create some shorthands for mx commands
-RUN echo "alias aot='mx -p /workspace/graal/substratevm native-image'" >> /etc/zsh/bashrc && \
-    echo "alias vm='mx -p /workspace/graal/compiler vm'" >> /etc/zsh/bashrc && \
-    echo "alias build-aot='mx -p /workspace/graal/substratevm build'" >> /etc/zsh/bashrc && \
-    echo "alias build-jvm='mx -p /workspace/graal/compiler build'" >> /etc/zsh/bashrc && \
-    echo "alias igv='mx --java-home /usr/local/sdkman/candidates/java/21.0.7-graal/ -p /workspace/graal/compiler/ igv'" >> /etc/zsh/bashrc
+RUN echo "alias aot='mx -p /workspace/graal/substratevm native-image'" >> /etc/bash.bashrc && \
+    echo "alias vm='mx -p /workspace/graal/compiler vm'" >> /etc/bash.bashrc && \
+    echo "alias build-aot='mx -p /workspace/graal/substratevm build'" >> /etc/bash.bashrc && \
+    echo "alias build-jvm='mx -p /workspace/graal/compiler build'" >> /etc/bash.bashrc && \
+    echo "alias igv='mx --java-home /usr/local/sdkman/candidates/java/21.0.7-graal/ -p /workspace/graal/compiler/ igv'" >> /etc/bash.bashrc
 
 RUN wget -q -O /tmp/dacapobench.zip https://download.dacapobench.org/chopin/dacapo-${DACAPO_VERSION}.zip 
 RUN mkdir /data/dacapobench
