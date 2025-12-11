@@ -35,7 +35,7 @@ The table below lists all the configuration files that were used throughout the 
 
 ## Data analysis and plot generation
 
-Below we detail which commands were used to obtain the data for every figure and table in the thesis. Plots are written as svg files to [results/plots](results/plots) and in some cases additionally write to the standard output for quick manual analysis used for quantitative commenting on the figures in the paper. The plots we generated for the thesis are also included in the [results/plots](results/plots) in the respective subdirectories for every experiment ([results/plots/DII](results/plots/DII), [results/plots/IC](results/plots/IC), [results/plots/IC+DII](results/plots/IC+DII), [results/plots/Phase skipping](results/plots/Phase skipping)).
+Below we detail which commands were used to obtain the data for every figure and table in the thesis. Plots are written as svg files to [results/plots](results/plots) and in some cases additionally write to the standard output for quick manual analysis used for quantitative commenting on the figures in the paper. The plots we generated for the thesis are also included in the [results/plots](results/plots) in the respective subdirectories for every experiment ([results/plots/DII](results/plots/DII), [results/plots/IC](results/plots/IC), [results/plots/IC+DII](results/plots/IC+DII), [results/plots/Phase skipping](results/plots/Phase%20skipping)).
 
 The scripts are located in the [analysis_scripts](analysis_scripts) directory. Scripts that were used throughout the study for preliminary analysis but were not used to create the final data in the paper are included in [analysis_scripts/misc](analysis_scripts/misc).
 
