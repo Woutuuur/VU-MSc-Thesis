@@ -94,8 +94,10 @@ class DacapoBenchmark(Benchmark):
             *additional_args
         ]
 
+# [TODO] Fop still doesn't work when last tested
 @dataclass
 class FopBenchmark(DacapoBenchmark):
+    # Fop benchmark needs special handling for logging configuration
     def __post_init__(self):
         super().__post_init__()
 

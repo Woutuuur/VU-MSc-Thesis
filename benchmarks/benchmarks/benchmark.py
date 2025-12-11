@@ -113,7 +113,7 @@ class Benchmark(ABC):
         assert compiler in (Compiler.CLOSED, Compiler.CUSTOM_OPEN), "PGO optimization is only supported for CLOSED and CUSTOM_OPEN compilers."
 
         prof_file_path = self.get_prof_file_path(compiler)
-        profiling_binary_optimization_level = OptimizationLevel.NONE if compiler == Compiler.CLOSED else OptimizationLevel.O3
+        profiling_binary_optimization_level = OptimizationLevel.NONE if compiler == Compiler.CLOSED else OptimizationLevel.O0
 
         if not self.options.skip_profiling:
             # 1. Create instrumented binary

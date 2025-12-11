@@ -77,6 +77,7 @@ class BaristaBenchmark(Benchmark):
             "-march=native",
             f"--bundle-apply={self.nib_file_path.as_posix()}",
             "-o", self.name,
+            "-H:NumberOfThreads=4"
         ]
         print(f"{C.GRAY}Building native image with command: {' '.join(command)}{C.ENDC}")
 
