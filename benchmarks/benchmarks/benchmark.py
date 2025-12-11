@@ -55,6 +55,9 @@ class Benchmark(ABC):
 
     def __post_init__(self):
         self.log_dir.mkdir(exist_ok = True)
+        
+        if isinstance(self.context_path, str):
+            self.context_path = Path(self.context_path)
 
     @classmethod
     def from_config(cls, config, options: ConfigOptions) -> "Benchmark":
