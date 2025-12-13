@@ -8,7 +8,6 @@ This is the main repository of my master thesis: _Profile-Guided Optimizations i
 - Compiler instrumentation to capture no-op phase executions. Computes fingerprints of the current graph and state and stores them to disk to serve as profiling information, similar to the profiler.
  - Compiler phase skipping that uses the above profile to determine which phases are no-ops in subsequent compilations and skip them where possible.
 
-
 ## Structure
 
 The core changes are located in the Graal submodule, which points to [our fork of the Graal compiler](https://github.com/Woutuuur/graal/tree/24.2-pgo-all). The repository has two pull requests to group the commits and to provide a simple overview of the changes that are relevant to the thesis' contributions:
@@ -16,7 +15,7 @@ The core changes are located in the Graal submodule, which points to [our fork o
 - The primary pull request contains all code changes made to the Graal repository: https://github.com/Woutuuur/graal/pull/3. These are effectively all the changes made to the compiler to implement the profile-guided optimizations presented with the thesis.
 - A separate branch and shows the code changes that were used to instrument the phase skipping logic with timing measurements which we use during evaluation. It is separated from the main branch because the time measurements incur a performance overhead which should not be present in the main evaluation. See: https://github.com/Woutuuur/graal/pull/4.
 
-The [benchmarks/](./benchmarks) directory contains the experiment runner, the results, and the analysis scripts that can be used to reproduce the experiments (and their results) from the thesis. Please refer to its [README](./benchmarks) for more details.
+The [benchmarks/](./benchmarks) directory contains the experiment runner, the results, and the analysis scripts that can be used to reproduce the experiments (and their results) from the thesis. Please refer to its [README](./benchmarks) for more details, which additionally describes the required commands to replicate the results for every table and figure in the thesis.
 
 The [microbenchmarks submodule](https://github.com/Woutuuur/graal-native-image-ic-benchmarks) contains early dynamic dispatch experiments we developed using [JMH](https://github.com/openjdk/jmh) microbenchmarks and is included for completeness.
 
