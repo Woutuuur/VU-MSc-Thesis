@@ -23,7 +23,7 @@ This project has a devcontainer configuration provided in [.devcontainer/](.devc
 
 A few caveats:
 
-- The  [devcontainer.json](.devcontainer/devcontainer.json#L27) specifies X-forwarding for graphical application support (used for Graal's graph viewer called IGV). This has only been tested on a Linux host operating system and may not work on others.
+- The  [devcontainer.json](.devcontainer/devcontainer.json#L26) specifies X-forwarding for graphical application support (used for Graal's graph viewer called IGV). This has only been tested on a Linux host operating system and may not work on others.
 -  The [devcontainer.json](.devcontainer/devcontainer.json#L20-L23) furthermore specifies SELinux security flags. It is not clear whether these flags hinder the build process of a devcontainer on a non-SELinux system but you can remove them if so.
 
 **Method 2: manual**
