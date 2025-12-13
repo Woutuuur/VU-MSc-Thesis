@@ -73,9 +73,9 @@ class BaristaBenchmark(Benchmark):
             optimization_level.value,
             "-H:+PlatformInterfaceCompatibilityMode",
             *self.native_image_args,
-            *additional_build_args,
             "-march=native",
             f"--bundle-apply={self.nib_file_path.as_posix()}",
+            *additional_build_args,
             "-o", self.name,
             "-H:NumberOfThreads=4"
         ]
