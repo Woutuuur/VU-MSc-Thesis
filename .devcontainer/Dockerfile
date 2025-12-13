@@ -72,4 +72,4 @@ ENV BASH_ENV="/usr/local/sdkman/bin/sdkman-init.sh"
 ENV ZSH_ENV="/usr/local/sdkman/bin/sdkman-init.sh"
 ENV DISPLAY=:0
 ENV DACAPO_VERSION=${DACAPO_VERSION}
-ENTRYPOINT ["/bin/zsh", "-c"]
+ENTRYPOINT ["/bin/bash", "-c"]
