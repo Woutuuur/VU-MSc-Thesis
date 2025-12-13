@@ -11,7 +11,7 @@ WIP
 First, clone the repo and enter the directory:
 
 ```bash
-git clone https://github.com/Woutuuur/VU-MSc-Thesis --recursive --shallow-submodules aot-pgo
+git clone git@github.com:Woutuuur/VU-MSc-Thesis.git --recursive --shallow-submodules aot-pgo
 cd aot-pgo
 ```
 
