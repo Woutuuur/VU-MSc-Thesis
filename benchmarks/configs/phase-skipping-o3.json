@@ -26,7 +26,6 @@
   },
   "options": {
     "skip_profiling": true,
-    "skip_agent": true,
     "n_compilations": 5,
     "show_compilation_times": true,
     "n_runs": 1

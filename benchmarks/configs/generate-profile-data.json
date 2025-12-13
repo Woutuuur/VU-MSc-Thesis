@@ -18,7 +18,6 @@
     "CUSTOM_OPEN": ["CUSTOM_PGO_O3"]
   },
   "options": {
-    "skip_agent": true,
     "dump_profiling_data": true,
     "skip_run": true,
     "skip_pgo_build": true

@@ -23,7 +23,6 @@
     ]
   },
   "options": {
-    "skip_agent": true,
     "dump_skippable_phases": true,
     "skip_run": true
   }

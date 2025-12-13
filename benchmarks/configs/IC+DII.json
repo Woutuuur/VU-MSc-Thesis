@@ -32,7 +32,6 @@
   },
   "options": {
     "skip_profiling": true,
-    "skip_agent": true,
     "use_dumped_profiling_data": true,
     "n_compilations": 5,
     "show_compilation_times": true
