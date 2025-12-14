@@ -71,3 +71,5 @@ Below is an example command to manually build avrora from the DaCapo suite with 
 ```bash
 mx -p graal/substratevm native-image -H:+PlatformInterfaceCompatibilityMode -H:ConfigurationFileDirectories=/path/to/dacapobench/avrora-config -O0 -J-DenableInlineCachePhase=true -J-DenablePGODirectInvokeInlining=true -J-DcombinedInlining=true -H:ProfileDataDumpFileName=benchmarks/results/current/profiling-data/avrora-custom_open.json -jar /path/to/dacapobench/dacapo-23.11-MR2-chopin/launchers/avrora.jar
 ```
+
+To auatomate this process and to simplify experiment execution we use the experiment runner in the [benchmarks directory](benchmarks). The runner can also be used to simplify the compilation and execution of abitrary programs without requiring manual writing of long commands.
