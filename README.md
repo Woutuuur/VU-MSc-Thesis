@@ -65,6 +65,8 @@ Below table contains a list of compiler flags that were added as part of the the
 |`-J-DenablePGODirectInvokeInlining=true`|Enables the direct invoke inlining optimization. Uses the profiling data passed by the above flag to determine which invokes to inline.|
 |`-J-DcombinedInlining=true`|Enables the combined DII mode which falls back to the default native image trivial inliner when profiling data does not identify a given method as inline-worthy. Requires `enablePGODirectInvokeInlining`.
 |`-J-DenableInlineCachePhase=true`|Enables the IC optimization. Uses the profiling data from `ProfileDataDumpFileName` to determine which indirect invokes to insert inline caches for.|
+|`-J-DprofileCompiler=true`|Enables the phase execution profiling to record no-op phases. Fingerprints of these skippable phases are recorded to a `skippable_phases.txt` file once compilation finishes.|
+|`-J-DuseCompilerPGO=true`|Uses the fingerprints in the `skippable_phases.txt` file to determine which phase executions to skip with the goal of reducing compilation time.|
 
 Below is an example command to manually build avrora from the DaCapo suite with both DII combined and IC enabled at `O0` base optimization level:
 
